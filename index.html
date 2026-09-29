@@ -264,7 +264,7 @@
   .svc::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(226,200,164,.14),transparent 45%);opacity:0;transition:opacity .4s}
   .svc:hover::before{opacity:1}
   .svc:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.85)}
-  .svc .num{position:absolute;top:22px;right:26px;font:500 2.4rem/1 "Playfair Display",serif;color:rgba(226,200,164,.12)}
+  .svc .num{position:absolute;top:22px;right:26px;font:500 2.4rem/1 "Playfair Display",serif;font-variant-numeric:lining-nums;color:rgba(226,200,164,.12)}
   .svc .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(243,227,203,.18),rgba(201,168,119,.05));color:var(--gold);margin-bottom:22px;transition:transform .5s}
   .svc:hover .ic{transform:rotate(-8deg) scale(1.08)}
   .svc .ic svg{width:30px;height:30px}
@@ -288,7 +288,8 @@
   .steps.in .rail i{transform:none}
   .step{text-align:center;padding:0 10px}
   .step .dot{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;position:relative;
-    background:var(--bg);border:1px solid var(--gold);font:500 1.6rem "Playfair Display",serif;color:var(--gold-3)}
+    background:var(--bg);border:1px solid var(--gold);font:500 1.6rem/1 "Playfair Display",serif;font-variant-numeric:lining-nums;color:var(--gold-3);
+    padding-bottom:.14em /* оптический центр: у Playfair над цифрами больше места, чем под ними */}
   .step .dot::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(226,200,164,.3);animation:spin 18s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .step h3{font-size:1.1rem;margin-bottom:8px}
