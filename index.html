@@ -801,10 +801,6 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3c.3-1.2-.9-2.2-2-1.8L2.8 9.1c-1.2.5-1.2 2.2.1 2.6l4.3 1.4 1.7 5.3c.3 1 1.6 1.3 2.3.6l2.4-2.3 4.6 3.4c.9.6 2.1.2 2.4-.9l3.3-14.9zM9.6 13.9l7.8-6.1c.2-.2.5.1.3.3l-6.4 6.9-.3 2.8-1.4-3.9z"/></svg>
             Отправить Алине в Telegram
           </button>
-          <button type="button" class="btn btn-ghost" id="copyOnly">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-            Только скопировать текст
-          </button>
         </div>
       </form>
 
@@ -1013,11 +1009,6 @@
     const w = window.open(url, "_blank");
     if (w) w.opener = null; else location.href = url;
     toast("Сообщение скопировано — открываю Telegram…");
-  });
-  $("#copyOnly").addEventListener("click", async () => {
-    if (!validate()) return;
-    const ok = await copy(buildMessage());
-    toast(ok ? "Текст скопирован. Отправьте его в Telegram @" + TG : "Не удалось скопировать — выделите текст вручную");
   });
   $("#fName").addEventListener("input", () => $("#errName").classList.remove("show"));
 
