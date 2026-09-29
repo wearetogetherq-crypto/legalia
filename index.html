@@ -274,6 +274,7 @@
   .svc ul li{font-size:.8rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text)}
   .svc .more{margin-top:auto;display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:700;font-size:.95rem;
     background:none;border:0;cursor:pointer;font-family:inherit;padding:8px 0;min-height:44px;align-self:flex-start}
+  .svc h3 .note-sm{font:500 .62em "Manrope",sans-serif;color:var(--muted);white-space:nowrap}
   .svc .more svg{width:18px;height:18px;transition:transform .3s}
   .svc .more:hover svg{transform:translateX(6px)}
   .svc .more.added{color:#8fe3a8}
@@ -588,7 +589,7 @@
         </span>
       </div>
 
-      <p class="lead fade-up" style="animation-delay:.7s" data-i18n="lead">Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою.</p>
+      <p class="lead fade-up" style="animation-delay:.7s" data-i18n="lead">Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою. Працюю по всьому <strong>Мазовецькому воєводству</strong>.</p>
 
       <div class="hero-cta fade-up" style="animation-delay:.85s">
         <a href="#situation" class="btn btn-gold">
@@ -744,7 +745,7 @@
       <article class="svc reveal d3" data-add="meld">
         <span class="num">07</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <h3 data-i18n="c7h">Мельдунок</h3>
+        <h3 data-i18n="c7h">Мельдунок <small class="note-sm">(за погодженням)</small></h3>
         <p data-i18n="c7p">Реєстрація за місцем проживання (zameldowanie) — потрібна для багатьох подальших процедур.</p>
         <ul><li>zameldowanie</li><li data-i18n="chPropiska">прописка</li></ul>
         <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -901,7 +902,7 @@
 
 <footer>
   <div class="container">
-    <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> <span data-i18n="footer">Аліна Калініч · Легалізація в Польщі · Радом</span></div>
+    <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> <span data-i18n="footer">Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство</span></div>
     <div>Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
   </div>
 </footer>
@@ -943,7 +944,7 @@
     { id: "spouse",  ru: "Сталый побыт — с гражданином Польши",    uk: "Сталий побит — з громадянином Польщі",    en: "Permanent residence — spouse of a Polish citizen" },
     { id: "cit",     ru: "Гражданство Польши",                     uk: "Громадянство Польщі",                     en: "Polish citizenship" },
     { id: "najem",   ru: "Поручительство для найма оказионального", uk: "Поручительство для найму оказіонального", en: "Guarantor for najem okazjonalny" },
-    { id: "meld",    ru: "Мельдунок (прописка)",                   uk: "Мельдунок (прописка)",                    en: "Meldunek (address registration)" },
+    { id: "meld",    ru: "Мельдунок (по согласованию)",            uk: "Мельдунок (за погодженням)",              en: "Meldunek (by arrangement)" },
     { id: "consult", ru: "Нужна консультация — не знаю, что выбрать", uk: "Потрібна консультація — не знаю, що обрати", en: "I need a consultation — not sure what to choose" }
   ];
   const SVC = Object.fromEntries(SERVICES.map(x => [x.id, x]));
@@ -971,7 +972,7 @@
     { emo: "🔑", svc: ["najem"],
       ru: ["Снимаю жильё по najem okazjonalny", "Поручительство для найма"], uk: ["Винаймаю житло за najem okazjonalny", "Поручительство для найму"], en: ["I’m renting under najem okazjonalny", "Guarantor statement"] },
     { emo: "🏠", svc: ["meld"],
-      ru: ["Нужна прописка по новому адресу", "Мельдунок"], uk: ["Потрібна прописка за новою адресою", "Мельдунок"], en: ["I need to register a new address", "Meldunek"] },
+      ru: ["Нужна прописка по новому адресу", "Мельдунок (по согласованию)"], uk: ["Потрібна прописка за новою адресою", "Мельдунок (за погодженням)"], en: ["I need to register a new address", "Meldunek (by arrangement)"] },
     { emo: "🤔", svc: ["consult"],
       ru: ["Не знаю, что мне подходит", "Подскажу на консультации"], uk: ["Не знаю, що мені підходить", "Підкажу на консультації"], en: ["I don’t know what fits me", "I’ll advise in a consultation"] }
   ];
@@ -1022,7 +1023,7 @@
       rot4: 'сталый побыт',
       rot5: 'гражданство',
       rot6: 'мельдунок',
-      lead: 'Меня зовут <strong>Алина Калинич</strong>, я из Украины и <strong>уже 5 лет живу в Польше</strong>. Разберусь в вашей ситуации, соберу документы и доведу дело до решения — объясняю всё простым языком.',
+      lead: 'Меня зовут <strong>Алина Калинич</strong>, я из Украины и <strong>уже 5 лет живу в Польше</strong>. Разберусь в вашей ситуации, соберу документы и доведу дело до решения — объясняю всё простым языком. Работаю по всему <strong>Мазовецкому воеводству</strong>.',
       heroBtn1: 'Узнать, что мне подходит',
       heroBtn2: 'Написать Алине',
       unitYears: 'лет',
@@ -1081,7 +1082,7 @@
       c6h: 'Поручительство для найма оказионального',
       c6p: 'Документ, который нужен для аренды жилья по договору <i>najem okazjonalny</i>.',
       chRent: 'для аренды',
-      c7h: 'Мельдунок',
+      c7h: 'Мельдунок <small class="note-sm">(по согласованию)</small>',
       c7p: 'Регистрация по месту проживания (zameldowanie) — нужна для многих дальнейших процедур.',
       chPropiska: 'прописка',
       howH2: 'Четыре <span class="gt">простых шага</span>',
@@ -1125,7 +1126,7 @@
       prevP: 'Сообщение собирается автоматически, пока вы заполняете форму.',
       chatName: 'Алина Калинич · Legalia',
       note: 'Если текст не подставился в Telegram автоматически — просто нажмите в поле сообщения и выберите «Вставить». Он уже скопирован.',
-      footer: 'Алина Калинич · Легализация в Польше · Радом',
+      footer: 'Алина Калинич · Легализация в Польше · Радом, Мазовецкое воеводство',
       picked: 'Выбрано',
       pickedBtn: 'К заявке →',
       logoAria: 'Legalia — на главную',
@@ -1141,7 +1142,7 @@
       cta: 'Залишити заявку', logoAria: 'Legalia — на головну', menuAria: 'Меню',
       brand: '<b>Legalia</b> · Аліна Калініч', h1a: 'Допоможу легально', h1b: '<em class="gt">жити й працювати</em>', h1c: 'у Польщі',
       rotLbl: 'Оформлю для вас:', rot1: 'карту побиту', rot2: 'карту CUKR', rot3: 'карту резидента', rot4: 'сталий побит', rot5: 'громадянство', rot6: 'мельдунок',
-      lead: 'Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою.',
+      lead: 'Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою. Працюю по всьому <strong>Мазовецькому воєводству</strong>.',
       heroBtn1: 'Дізнатися, що мені підходить', heroBtn2: 'Написати Аліні',
       unitYears: 'років', stat1: 'живу й працюю в Польщі', stat2: 'напрямів легалізації', unitLangs: 'мови', stat3: 'українська, російська, польська',
       photoAlt: 'Аліна Калініч — Legalia, легалізація в Польщі', name: 'Аліна Калініч', capRole: 'Засновниця Legalia',
@@ -1162,7 +1163,7 @@
       c4h: 'Карта сталого побиту', c4p: 'Постійний дозвіл на проживання в Польщі. Допоможу підтвердити підставу й пройти всю процедуру.',
       c5h: 'Громадянство', c5p: 'Польське громадянство — фінальний крок. Розберу вашу ситуацію, підкажу відповідний шлях, підготую документи й заяву.',
       c6h: 'Поручительство для найму оказіонального', c6p: 'Документ, потрібний для оренди житла за договором <i>najem okazjonalny</i>.',
-      c7h: 'Мельдунок', c7p: 'Реєстрація за місцем проживання (zameldowanie) — потрібна для багатьох подальших процедур.',
+      c7h: 'Мельдунок <small class="note-sm">(за погодженням)</small>', c7p: 'Реєстрація за місцем проживання (zameldowanie) — потрібна для багатьох подальших процедур.',
       chWork: 'за роботою', chStudy: 'навчання', chFamily: 'возз’єднання сім’ї', chUkr: 'для українців', chUkrStatus: 'статус UKR',
       chEu: 'резидент ЄС', chIndef: 'безстроково', chRoots: 'за походженням', chKp: 'за Картою поляка', chSpouse: 'з громадянином Польщі',
       chRecog: 'визнання громадянства', chGrant: 'надання', chDocs: 'підготовка документів', chRent: 'для оренди', chPropiska: 'прописка',
@@ -1193,14 +1194,14 @@
       sendFull: 'Надіслати Аліні в Telegram', sendShort: 'Надіслати в Telegram',
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
       note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
-      footer: 'Аліна Калініч · Легалізація в Польщі · Радом', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram'
+      footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram'
     },
     en: {
       logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
       cta: 'Send a request', logoAria: 'Legalia — home', menuAria: 'Menu',
       brand: '<b>Legalia</b> · Alina Kalinich', h1a: 'I’ll help you legally', h1b: '<em class="gt">live and work</em>', h1c: 'in Poland',
       rotLbl: 'I’ll arrange for you:', rot1: 'a residence card', rot2: 'a CUKR card', rot3: 'an EU resident card', rot4: 'permanent residence', rot5: 'citizenship', rot6: 'meldunek',
-      lead: 'My name is <strong>Alina Kalinich</strong>. I’m from Ukraine and <strong>have lived in Poland for 5 years</strong>. I’ll look into your situation, gather the documents and see your case through to a decision — explaining everything in plain language.',
+      lead: 'My name is <strong>Alina Kalinich</strong>. I’m from Ukraine and <strong>have lived in Poland for 5 years</strong>. I’ll look into your situation, gather the documents and see your case through to a decision — explaining everything in plain language. I work across the whole <strong>Masovian Voivodeship</strong>.',
       heroBtn1: 'Find out what fits me', heroBtn2: 'Message Alina',
       unitYears: 'years', stat1: 'living and working in Poland', stat2: 'legalization services', unitLangs: 'languages', stat3: 'Ukrainian, Russian, Polish',
       photoAlt: 'Alina Kalinich — Legalia, legalization in Poland', name: 'Alina Kalinich', capRole: 'Founder of Legalia',
@@ -1221,7 +1222,7 @@
       c4h: 'Permanent residence card', c4p: 'A permanent residence permit in Poland. I’ll help confirm your basis and go through the whole procedure.',
       c5h: 'Citizenship', c5p: 'Polish citizenship is the final step. I’ll review your situation, suggest the right route and prepare the documents and application.',
       c6h: 'Guarantor statement for najem okazjonalny', c6p: 'A document required to rent a home under a <i>najem okazjonalny</i> agreement.',
-      c7h: 'Meldunek', c7p: 'Address registration (zameldowanie) — needed for many further procedures.',
+      c7h: 'Meldunek <small class="note-sm">(by arrangement)</small>', c7p: 'Address registration (zameldowanie) — needed for many further procedures.',
       chWork: 'work', chStudy: 'studies', chFamily: 'family reunification', chUkr: 'for Ukrainians', chUkrStatus: 'UKR status',
       chEu: 'EU resident', chIndef: 'indefinite', chRoots: 'Polish roots', chKp: 'Pole’s Card', chSpouse: 'spouse of a Polish citizen',
       chRecog: 'recognition', chGrant: 'granting', chDocs: 'document preparation', chRent: 'for renting', chPropiska: 'address registration',
@@ -1252,7 +1253,7 @@
       sendFull: 'Send to Alina on Telegram', sendShort: 'Send via Telegram',
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
       note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
-      footer: 'Alina Kalinich · Legalization in Poland · Radom', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram'
+      footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram'
     }
   };
 
