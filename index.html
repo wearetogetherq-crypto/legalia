@@ -516,7 +516,7 @@
   .field select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(226,200,164,.15)}
   .field select option{background:#1a1714;color:var(--text)}
   .rv-two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-  .rv-consent .box{font-size:.9rem}
+  .rv-note{color:var(--muted);font-size:.82rem;text-align:center}
   .rv-side{display:flex;flex-direction:column;gap:20px}
   .rv-how{padding:22px 22px 8px;border-radius:20px;border:1px solid var(--line);background:rgba(12,11,10,.4)}
   .rv-how h4{font:600 1.15rem "Playfair Display",serif;color:var(--gold-3);margin-bottom:12px}
@@ -1041,16 +1041,12 @@
                 <div data-i18n="rvErrText" class="err" id="rvErrText">Напишіть хоча б кілька слів (від 15 символів)</div>
               </div>
 
-              <div class="field">
-                <label class="check rv-consent"><input type="checkbox" id="rvConsent"><span class="box"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span data-i18n="rvConsent">Погоджуюся, щоб мій відгук з’явився на сайті Legalia</span></span></label>
-                <div data-i18n="rvErrConsent" class="err" id="rvErrConsent">Потрібна ваша згода на публікацію</div>
-              </div>
-
               <div class="form-actions">
                 <button type="submit" class="btn tg-btn">
                   <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
                   <span data-i18n="rvSendFull" class="lbl-full">Надіслати відгук Аліні</span><span data-i18n="rvSendShort" class="lbl-short">Надіслати відгук</span>
                 </button>
+                <p data-i18n="rvNote" class="rv-note">Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.</p>
               </div>
             </form>
 
@@ -1425,10 +1421,9 @@
       rvLblText: 'Ваш отзыв <span class="req">*</span>',
       rvTextPh: 'Как всё прошло? Что понравилось? Посоветовали бы меня знакомым?',
       rvErrText: 'Напишите хотя бы пару слов (от 15 символов)',
-      rvConsent: 'Согласен(на), чтобы мой отзыв появился на сайте Legalia',
-      rvErrConsent: 'Нужно ваше согласие на публикацию',
       rvSendFull: 'Отправить отзыв Алине',
       rvSendShort: 'Отправить отзыв',
+      rvNote: 'Отправляя отзыв, вы соглашаетесь на его публикацию на сайте.',
       rvHowH: 'Как это работает',
       rvHow1: 'Вы пишете отзыв и отправляете его мне в Telegram',
       rvHow2: 'Я проверяю, что вы мой клиент',
@@ -1500,7 +1495,7 @@
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
       note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
       footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram',
-      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvNameSub: 'Можна лише ім’я або ім’я та першу літеру прізвища', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvConsent: 'Погоджуюся, щоб мій відгук з’явився на сайті Legalia', rvErrConsent: 'Потрібна ваша згода на публікацію', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і надсилаєте його мені в Telegram', rvHow2: 'Я перевіряю, що ви мій клієнт', rvHow3: 'Відгук з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Залишилося натиснути «Надіслати» в Telegram. Щойно я перевірю відгук, він з’явиться на сайті. Якщо текст не підставився — натисніть у полі повідомлення й оберіть «Вставити».', rvAgain: 'Відкрити Telegram ще раз', rvEdit: 'Змінити відгук', rvFooter: 'Залишити відгук', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки'
+      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvNameSub: 'Можна лише ім’я або ім’я та першу літеру прізвища', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і надсилаєте його мені в Telegram', rvHow2: 'Я перевіряю, що ви мій клієнт', rvHow3: 'Відгук з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Залишилося натиснути «Надіслати» в Telegram. Щойно я перевірю відгук, він з’явиться на сайті. Якщо текст не підставився — натисніть у полі повідомлення й оберіть «Вставити».', rvAgain: 'Відкрити Telegram ще раз', rvEdit: 'Змінити відгук', rvFooter: 'Залишити відгук', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки'
     },
     en: {
       logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
@@ -1560,7 +1555,7 @@
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
       note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
       footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram',
-      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvNameSub: 'First name only, or first name and last initial', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvConsent: 'I agree that my review may be published on the Legalia website', rvErrConsent: 'Your consent to publish is required', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvHowH: 'How it works', rvHow1: 'You write a review and send it to me on Telegram', rvHow2: 'I check that you are my client', rvHow3: 'The review appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Just press “Send” in Telegram. As soon as I check the review, it will appear on the site. If the text didn’t appear, tap the message field and choose “Paste”.', rvAgain: 'Open Telegram again', rvEdit: 'Edit review', rvFooter: 'Leave a review', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews'
+      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvNameSub: 'First name only, or first name and last initial', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and send it to me on Telegram', rvHow2: 'I check that you are my client', rvHow3: 'The review appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Just press “Send” in Telegram. As soon as I check the review, it will appear on the site. If the text didn’t appear, tap the message field and choose “Paste”.', rvAgain: 'Open Telegram again', rvEdit: 'Edit review', rvFooter: 'Leave a review', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews'
     }
   };
 
@@ -1908,7 +1903,6 @@
       rateLabels.forEach((l, i) => { l.classList.remove("pop"); if (i < rvRating) { void l.offsetWidth; l.style.setProperty("animation-delay", i * .05 + "s"); l.classList.add("pop"); } });
       $("#rvErrRate").classList.remove("show");
     }
-    if (e.target.id === "rvConsent" && e.target.checked) $("#rvErrConsent").classList.remove("show");
     rvSync();
   });
   rvForm.addEventListener("input", e => {
@@ -1945,7 +1939,6 @@
     if (!rvRating) { shake($("#rvErrRate")); bad.push($("#rvRate")); }
     if (!$("#rvName").value.trim()) { shake($("#rvErrName")); bad.push($("#rvName")); }
     if ($("#rvText").value.trim().length < 15) { shake($("#rvErrText")); bad.push($("#rvText")); }
-    if (!$("#rvConsent").checked) { shake($("#rvErrConsent")); bad.push($("#rvConsent").closest("label")); }
     if (bad.length) bad[0].scrollIntoView({ behavior: "smooth", block: "center" });
     return !bad.length;
   }
