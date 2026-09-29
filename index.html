@@ -378,8 +378,9 @@
 
   .fab{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
     background:linear-gradient(135deg,#37aee2,#1e96c8);color:#fff;box-shadow:0 12px 30px -8px rgba(42,171,238,.7);text-decoration:none;
-    transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1),bottom .45s}
-  .fab.show{transform:scale(1)}
+    transform-origin:100% 100%;transform:translate(46px,46px) scale(.15) rotate(25deg);opacity:0;pointer-events:none;
+    transition:transform .55s cubic-bezier(.5,0,.2,1),opacity .45s,bottom .45s}
+  .fab.show{transform:none;opacity:1;pointer-events:auto;transition:transform .55s cubic-bezier(.3,1.5,.5,1),opacity .3s,bottom .45s}
   .fab svg{width:30px;height:30px}
   .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #37aee2;animation:ping 2.4s infinite}
   @keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
@@ -1055,10 +1056,12 @@
   setTimeout(() => document.querySelectorAll("[data-count]").forEach(runCount), 1100);
 
   /* ---------- nav / scroll ---------- */
-  const nav = $("#nav"), fab = $("#fab"), prog = $("#progress");
+  const nav = $("#nav"), fab = $("#fab"), prog = $("#progress"), sendBtn = $(".tg-btn");
   const onScroll = () => {
     nav.classList.toggle("scrolled", scrollY > 30);
-    fab.classList.toggle("show", scrollY > innerHeight * .6);
+    // круглая кнопка уезжает в угол, когда видна кнопка «Отправить в Telegram» (и ниже неё)
+    const sendReached = sendBtn.getBoundingClientRect().top < innerHeight - 20;
+    fab.classList.toggle("show", scrollY > innerHeight * .6 && !sendReached);
     const max = document.documentElement.scrollHeight - innerHeight;
     prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
   };
