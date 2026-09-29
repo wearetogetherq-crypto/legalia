@@ -124,7 +124,7 @@
   @keyframes grow{from{transform:scaleX(0)}}
 
   .rotator{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:1.2rem;font-weight:600;margin-bottom:18px}
-  .rotator .lbl{color:var(--muted);font-weight:500}
+  .rotator .rot-lbl{color:var(--muted);font-weight:500}
   .rot-box{position:relative;display:inline-grid;padding:8px 18px;border-radius:14px;background:rgba(226,200,164,.08);overflow:hidden;min-width:230px}
   .rot-box::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
     background:conic-gradient(from var(--ang),rgba(226,200,164,.25) 0 55%,var(--gold-3) 72%,var(--red) 84%,rgba(226,200,164,.25) 96%);
@@ -536,7 +536,7 @@
       <div class="flag" aria-hidden="true"><i></i><i></i></div>
 
       <div class="rotator fade-up" style="animation-delay:.55s">
-        <span class="lbl">Оформлю для вас:</span>
+        <span class="rot-lbl">Оформлю для вас:</span>
         <span class="rot-box" aria-live="off">
           <span class="rot-word gt on">карту побыту</span>
           <span class="rot-word gt">карту CUKR</span>
