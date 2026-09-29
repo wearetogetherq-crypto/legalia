@@ -310,15 +310,32 @@
 
   /* ---------- FAQ ---------- */
   .faq{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-  details{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .3s}
-  details[open]{border-color:rgba(226,200,164,.45)}
-  summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:1.05rem}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative;isolation:isolate}
+  .faq details.in{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+  .faq details::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .5s;
+    background:radial-gradient(120% 140% at 0% 0%,rgba(226,200,164,.12),transparent 55%),radial-gradient(90% 120% at 100% 100%,rgba(122,31,46,.25),transparent 60%)}
+  .faq details.is-open{border-color:rgba(226,200,164,.5);box-shadow:0 24px 50px -30px rgba(0,0,0,.9)}
+  .faq details.is-open::before{opacity:1}
+  summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:1.05rem;
+    transition:color .3s;-webkit-user-select:none;user-select:none}
   summary::-webkit-details-marker{display:none}
-  summary .pm{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);position:relative;flex:none}
-  summary .pm::before,summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--gold);transform:translate(-50%,-50%)}
-  summary .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s}
-  details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
-  details .ans{padding:0 26px 24px;color:var(--muted)}
+  summary::marker{content:""}
+  summary:hover,details.is-open summary{color:var(--gold-3)}
+  summary:focus-visible{outline:3px solid rgba(226,200,164,.5);outline-offset:-3px;border-radius:18px}
+  summary .pm{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);position:relative;flex:none;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),background .35s,border-color .35s}
+  summary:hover .pm{border-color:rgba(226,200,164,.5)}
+  summary .pm::before,summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;border-radius:2px;background:var(--gold);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),background .35s}
+  summary .pm::after{transform:rotate(90deg)}
+  details.is-open summary .pm{transform:rotate(180deg);background:var(--gold);border-color:var(--gold)}
+  details.is-open summary .pm::before,details.is-open summary .pm::after{background:#1a140d}
+  details.is-open summary .pm::after{transform:rotate(0deg)}
+  .faq .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+  .faq details.is-open .ans{grid-template-rows:1fr}
+  .faq .ans > div{min-height:0;overflow:hidden}
+  .faq .ans p{padding:0 26px 24px;color:var(--muted);opacity:0;transform:translateY(-8px);transition:opacity .3s,transform .5s cubic-bezier(.2,.8,.2,1)}
+  .faq details.is-open .ans p{opacity:1;transform:none;transition-delay:.1s}
 
   /* ---------- form ---------- */
   .contact{padding-bottom:130px}
@@ -766,13 +783,13 @@
     </div>
     <div class="faq">
       <details class="reveal"><summary>Я не знаю, какая карта мне подходит. Что делать?<span class="pm"></span></summary>
-        <div class="ans">Это нормально — большинство людей приходит именно с таким вопросом. Нажмите в блоке «Какая у вас ситуация?» на то, что про вас, или отметьте в форме «Нужна консультация». Я подскажу, какое основание подходит именно вам.</div></details>
+        <div class="ans"><div><p>Это нормально — большинство людей приходит именно с таким вопросом. Нажмите в блоке «Какая у вас ситуация?» на то, что про вас, или отметьте в форме «Нужна консультация». Я подскажу, какое основание подходит именно вам.</p></div></div></details>
       <details class="reveal d1"><summary>Можно ли всё сделать, если я плохо говорю по-польски?<span class="pm"></span></summary>
-        <div class="ans">Да. Я общаюсь на украинском и русском, а все документы на польском подготовлю сама и объясню, что в них написано.</div></details>
+        <div class="ans"><div><p>Да. Я общаюсь на украинском и русском, а все документы на польском подготовлю сама и объясню, что в них написано.</p></div></div></details>
       <details class="reveal d2"><summary>Вы работаете только в Радоме?<span class="pm"></span></summary>
-        <div class="ans">Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.</div></details>
+        <div class="ans"><div><p>Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.</p></div></div></details>
       <details class="reveal d3"><summary>Как быстро вы отвечаете?<span class="pm"></span></summary>
-        <div class="ans">Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.</div></details>
+        <div class="ans"><div><p>Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.</p></div></div></details>
     </div>
   </div>
 </section>
@@ -1089,6 +1106,21 @@
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     links.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", false);
   }));
+
+  /* FAQ: плавное раскрытие ответов */
+  document.querySelectorAll(".faq details").forEach(d => {
+    d.querySelector("summary").addEventListener("click", e => {
+      e.preventDefault();
+      if (d.classList.contains("is-open")) {
+        d.classList.remove("is-open");
+        // закрываем <details> после того, как ответ плавно свернулся (0.5s)
+        setTimeout(() => { if (!d.classList.contains("is-open")) d.open = false; }, 520);
+      } else {
+        d.open = true;
+        requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add("is-open")));
+      }
+    });
+  });
 
   /* reveal on scroll */
   const io = new IntersectionObserver(entries => {
