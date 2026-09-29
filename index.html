@@ -1502,6 +1502,7 @@
       renderMarquee();
       sync();
       updateSwitcher();
+      $("#toast").classList.remove("show"); // подсказка на прежнем языке больше не нужна
       try { localStorage.setItem("legalia-lang", lang); } catch (_) {}
     };
     if (!animate || reduced) return run();
