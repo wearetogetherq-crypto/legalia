@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Legalia — легализация в Польше | Алина Калинич, Радом</title>
-<meta name="description" content="Legalia — Алина Калинич, 5 лет в Польше. Помощь с легализацией: карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок. Радом, Мазовецкое воеводство.">
-<meta property="og:title" content="Legalia — легализация в Польше">
-<meta property="og:description" content="Алина Калинич, Радом. Карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок.">
+<title>Legalia — легалізація в Польщі | Аліна Калініч, Радом</title>
+<meta name="description" content="Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.">
+<meta property="og:title" content="Legalia — легалізація в Польщі">
+<meta property="og:description" content="Аліна Калініч, Радом. Карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок.">
 <meta property="og:image" content="alina.jpg">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
 <meta name="theme-color" content="#0c0b0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0b0a'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23e2c8a4'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +74,7 @@
     transform:translateX(-120%);animation:sweep 5s ease-in-out infinite}
   @keyframes sweep{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
   .logo b{font:600 1.45rem/1 "Playfair Display",serif;letter-spacing:.3px}
-  .logo small{display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.2;margin-top:4px}
+  .logo small{white-space:nowrap;display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.2;margin-top:4px}
   .nav-links{display:flex;gap:28px;list-style:none}
   .nav-links a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:500;font-size:.9rem;position:relative;transition:color .3s}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s}
@@ -99,7 +100,7 @@
   .btn-ghost{background:rgba(26,23,20,.5);color:var(--gold-3);border:1px solid var(--line)}
   .btn-ghost:hover{background:rgba(226,200,164,.08);transform:translateY(-3px)}
   .btn svg{width:22px;height:22px;flex:none}
-  .nav .btn{min-height:44px;padding:0 20px;font-size:.85rem}
+  .nav .btn{min-height:44px;padding:0 20px;font-size:.85rem;white-space:nowrap}
 
   /* ---------- hero ---------- */
   .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 90px;position:relative}
@@ -112,12 +113,13 @@
   .brandline b{color:var(--gold-3);font-weight:700}
   .brandline .live{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:live 2s infinite}
   @keyframes live{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-  .hero h1{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2.3rem,5.4vw,4.3rem);line-height:1.08;margin:24px 0 18px;color:var(--gold-3)}
+  .hero h1{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2.2rem,4.5vw,3.7rem);line-height:1.08;margin:24px 0 18px;color:var(--gold-3)}
   .hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
   .hero h1 .line > span{display:inline-block;transform:translateY(110%);animation:rise 1.1s cubic-bezier(.2,.8,.2,1) forwards}
   .hero h1 .line:nth-child(2) > span{animation-delay:.14s}
   .hero h1 .line:nth-child(3) > span{animation-delay:.28s}
   .hero h1 em{font-style:italic}
+  html[lang=uk] .hero h1,html[lang=en] .hero h1{font-size:clamp(2rem,4.1vw,3.4rem)}
   @keyframes rise{to{transform:none}}
   .flag{display:flex;width:150px;height:4px;border-radius:4px;overflow:hidden;margin:0 0 24px;transform-origin:left;animation:grow 1.2s .6s cubic-bezier(.2,.8,.2,1) both}
   .flag i{flex:1;background:var(--white)}.flag i+i{background:var(--red)}
@@ -138,10 +140,11 @@
   .hero .lead strong{color:var(--text);font-weight:600}
   .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
   .stats{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
-  .stat{flex:1;min-width:130px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(26,23,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .stat{container-type:inline-size;flex:1;min-width:130px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(26,23,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .stat b{display:block;font:600 2.1rem/1 "Playfair Display",serif}
   .stat b{white-space:nowrap;line-height:1.4;margin:-.12em 0 -.1em;font-variant-numeric:lining-nums}
   .stat .u{font-style:normal;font-size:.62em}
+  @container (max-width:130px){.stats .stat b{font-size:min(1.5rem,19cqw)}}
   .stat small{color:var(--muted);font-size:.85rem;line-height:1.3;display:block;margin-top:6px}
 
   .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp 1s cubic-bezier(.2,.8,.2,1) forwards}
@@ -209,8 +212,9 @@
   .sit:hover::before,.sit.sel::before{opacity:1}
   .sit .emo{font-size:1.8rem;line-height:1}
   .sit .q{font-weight:700;font-size:1.02rem;line-height:1.3;padding-right:24px}
-  .sit .a{margin-top:auto;color:var(--gold);font-size:.86rem;font-weight:600;display:flex;align-items:center;gap:6px}
-  .sit .a svg{width:16px;height:16px;flex:none;transition:transform .3s}
+  .sit .a{margin-top:auto;color:var(--gold);font-size:.86rem;font-weight:600;display:block;line-height:1.35}
+  .sit .a svg{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-left:2px;transition:transform .3s}
+  .sit .q,.sit .a{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
   .sit:hover .a svg{transform:translateX(4px)}
   .sit .ok{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(226,200,164,.4);display:grid;place-items:center;transition:.3s}
   .sit .ok svg{width:15px;height:15px;color:#1a140d;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
@@ -409,15 +413,45 @@
   footer a{color:var(--gold);text-decoration:none}
   footer .fl{font:600 1.3rem "Playfair Display",serif}
 
+
+  /* ---------- переключатель языка ---------- */
+  .lang{position:relative;display:flex;padding:4px;border-radius:999px;border:1px solid var(--line);background:rgba(20,18,16,.6);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .lang button{position:relative;z-index:1;border:0;background:none;color:var(--muted);font:700 .78rem "Manrope",sans-serif;letter-spacing:.08em;
+    min-width:44px;height:36px;padding:0 10px;border-radius:999px;cursor:pointer;transition:color .3s}
+  .lang button:hover{color:var(--gold-3)}
+  .lang button[aria-pressed="true"]{color:#1a140d}
+  .lang button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .lang-pill{position:absolute;top:4px;bottom:4px;left:0;width:44px;border-radius:999px;pointer-events:none;
+    background:linear-gradient(135deg,var(--gold-3),var(--gold) 50%,var(--gold-2));box-shadow:0 6px 16px -6px rgba(226,200,164,.7)}
+  .lang.ready .lang-pill{transition:transform .5s cubic-bezier(.3,1.35,.5,1),width .4s}
+  main,footer,.nav-links,.nav .btn,.logo small{transition:opacity .3s ease}
+  body.i18n-out main,body.i18n-out footer,body.i18n-out .nav-links,body.i18n-out .nav .btn,body.i18n-out .logo small{opacity:0;transition-duration:.2s}
+  @media (max-width:640px){
+    .nav-actions{gap:8px}
+    .lang{padding:3px}
+    .lang button{min-width:38px;height:34px;padding:0 8px;font-size:.74rem}
+    .lang-pill{top:3px;bottom:3px}
+  }
+  @media (max-width:359px){
+    .logo b{font-size:1.2rem}
+    .lang button{min-width:34px;padding:0 6px}
+  }
+
   /* ---------- responsive ---------- */
-  @media (max-width:1100px){
+  @media (max-width:1280px){
     .nav-links{position:fixed;top:76px;left:0;right:0;flex-direction:column;gap:0;background:rgba(12,11,10,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
       padding:10px 16px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .45s cubic-bezier(.2,.8,.2,1);z-index:-1}
     .nav-links.open{transform:none}
     .nav-links a{display:block;padding:16px 4px;font-size:1.05rem;border-bottom:1px solid var(--line)}
     .burger{display:block}
     .nav .btn{display:none}
+  }
+  @media (max-width:1100px){
     .sit-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (min-width:1281px) and (max-width:1500px){
+    .nav-links{gap:20px}
   }
   @media (max-width:1020px){
     .hero-grid,.about-grid,.form-wrap,.area{grid-template-columns:1fr}
@@ -434,7 +468,8 @@
     .hero{padding-top:96px;padding-bottom:60px}
     .hero-grid > div:first-child{display:flex;flex-direction:column}
     .brandline{align-self:flex-start}
-    .hero h1{margin:18px 0 14px}
+    .hero h1{margin:18px 0 14px;font-size:min(2.2rem,9.4vw)}
+    html[lang=uk] .hero h1,html[lang=en] .hero h1{font-size:min(2rem,8.6vw)}
     .flag{margin-bottom:18px}
     .rotator{font-size:1.1rem;margin-bottom:6px}
     .hero-cta{order:1;margin-top:18px}
@@ -498,20 +533,26 @@
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="container">
-    <a href="#top" class="logo" aria-label="Legalia — на главную">
+    <a href="#top" class="logo" aria-label="Legalia — на головну" data-i18n-attr="aria-label:logoAria">
       <span class="mark">L</span>
-      <span><b class="gt">Legalia</b><small>Алина Калинич · Радом</small></span>
+      <span><b class="gt">Legalia</b><small data-i18n="logoSmall">Аліна Калініч · Радом</small></span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#situation">Что мне подходит?</a></li>
-      <li><a href="#about">Обо мне</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#how">Как работаем</a></li>
-      <li><a href="#faq">Вопросы</a></li>
+      <li><a data-i18n="nav1" href="#situation">Що мені підходить?</a></li>
+      <li><a data-i18n="nav2" href="#about">Про мене</a></li>
+      <li><a data-i18n="nav3" href="#services">Послуги</a></li>
+      <li><a data-i18n="nav4" href="#how">Як працюємо</a></li>
+      <li><a data-i18n="nav5" href="#faq">Питання</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="#contact" class="btn btn-gold">Оставить заявку</a>
-      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="lang" id="langSw" role="group" aria-label="Язык · Мова · Language">
+        <span class="lang-pill" aria-hidden="true"></span>
+        <button type="button" data-lang="uk" aria-pressed="true" lang="uk" title="Українська">UA</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru" title="Русский">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+      <a data-i18n="cta" href="#contact" class="btn btn-gold">Залишити заявку</a>
+      <button class="burger" id="burger" aria-label="Меню" data-i18n-attr="aria-label:menuAria" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -524,45 +565,43 @@
     <div>
       <div class="brandline fade-up" style="animation-delay:.05s">
         <img src="alina.jpg" alt="">
-        <span><b>Legalia</b> · Алина Калинич</span>
+        <span data-i18n="brand"><b>Legalia</b> · Аліна Калініч</span>
         <i class="live" aria-hidden="true"></i>
       </div>
 
       <h1>
-        <span class="line"><span>Помогу легально</span></span>
-        <span class="line"><span><em class="gt">жить и работать</em></span></span>
-        <span class="line"><span>в Польше</span></span>
+        <span class="line"><span data-i18n="h1a">Допоможу легально</span></span>
+        <span class="line"><span data-i18n="h1b"><em class="gt">жити й працювати</em></span></span>
+        <span class="line"><span data-i18n="h1c">у Польщі</span></span>
       </h1>
       <div class="flag" aria-hidden="true"><i></i><i></i></div>
 
       <div class="rotator fade-up" style="animation-delay:.55s">
-        <span class="rot-lbl">Оформлю для вас:</span>
+        <span data-i18n="rotLbl" class="rot-lbl">Оформлю для вас:</span>
         <span class="rot-box" aria-live="off">
-          <span class="rot-word gt on">карту побыту</span>
-          <span class="rot-word gt">карту CUKR</span>
-          <span class="rot-word gt">карту резидента</span>
-          <span class="rot-word gt">сталый побыт</span>
-          <span class="rot-word gt">гражданство</span>
-          <span class="rot-word gt">мельдунок</span>
+          <span data-i18n="rot1" class="rot-word gt on">карту побиту</span>
+          <span data-i18n="rot2" class="rot-word gt">карту CUKR</span>
+          <span data-i18n="rot3" class="rot-word gt">карту резидента</span>
+          <span data-i18n="rot4" class="rot-word gt">сталий побит</span>
+          <span data-i18n="rot5" class="rot-word gt">громадянство</span>
+          <span data-i18n="rot6" class="rot-word gt">мельдунок</span>
         </span>
       </div>
 
-      <p class="lead fade-up" style="animation-delay:.7s">
-        Меня зовут <strong>Алина Калинич</strong>, я из Украины и <strong>уже 5 лет живу в Польше</strong>. Разберусь в вашей ситуации, соберу документы и доведу дело до решения — объясняю всё простым языком.
-      </p>
+      <p class="lead fade-up" style="animation-delay:.7s" data-i18n="lead">Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою.</p>
 
       <div class="hero-cta fade-up" style="animation-delay:.85s">
         <a href="#situation" class="btn btn-gold">
-          Узнать, что мне подходит
+          <span data-i18n="heroBtn1">Дізнатися, що мені підходить</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost">Написать Алине</a>
+        <a data-i18n="heroBtn2" href="#contact" class="btn btn-ghost">Написати Аліні</a>
       </div>
 
       <div class="stats fade-up" style="animation-delay:1s">
-        <div class="stat"><b class="gt"><span data-count="5">0</span> <i class="u">лет</i></b><small>живу и работаю в Польше</small></div>
-        <div class="stat"><b class="gt"><span data-count="7">0</span></b><small>направлений легализации</small></div>
-        <div class="stat"><b class="gt"><span data-count="3">0</span> <i class="u">языка</i></b><small>украинский, русский, польский</small></div>
+        <div class="stat"><b class="gt"><span data-count="5">0</span> <i data-i18n="unitYears" class="u">років</i></b><small data-i18n="stat1">живу й працюю в Польщі</small></div>
+        <div class="stat"><b class="gt"><span data-count="7">0</span></b><small data-i18n="stat2">напрямів легалізації</small></div>
+        <div class="stat"><b class="gt"><span data-count="3">0</span> <i data-i18n="unitLangs" class="u">мови</i></b><small data-i18n="stat3">українська, російська, польська</small></div>
       </div>
     </div>
 
@@ -570,20 +609,20 @@
       <div class="glow"></div>
       <div class="border"></div>
       <div class="img">
-        <img src="alina.jpg" alt="Алина Калинич — Legalia, легализация в Польше" fetchpriority="high">
+        <img src="alina.jpg" alt="Аліна Калініч — Legalia, легалізація в Польщі" data-i18n-attr="alt:photoAlt" fetchpriority="high">
       </div>
-      <div class="cap"><b>Алина Калинич</b><small>Основательница Legalia</small></div>
+      <div class="cap"><b data-i18n="name">Аліна Калініч</b><small data-i18n="capRole">Засновниця Legalia</small></div>
       <div class="badge b1">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-        <span><b>Радом</b><small>Мазовецкое воеводство</small></span>
+        <span><b data-i18n="radom">Радом</b><small data-i18n="mazSmall">Мазовецьке воєводство</small></span>
       </div>
       <div class="badge b2">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></span>
-        <span><b>Под ключ</b><small>от документов до решения</small></span>
+        <span><b data-i18n="turnkey">Під ключ</b><small data-i18n="turnkeySub">від документів до рішення</small></span>
       </div>
     </div>
   </div>
-  <a href="#situation" class="scroll-hint" aria-label="Прокрутить вниз"></a>
+  <a href="#situation" class="scroll-hint" aria-label="Прокрутити вниз" data-i18n-attr="aria-label:scrollAria"></a>
 </section>
 
 <!-- ===== MARQUEE ===== -->
@@ -595,9 +634,9 @@
 <section id="situation">
   <div class="container">
     <div class="sec-head">
-      <div class="eyebrow reveal">Начните отсюда</div>
-      <h2 class="reveal d1">Какая у вас <span class="gt">ситуация?</span></h2>
-      <p class="reveal d2">Нажмите на всё, что про вас. Под каждой карточкой видно, какая услуга подходит, — и она сразу отметится в заявке.</p>
+      <div data-i18n="sitEyebrow" class="eyebrow reveal">Почніть звідси</div>
+      <h2 data-i18n="sitH2" class="reveal d1">Яка у вас <span class="gt">ситуація?</span></h2>
+      <p data-i18n="sitP" class="reveal d2">Натисніть на все, що про вас. Під кожною карткою видно, яка послуга підходить, — і вона одразу позначиться в заявці.</p>
     </div>
     <div class="sit-grid" id="sitGrid"></div>
   </div>
@@ -607,31 +646,31 @@
 <section id="about">
   <div class="container about-grid">
     <div class="about-photo reveal">
-      <img src="alina.jpg" alt="Алина Калинич" loading="lazy">
-      <div class="years"><b class="gt">5</b><span>лет в Польше —<br>знаю путь изнутри</span></div>
+      <img src="alina.jpg" alt="Аліна Калініч" loading="lazy" data-i18n-attr="alt:nameAlt">
+      <div class="years"><b class="gt">5</b><span data-i18n="years">років у Польщі —<br>знаю шлях зсередини</span></div>
     </div>
     <div class="about-text">
-      <div class="eyebrow reveal">Обо мне</div>
-      <h2 class="reveal d1">Я сама прошла этот путь — <span class="gt">и знаю, как это непросто</span></h2>
-      <p class="reveal d2">Я родом из Украины и <strong>уже 5 лет живу в Польше</strong>, сейчас — в <strong>Радоме</strong>. Когда-то я так же разбиралась с польскими документами, очередями в ужонде и непонятными письмами. Поэтому хорошо понимаю, что чувствуют мои клиенты.</p>
-      <p class="reveal d3">В <strong>Legalia</strong> я помогаю людям пройти легализацию <strong>спокойно и без ошибок</strong>: подскажу, какое основание подходит именно вам, соберу пакет документов, заполню заявление и буду рядом до получения решения.</p>
+      <div data-i18n="nav2" class="eyebrow reveal">Про мене</div>
+      <h2 data-i18n="aboutH2" class="reveal d1">Я сама пройшла цей шлях — <span class="gt">і знаю, як це непросто</span></h2>
+      <p data-i18n="aboutP1" class="reveal d2">Я родом з України і <strong>вже 5 років живу в Польщі</strong>, зараз — у <strong>Радомі</strong>. Колись я так само розбиралася з польськими документами, чергами в уженді та незрозумілими листами. Тому добре розумію, що відчувають мої клієнти.</p>
+      <p data-i18n="aboutP2" class="reveal d3">У <strong>Legalia</strong> я допомагаю людям пройти легалізацію <strong>спокійно й без помилок</strong>: підкажу, яка підстава підходить саме вам, зберу пакет документів, заповню заяву й буду поруч до отримання рішення.</p>
       <div class="langs reveal d3"><span>🇺🇦 Українська</span><span>Русский</span><span>🇵🇱 Polski</span></div>
       <div class="perks">
         <div class="perk reveal d1">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
-          <div><h3>Простым языком</h3><p>Понятно и молодым, и старшим.</p></div>
+          <div><h3 data-i18n="perk1h">Простою мовою</h3><p data-i18n="perk1p">Зрозуміло і молодшим, і старшим.</p></div>
         </div>
         <div class="perk reveal d2">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-          <div><h3>Документы в порядке</h3><p>Проверяю каждую бумагу.</p></div>
+          <div><h3 data-i18n="perk2h">Документи в порядку</h3><p data-i18n="perk2p">Перевіряю кожен папір.</p></div>
         </div>
         <div class="perk reveal d3">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div><h3>Экономия времени</h3><p>Знаю, что и куда подавать.</p></div>
+          <div><h3 data-i18n="perk3h">Економія часу</h3><p data-i18n="perk3p">Знаю, що і куди подавати.</p></div>
         </div>
         <div class="perk reveal d4">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
-          <div><h3>По-человечески</h3><p>Поддерживаю на каждом этапе.</p></div>
+          <div><h3 data-i18n="perk4h">По-людськи</h3><p data-i18n="perk4p">Підтримую на кожному етапі.</p></div>
         </div>
       </div>
     </div>
@@ -642,73 +681,73 @@
 <section id="services" class="services">
   <div class="container">
     <div class="sec-head">
-      <div class="eyebrow reveal">Услуги Legalia</div>
-      <h2 class="reveal d1">С чем я <span class="gt">могу помочь</span></h2>
-      <p class="reveal d2">Нажмите «Добавить в заявку» — услуга сразу отметится в форме внизу.</p>
+      <div data-i18n="svcEyebrow" class="eyebrow reveal">Послуги Legalia</div>
+      <h2 data-i18n="svcH2" class="reveal d1">З чим я <span class="gt">можу допомогти</span></h2>
+      <p data-i18n="svcP" class="reveal d2">Натисніть «Додати до заявки» — послуга одразу позначиться у формі внизу.</p>
     </div>
 
     <div class="svc-grid">
-      <article class="svc reveal" data-add="Карта побыту — по работе">
+      <article class="svc reveal" data-add="work">
         <span class="num">01</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.6 1.7-2.3 3-2.3s2.4.7 3 2.3M14 10h4.5M14 13.5h3"/></svg></div>
-        <h3>Карта побыту</h3>
-        <p>Временный вид на жительство в Польше. Подберу основание, соберу документы и подам заявление.</p>
-        <ul><li>по работе</li><li>JDG</li><li>spółka</li><li>учёба</li><li>воссоединение семьи</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c1h">Карта побиту</h3>
+        <p data-i18n="c1p">Тимчасовий дозвіл на проживання в Польщі. Підберу підставу, зберу документи й подам заяву.</p>
+        <ul><li data-i18n="chWork">за роботою</li><li>JDG</li><li>spółka</li><li data-i18n="chStudy">навчання</li><li data-i18n="chFamily">возз’єднання сім’ї</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal d1" data-add="Карта CUKR">
+      <article class="svc reveal d1" data-add="cukr">
         <span class="num">02</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Карта CUKR</h3>
-        <p>Карта побыту для граждан Украины со статусом UKR. Проверю, подходите ли вы, и помогу оформить.</p>
-        <ul><li>для украинцев</li><li>статус UKR</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c2h">Карта CUKR</h3>
+        <p data-i18n="c2p">Карта побиту для громадян України зі статусом UKR. Перевірю, чи підходите ви, і допоможу оформити.</p>
+        <ul><li data-i18n="chUkr">для українців</li><li data-i18n="chUkrStatus">статус UKR</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal d2" data-add="Карта резидента ЕС">
+      <article class="svc reveal d2" data-add="rez">
         <span class="num">03</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><g fill="currentColor" stroke="none"><circle cx="12" cy="6.5" r=".9"/><circle cx="12" cy="17.5" r=".9"/><circle cx="6.5" cy="12" r=".9"/><circle cx="17.5" cy="12" r=".9"/><circle cx="8.1" cy="8.1" r=".9"/><circle cx="15.9" cy="15.9" r=".9"/><circle cx="15.9" cy="8.1" r=".9"/><circle cx="8.1" cy="15.9" r=".9"/></g></svg></div>
-        <h3>Карта резидента</h3>
-        <p>Статус долгосрочного резидента ЕС — бессрочное проживание и больше свободы в Евросоюзе.</p>
-        <ul><li>резидент ЕС</li><li>бессрочно</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c3h">Карта резидента</h3>
+        <p data-i18n="c3p">Статус довгострокового резидента ЄС — безстрокове проживання і більше свободи в Євросоюзі.</p>
+        <ul><li data-i18n="chEu">резидент ЄС</li><li data-i18n="chIndef">безстроково</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal" data-add="Сталый побыт — по корням">
+      <article class="svc reveal" data-add="roots">
         <span class="num">04</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
-        <h3>Карта сталого побыту</h3>
-        <p>Постоянный вид на жительство в Польше. Помогу подтвердить основание и пройти всю процедуру.</p>
-        <ul><li>по корням</li><li>по Карте поляка</li><li>с гражданином Польши</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c4h">Карта сталого побиту</h3>
+        <p data-i18n="c4p">Постійний дозвіл на проживання в Польщі. Допоможу підтвердити підставу й пройти всю процедуру.</p>
+        <ul><li data-i18n="chRoots">за походженням</li><li data-i18n="chKp">за Картою поляка</li><li data-i18n="chSpouse">з громадянином Польщі</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal d1 wide" data-add="Гражданство Польши">
+      <article class="svc reveal d1 wide" data-add="cit">
         <span class="num">05</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4L18 12H5"/></svg></div>
-        <h3>Гражданство</h3>
-        <p>Польское гражданство — финальный шаг. Разберу вашу ситуацию, подскажу подходящий путь, подготовлю документы и заявление.</p>
-        <ul><li>признание гражданства</li><li>предоставление</li><li>подготовка документов</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c5h">Громадянство</h3>
+        <p data-i18n="c5p">Польське громадянство — фінальний крок. Розберу вашу ситуацію, підкажу відповідний шлях, підготую документи й заяву.</p>
+        <ul><li data-i18n="chRecog">визнання громадянства</li><li data-i18n="chGrant">надання</li><li data-i18n="chDocs">підготовка документів</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal d2" data-add="Поручительство для найма оказионального">
+      <article class="svc reveal d2" data-add="najem">
         <span class="num">06</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15v2"/></svg></div>
-        <h3>Поручительство для найма оказионального</h3>
-        <p>Документ, который нужен для аренды жилья по договору <i>najem okazjonalny</i>.</p>
-        <ul><li>для аренды</li><li>najem okazjonalny</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c6h">Поручительство для найму оказіонального</h3>
+        <p data-i18n="c6p">Документ, потрібний для оренди житла за договором <i>najem okazjonalny</i>.</p>
+        <ul><li data-i18n="chRent">для оренди</li><li>najem okazjonalny</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
 
-      <article class="svc reveal d3" data-add="Мельдунок (прописка)">
+      <article class="svc reveal d3" data-add="meld">
         <span class="num">07</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <h3>Мельдунок</h3>
-        <p>Регистрация по месту проживания (zameldowanie) — нужна для многих дальнейших процедур.</p>
-        <ul><li>zameldowanie</li><li>прописка</li></ul>
-        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <h3 data-i18n="c7h">Мельдунок</h3>
+        <p data-i18n="c7p">Реєстрація за місцем проживання (zameldowanie) — потрібна для багатьох подальших процедур.</p>
+        <ul><li>zameldowanie</li><li data-i18n="chPropiska">прописка</li></ul>
+        <button class="more" type="button"><span data-i18n="addBtn">Додати до заявки</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </article>
     </div>
   </div>
@@ -718,16 +757,16 @@
 <section id="how">
   <div class="container">
     <div class="sec-head">
-      <div class="eyebrow reveal">Как работаем</div>
-      <h2 class="reveal d1">Четыре <span class="gt">простых шага</span></h2>
-      <p class="reveal d2">Вам не нужно разбираться в законах — я проведу вас от первого вопроса до готового решения.</p>
+      <div data-i18n="nav4" class="eyebrow reveal">Як працюємо</div>
+      <h2 data-i18n="howH2" class="reveal d1">Чотири <span class="gt">прості кроки</span></h2>
+      <p data-i18n="howP" class="reveal d2">Вам не потрібно розбиратися в законах — я проведу вас від першого питання до готового рішення.</p>
     </div>
     <div class="steps reveal">
       <div class="rail"><i></i></div>
-      <div class="step"><div class="dot">1</div><h3>Заявка</h3><p>Вы отмечаете, что вас интересует, и пишете мне в Telegram.</p></div>
-      <div class="step"><div class="dot">2</div><h3>Консультация</h3><p>Разбираю вашу ситуацию и говорю, какой путь подходит лучше всего.</p></div>
-      <div class="step"><div class="dot">3</div><h3>Документы</h3><p>Составляю список, проверяю бумаги, заполняю заявление и подаю его.</p></div>
-      <div class="step"><div class="dot">4</div><h3>Результат</h3><p>Сопровождаю до решения и подсказываю, что делать дальше.</p></div>
+      <div class="step"><div class="dot">1</div><h3 data-i18n="request">Заявка</h3><p data-i18n="s1p">Ви позначаєте, що вас цікавить, і пишете мені в Telegram.</p></div>
+      <div class="step"><div class="dot">2</div><h3 data-i18n="s2h">Консультація</h3><p data-i18n="s2p">Розбираю вашу ситуацію й кажу, який шлях підходить найкраще.</p></div>
+      <div class="step"><div class="dot">3</div><h3 data-i18n="s3h">Документи</h3><p data-i18n="s3p">Складаю список, перевіряю папери, заповнюю заяву й подаю її.</p></div>
+      <div class="step"><div class="dot">4</div><h3 data-i18n="s4h">Результат</h3><p data-i18n="s4p">Супроводжую до рішення й підказую, що робити далі.</p></div>
     </div>
   </div>
 </section>
@@ -737,15 +776,15 @@
   <div class="container">
     <div class="area reveal">
       <div class="area-info">
-        <div class="eyebrow">Где я работаю</div>
-        <h2>Радом и всё <span class="gt">Мазовецкое воеводство</span></h2>
+        <div data-i18n="areaEyebrow" class="eyebrow">Де я працюю</div>
+        <h2 data-i18n="areaH2">Радом і все <span class="gt">Мазовецьке воєводство</span></h2>
         <div class="area-row">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-          <span><small>Локализация</small><b>Радом</b></span>
+          <span><small data-i18n="areaLoc">Локалізація</small><b data-i18n="radom">Радом</b></span>
         </div>
         <div class="area-row">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
-          <span><small>Работаю по</small><b>Мазовецкому воеводству</b></span>
+          <span><small data-i18n="areaWork">Працюю по</small><b data-i18n="areaMaz">Мазовецькому воєводству</b></span>
         </div>
         <div class="area-row">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 4.5L2.5 11.8l6.2 2.3 2.3 6.4 3.4-4 5 3.7 2.1-15.7z"/><path d="M8.7 14.1l9.8-7.4"/></svg></span>
@@ -765,9 +804,9 @@
           <g class="pin">
             <circle class="pulse" cx="262" cy="216" r="10" fill="rgba(226,200,164,.5)"/>
             <circle cx="262" cy="216" r="6" fill="#e2c8a4"/>
-            <text x="274" y="232" fill="#f3e3cb" font-family="Manrope,sans-serif" font-size="15" font-weight="700">Радом</text>
+            <text data-i18n="radom" x="274" y="232" fill="#f3e3cb" font-family="Manrope,sans-serif" font-size="15" font-weight="700">Радом</text>
             <circle cx="268" cy="168" r="3.5" fill="#b9ad9e"/>
-            <text x="278" y="164" fill="#b9ad9e" font-family="Manrope,sans-serif" font-size="12">Варшава</text>
+            <text data-i18n="warsaw" x="278" y="164" fill="#b9ad9e" font-family="Manrope,sans-serif" font-size="12">Варшава</text>
           </g>
         </svg>
       </div>
@@ -779,18 +818,18 @@
 <section id="faq">
   <div class="container">
     <div class="sec-head">
-      <div class="eyebrow reveal">Вопросы</div>
-      <h2 class="reveal d1">Часто <span class="gt">спрашивают</span></h2>
+      <div data-i18n="nav5" class="eyebrow reveal">Питання</div>
+      <h2 data-i18n="faqH2" class="reveal d1">Часто <span class="gt">питають</span></h2>
     </div>
     <div class="faq">
-      <details class="reveal"><summary>Я не знаю, какая карта мне подходит. Что делать?<span class="pm"></span></summary>
-        <div class="ans"><div><p>Это нормально — большинство людей приходит именно с таким вопросом. Нажмите в блоке «Какая у вас ситуация?» на то, что про вас, или отметьте в форме «Нужна консультация». Я подскажу, какое основание подходит именно вам.</p></div></div></details>
-      <details class="reveal d1"><summary>Можно ли всё сделать, если я плохо говорю по-польски?<span class="pm"></span></summary>
-        <div class="ans"><div><p>Да. Я общаюсь на украинском и русском, а все документы на польском подготовлю сама и объясню, что в них написано.</p></div></div></details>
-      <details class="reveal d2"><summary>Вы работаете только в Радоме?<span class="pm"></span></summary>
-        <div class="ans"><div><p>Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.</p></div></div></details>
-      <details class="reveal d3"><summary>Как быстро вы отвечаете?<span class="pm"></span></summary>
-        <div class="ans"><div><p>Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.</p></div></div></details>
+      <details class="reveal"><summary><span data-i18n="q1">Я не знаю, яка карта мені підходить. Що робити?</span><span class="pm"></span></summary>
+        <div class="ans"><div><p data-i18n="a1">Це нормально — більшість людей приходить саме з таким питанням. Натисніть у блоці «Яка у вас ситуація?» на те, що про вас, або позначте у формі «Потрібна консультація». Я підкажу, яка підстава підходить саме вам.</p></div></div></details>
+      <details class="reveal d1"><summary><span data-i18n="q2">Чи можна все зробити, якщо я погано говорю польською?</span><span class="pm"></span></summary>
+        <div class="ans"><div><p data-i18n="a2">Так. Я спілкуюся українською та російською, а всі документи польською підготую сама й поясню, що в них написано.</p></div></div></details>
+      <details class="reveal d2"><summary><span data-i18n="q3">Ви працюєте лише в Радомі?</span><span class="pm"></span></summary>
+        <div class="ans"><div><p data-i18n="a3">Я знаходжуся в Радомі й працюю по всьому Мазовецькому воєводству. Напишіть мені в Telegram — обговоримо ваш випадок.</p></div></div></details>
+      <details class="reveal d3"><summary><span data-i18n="q4">Як швидко ви відповідаєте?</span><span class="pm"></span></summary>
+        <div class="ans"><div><p data-i18n="a4">Намагаюся відповідати протягом дня. Найшвидший спосіб зв’язку — Telegram: заповніть форму нижче, і повідомлення одразу відкриється в чаті зі мною.</p></div></div></details>
     </div>
   </div>
 </section>
@@ -799,59 +838,59 @@
 <section id="contact" class="contact">
   <div class="container">
     <div class="sec-head">
-      <div class="eyebrow reveal">Заявка</div>
-      <h2 class="reveal d1">Что вас <span class="gt">интересует?</span></h2>
-      <p class="reveal d2">Отметьте нужные услуги и нажмите кнопку — сообщение скопируется и откроется Telegram с чатом Алины.</p>
+      <div data-i18n="request" class="eyebrow reveal">Заявка</div>
+      <h2 data-i18n="contactH2" class="reveal d1">Що вас <span class="gt">цікавить?</span></h2>
+      <p data-i18n="contactP" class="reveal d2">Позначте потрібні послуги й натисніть кнопку — повідомлення скопіюється, і відкриється Telegram із чатом Аліни.</p>
     </div>
 
     <div class="form-wrap">
       <form class="form-card reveal" id="leadForm" novalidate>
-        <h3>Ваша заявка</h3>
-        <p class="hint">Это займёт меньше минуты. Поля со <span style="color:var(--gold)">*</span> обязательны.</p>
+        <h3 data-i18n="formH3">Ваша заявка</h3>
+        <p data-i18n="hint" class="hint">Це займе менше хвилини. Поля з <span style="color:var(--gold)">*</span> обов’язкові.</p>
 
         <div class="field">
-          <label class="lbl" for="fName">Как к вам обращаться? <span class="req">*</span></label>
+          <label data-i18n="lblName" class="lbl" for="fName">Як до вас звертатися? <span class="req">*</span></label>
           <input type="text" id="fName" name="name" autocomplete="given-name">
-          <div class="err" id="errName">Пожалуйста, напишите ваше имя</div>
+          <div data-i18n="errName" class="err" id="errName">Будь ласка, напишіть ваше ім’я</div>
         </div>
 
         <div class="field">
-          <span class="lbl">Выберите услуги <span class="req">*</span></span>
+          <span data-i18n="lblSvc" class="lbl">Оберіть послуги <span class="req">*</span></span>
           <div class="checks" id="checks"></div>
-          <div class="err" id="errSvc">Отметьте хотя бы одну услугу</div>
+          <div data-i18n="errSvc" class="err" id="errSvc">Позначте хоча б одну послугу</div>
         </div>
 
         <div class="field">
-          <label class="lbl" for="fPhone">Телефон <small>(по желанию)</small></label>
+          <label data-i18n="lblPhone" class="lbl" for="fPhone">Телефон <small>(за бажанням)</small></label>
           <input type="tel" id="fPhone" name="phone" placeholder="+48 ..." autocomplete="tel">
         </div>
 
         <div class="field">
-          <label class="lbl" for="fMsg">Коротко о ситуации <small>(по желанию)</small></label>
-          <textarea id="fMsg" name="msg" placeholder="Например: работаю по umowie o pracę, карта заканчивается в декабре"></textarea>
+          <label data-i18n="lblMsg" class="lbl" for="fMsg">Коротко про ситуацію <small>(за бажанням)</small></label>
+          <textarea id="fMsg" name="msg" placeholder="Наприклад: працюю за umową o pracę, карта закінчується в грудні" data-i18n-attr="placeholder:msgPh"></textarea>
         </div>
 
         <div class="form-actions">
           <button type="submit" class="btn tg-btn">
             <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
-            <span class="lbl-full">Отправить Алине в Telegram</span><span class="lbl-short">Отправить в Telegram</span>
+            <span data-i18n="sendFull" class="lbl-full">Надіслати Аліні в Telegram</span><span data-i18n="sendShort" class="lbl-short">Надіслати в Telegram</span>
           </button>
         </div>
       </form>
 
       <aside class="preview-card reveal d2">
-        <h3>Так увидит Алина</h3>
-        <p style="color:var(--muted);font-size:.9rem">Сообщение собирается автоматически, пока вы заполняете форму.</p>
+        <h3 data-i18n="prevH3">Так побачить Аліна</h3>
+        <p data-i18n="prevP" style="color:var(--muted);font-size:.9rem">Повідомлення складається автоматично, поки ви заповнюєте форму.</p>
         <div class="chat">
           <div class="chat-head">
             <img src="alina.jpg" alt="">
-            <span><b>Алина Калинич · Legalia</b><small>@alinuccia3</small></span>
+            <span><b data-i18n="chatName">Аліна Калініч · Legalia</b><small>@alinuccia3</small></span>
           </div>
-          <div class="bubble empty" id="preview">Отметьте услуги слева — здесь появится текст сообщения…</div>
+          <div class="bubble empty" id="preview">Позначте послуги у формі — тут з’явиться текст повідомлення…</div>
         </div>
         <p class="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span>Если текст не подставился в Telegram автоматически — просто нажмите в поле сообщения и выберите «Вставить». Он уже скопирован.</span>
+          <span data-i18n="note">Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.</span>
         </p>
       </aside>
     </div>
@@ -862,23 +901,23 @@
 
 <footer>
   <div class="container">
-    <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> Алина Калинич · Легализация в Польше · Радом</div>
+    <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> <span data-i18n="footer">Аліна Калініч · Легалізація в Польщі · Радом</span></div>
     <div>Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
   </div>
 </footer>
 
 <div class="picked" id="picked">
-  <span>Выбрано: <b id="pickedN">0</b></span>
-  <a href="#contact" class="btn btn-gold">К заявке →</a>
+  <span><span data-i18n="picked">Обрано</span>: <b id="pickedN">0</b></span>
+  <a data-i18n="pickedBtn" href="#contact" class="btn btn-gold">До заявки →</a>
 </div>
 
-<a class="fab" id="fab" href="https://t.me/alinuccia3" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+<a class="fab" id="fab" href="https://t.me/alinuccia3" target="_blank" rel="noopener" aria-label="Написати в Telegram" data-i18n-attr="aria-label:fabAria">
   <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
 </a>
 
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>
-  <span id="toastText">Скопировано</span>
+  <span id="toastText"></span>
 </div>
 
 <script>
@@ -887,43 +926,346 @@
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = s => document.querySelector(s);
 
+  /* ================= ЯЗЫКИ: RU (текст страницы), UA, EN ================= */
+  const LANGS = ["uk", "ru", "en"];
+
+  // услуги в форме: id → название на каждом языке
   const SERVICES = [
-    "Карта побыту — по работе",
-    "Карта побыту — JDG",
-    "Карта побыту — spółka",
-    "Карта побыту — учёба",
-    "Карта побыту — воссоединение семьи",
-    "Карта CUKR",
-    "Карта резидента ЕС",
-    "Сталый побыт — по корням",
-    "Сталый побыт — по Карте поляка",
-    "Сталый побыт — с гражданином Польши",
-    "Гражданство Польши",
-    "Поручительство для найма оказионального",
-    "Мельдунок (прописка)",
-    "Нужна консультация — не знаю, что выбрать"
+    { id: "work",    ru: "Карта побыту — по работе",               uk: "Карта побиту — за роботою",               en: "Residence card — work" },
+    { id: "jdg",     ru: "Карта побыту — JDG",                     uk: "Карта побиту — JDG",                      en: "Residence card — JDG (sole trader)" },
+    { id: "spolka",  ru: "Карта побыту — spółka",                  uk: "Карта побиту — spółka",                   en: "Residence card — spółka (company)" },
+    { id: "study",   ru: "Карта побыту — учёба",                   uk: "Карта побиту — навчання",                 en: "Residence card — studies" },
+    { id: "family",  ru: "Карта побыту — воссоединение семьи",     uk: "Карта побиту — возз’єднання сім’ї",       en: "Residence card — family reunification" },
+    { id: "cukr",    ru: "Карта CUKR",                             uk: "Карта CUKR",                              en: "CUKR card" },
+    { id: "rez",     ru: "Карта резидента ЕС",                     uk: "Карта резидента ЄС",                      en: "EU long-term resident card" },
+    { id: "roots",   ru: "Сталый побыт — по корням",               uk: "Сталий побит — за походженням",           en: "Permanent residence — Polish roots" },
+    { id: "kp",      ru: "Сталый побыт — по Карте поляка",         uk: "Сталий побит — за Картою поляка",         en: "Permanent residence — Pole’s Card" },
+    { id: "spouse",  ru: "Сталый побыт — с гражданином Польши",    uk: "Сталий побит — з громадянином Польщі",    en: "Permanent residence — spouse of a Polish citizen" },
+    { id: "cit",     ru: "Гражданство Польши",                     uk: "Громадянство Польщі",                     en: "Polish citizenship" },
+    { id: "najem",   ru: "Поручительство для найма оказионального", uk: "Поручительство для найму оказіонального", en: "Guarantor for najem okazjonalny" },
+    { id: "meld",    ru: "Мельдунок (прописка)",                   uk: "Мельдунок (прописка)",                    en: "Meldunek (address registration)" },
+    { id: "consult", ru: "Нужна консультация — не знаю, что выбрать", uk: "Потрібна консультація — не знаю, що обрати", en: "I need a consultation — not sure what to choose" }
+  ];
+  const SVC = Object.fromEntries(SERVICES.map(x => [x.id, x]));
+
+  // «Какая у вас ситуация?» → какие пункты заявки отметить; [вопрос, подходящая услуга]
+  const SITUATIONS = [
+    { emo: "💼", svc: ["work"],
+      ru: ["Работаю в Польше по договору", "Карта побыту по работе"], uk: ["Працюю в Польщі за договором", "Карта побиту за роботою"], en: ["I work in Poland under a contract", "Work residence card"] },
+    { emo: "🏪", svc: ["jdg", "spolka"],
+      ru: ["Открыл(а) JDG или spółkę", "Карта побыту по бизнесу"], uk: ["Відкрив(ла) JDG або spółkę", "Карта побиту для бізнесу"], en: ["I run a JDG or a spółka", "Business residence card"] },
+    { emo: "🎓", svc: ["study"],
+      ru: ["Учусь в Польше", "Карта побыту на учёбу"], uk: ["Навчаюся в Польщі", "Карта побиту на навчання"], en: ["I study in Poland", "Student residence card"] },
+    { emo: "👨‍👩‍👧", svc: ["family"],
+      ru: ["Хочу жить вместе с семьёй", "Воссоединение семьи"], uk: ["Хочу жити разом із сім’єю", "Возз’єднання сім’ї"], en: ["I want to live with my family", "Family reunification"] },
+    { emo: "🇺🇦", svc: ["cukr"],
+      ru: ["Я из Украины, у меня статус UKR", "Карта CUKR"], uk: ["Я з України, маю статус UKR", "Карта CUKR"], en: ["I’m from Ukraine with UKR status", "CUKR card"] },
+    { emo: "📅", svc: ["rez"],
+      ru: ["Давно и легально живу в Польше", "Карта резидента ЕС"], uk: ["Давно й легально живу в Польщі", "Карта резидента ЄС"], en: ["I’ve lived in Poland legally for years", "EU resident card"] },
+    { emo: "🌳", svc: ["kp", "roots"],
+      ru: ["Есть Карта поляка или польские корни", "Сталый побыт"], uk: ["Маю Карту поляка або польське походження", "Сталий побит"], en: ["I have a Pole’s Card or Polish roots", "Permanent residence"] },
+    { emo: "💍", svc: ["spouse"],
+      ru: ["Мой муж / жена — гражданин(ка) Польши", "Сталый побыт с гражданином"], uk: ["Мій чоловік / дружина — громадянин(ка) Польщі", "Сталий побит із громадянином"], en: ["My spouse is a Polish citizen", "Permanent residence via spouse"] },
+    { emo: "🛂", svc: ["cit"],
+      ru: ["Хочу польский паспорт", "Гражданство Польши"], uk: ["Хочу польський паспорт", "Громадянство Польщі"], en: ["I want a Polish passport", "Polish citizenship"] },
+    { emo: "🔑", svc: ["najem"],
+      ru: ["Снимаю жильё по najem okazjonalny", "Поручительство для найма"], uk: ["Винаймаю житло за najem okazjonalny", "Поручительство для найму"], en: ["I’m renting under najem okazjonalny", "Guarantor statement"] },
+    { emo: "🏠", svc: ["meld"],
+      ru: ["Нужна прописка по новому адресу", "Мельдунок"], uk: ["Потрібна прописка за новою адресою", "Мельдунок"], en: ["I need to register a new address", "Meldunek"] },
+    { emo: "🤔", svc: ["consult"],
+      ru: ["Не знаю, что мне подходит", "Подскажу на консультации"], uk: ["Не знаю, що мені підходить", "Підкажу на консультації"], en: ["I don’t know what fits me", "I’ll advise in a consultation"] }
   ];
 
-  // «Какая у вас ситуация?» → какие пункты заявки отметить
-  const SITUATIONS = [
-    { emo: "💼", q: "Работаю в Польше по договору",        a: "Карта побыту по работе",    svc: ["Карта побыту — по работе"] },
-    { emo: "🏪", q: "Открыл(а) JDG или spółkę",             a: "Карта побыту по бизнесу",   svc: ["Карта побыту — JDG", "Карта побыту — spółka"] },
-    { emo: "🎓", q: "Учусь в Польше",                        a: "Карта побыту на учёбу",     svc: ["Карта побыту — учёба"] },
-    { emo: "👨‍👩‍👧", q: "Хочу жить вместе с семьёй",          a: "Воссоединение семьи",       svc: ["Карта побыту — воссоединение семьи"] },
-    { emo: "🇺🇦", q: "Я из Украины, у меня статус UKR",      a: "Карта CUKR",                svc: ["Карта CUKR"] },
-    { emo: "📅", q: "Давно и легально живу в Польше",        a: "Карта резидента ЕС",        svc: ["Карта резидента ЕС"] },
-    { emo: "🌳", q: "Есть Карта поляка или польские корни",  a: "Сталый побыт",              svc: ["Сталый побыт — по Карте поляка", "Сталый побыт — по корням"] },
-    { emo: "💍", q: "Мой муж / жена — гражданин(ка) Польши", a: "Сталый побыт с гражданином", svc: ["Сталый побыт — с гражданином Польши"] },
-    { emo: "🛂", q: "Хочу польский паспорт",                 a: "Гражданство Польши",        svc: ["Гражданство Польши"] },
-    { emo: "🔑", q: "Снимаю жильё по najem okazjonalny",    a: "Поручительство для найма",  svc: ["Поручительство для найма оказионального"] },
-    { emo: "🏠", q: "Нужна прописка по новому адресу",       a: "Мельдунок",                 svc: ["Мельдунок (прописка)"] },
-    { emo: "🤔", q: "Не знаю, что мне подходит",             a: "Подскажу на консультации",  svc: ["Нужна консультация — не знаю, что выбрать"] }
-  ];
+  const MARQUEE = {
+    ru: ["Карта побыту", "Карта CUKR", "Карта резидента", "Сталый побыт", "Гражданство", "Мельдунок", "Najem okazjonalny", "JDG · spółka", "Воссоединение семьи"],
+    uk: ["Карта побиту", "Карта CUKR", "Карта резидента", "Сталий побит", "Громадянство", "Мельдунок", "Najem okazjonalny", "JDG · spółka", "Возз’єднання сім’ї"],
+    en: ["Residence card", "CUKR card", "EU resident card", "Permanent residence", "Citizenship", "Meldunek", "Najem okazjonalny", "JDG · spółka", "Family reunification"]
+  };
+
+  // строки, которые собирает скрипт (сообщение Алине, подсказки, заголовок вкладки)
+  const UI = {
+    ru: { title: "Legalia — легализация в Польше | Алина Калинич, Радом",
+          desc: "Legalia — Алина Калинич, 5 лет в Польше. Помощь с легализацией: карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок. Радом, Мазовецкое воеводство.",
+          addedToast: "Добавлено в заявку: ", sending: "Сообщение скопировано — открываю Telegram…", add: "Добавить в заявку", added: "✓ В заявке",
+          empty: "Отметьте услуги в форме — здесь появится текст сообщения…",
+          hello: "Здравствуйте, Алина! 👋", myName: "Меня зовут {n}.", interest: "Меня интересует:", about: "О ситуации:", phone: "Мой телефон:", from: "(заявка с сайта Legalia)" },
+    uk: { title: "Legalia — легалізація в Польщі | Аліна Калініч, Радом",
+          desc: "Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.",
+          addedToast: "Додано до заявки: ", sending: "Повідомлення скопійовано — відкриваю Telegram…", add: "Додати до заявки", added: "✓ У заявці",
+          empty: "Позначте послуги у формі — тут з’явиться текст повідомлення…",
+          hello: "Добрий день, Аліно! 👋", myName: "Мене звати {n}.", interest: "Мене цікавить:", about: "Про ситуацію:", phone: "Мій телефон:", from: "(заявка з сайту Legalia)" },
+    en: { title: "Legalia — legalization in Poland | Alina Kalinich, Radom",
+          desc: "Legalia — Alina Kalinich, 5 years in Poland. Help with legalization: residence card, CUKR, EU resident card, permanent residence, citizenship, meldunek. Radom, Masovian Voivodeship.",
+          addedToast: "Added to request: ", sending: "Message copied — opening Telegram…", add: "Add to request", added: "✓ Added",
+          empty: "Tick services in the form — your message will appear here…",
+          hello: "Hello, Alina! 👋", myName: "My name is {n}.", interest: "I’m interested in:", about: "About my situation:", phone: "My phone:", from: "(request from the Legalia website)" }
+  };
+
+  // тексты страницы (в HTML — украинский)
+  const PAGE = {
+    ru: {
+      logoSmall: 'Алина Калинич · Радом',
+      nav1: 'Что мне подходит?',
+      nav2: 'Обо мне',
+      nav3: 'Услуги',
+      nav4: 'Как работаем',
+      nav5: 'Вопросы',
+      cta: 'Оставить заявку',
+      brand: '<b>Legalia</b> · Алина Калинич',
+      h1a: 'Помогу легально',
+      h1b: '<em class="gt">жить и работать</em>',
+      h1c: 'в Польше',
+      rotLbl: 'Оформлю для вас:',
+      rot1: 'карту побыту',
+      rot2: 'карту CUKR',
+      rot3: 'карту резидента',
+      rot4: 'сталый побыт',
+      rot5: 'гражданство',
+      rot6: 'мельдунок',
+      lead: 'Меня зовут <strong>Алина Калинич</strong>, я из Украины и <strong>уже 5 лет живу в Польше</strong>. Разберусь в вашей ситуации, соберу документы и доведу дело до решения — объясняю всё простым языком.',
+      heroBtn1: 'Узнать, что мне подходит',
+      heroBtn2: 'Написать Алине',
+      unitYears: 'лет',
+      stat1: 'живу и работаю в Польше',
+      stat2: 'направлений легализации',
+      unitLangs: 'языка',
+      stat3: 'украинский, русский, польский',
+      name: 'Алина Калинич',
+      capRole: 'Основательница Legalia',
+      radom: 'Радом',
+      mazSmall: 'Мазовецкое воеводство',
+      turnkey: 'Под ключ',
+      turnkeySub: 'от документов до решения',
+      sitEyebrow: 'Начните отсюда',
+      sitH2: 'Какая у вас <span class="gt">ситуация?</span>',
+      sitP: 'Нажмите на всё, что про вас. Под каждой карточкой видно, какая услуга подходит, — и она сразу отметится в заявке.',
+      years: 'лет в Польше —<br>знаю путь изнутри',
+      aboutH2: 'Я сама прошла этот путь — <span class="gt">и знаю, как это непросто</span>',
+      aboutP1: 'Я родом из Украины и <strong>уже 5 лет живу в Польше</strong>, сейчас — в <strong>Радоме</strong>. Когда-то я так же разбиралась с польскими документами, очередями в ужонде и непонятными письмами. Поэтому хорошо понимаю, что чувствуют мои клиенты.',
+      aboutP2: 'В <strong>Legalia</strong> я помогаю людям пройти легализацию <strong>спокойно и без ошибок</strong>: подскажу, какое основание подходит именно вам, соберу пакет документов, заполню заявление и буду рядом до получения решения.',
+      perk1h: 'Простым языком',
+      perk1p: 'Понятно и молодым, и старшим.',
+      perk2h: 'Документы в порядке',
+      perk2p: 'Проверяю каждую бумагу.',
+      perk3h: 'Экономия времени',
+      perk3p: 'Знаю, что и куда подавать.',
+      perk4h: 'По-человечески',
+      perk4p: 'Поддерживаю на каждом этапе.',
+      svcEyebrow: 'Услуги Legalia',
+      svcH2: 'С чем я <span class="gt">могу помочь</span>',
+      svcP: 'Нажмите «Добавить в заявку» — услуга сразу отметится в форме внизу.',
+      c1h: 'Карта побыту',
+      c1p: 'Временный вид на жительство в Польше. Подберу основание, соберу документы и подам заявление.',
+      chWork: 'по работе',
+      chStudy: 'учёба',
+      chFamily: 'воссоединение семьи',
+      addBtn: 'Добавить в заявку',
+      c2h: 'Карта CUKR',
+      c2p: 'Карта побыту для граждан Украины со статусом UKR. Проверю, подходите ли вы, и помогу оформить.',
+      chUkr: 'для украинцев',
+      chUkrStatus: 'статус UKR',
+      c3h: 'Карта резидента',
+      c3p: 'Статус долгосрочного резидента ЕС — бессрочное проживание и больше свободы в Евросоюзе.',
+      chEu: 'резидент ЕС',
+      chIndef: 'бессрочно',
+      c4h: 'Карта сталого побыту',
+      c4p: 'Постоянный вид на жительство в Польше. Помогу подтвердить основание и пройти всю процедуру.',
+      chRoots: 'по корням',
+      chKp: 'по Карте поляка',
+      chSpouse: 'с гражданином Польши',
+      c5h: 'Гражданство',
+      c5p: 'Польское гражданство — финальный шаг. Разберу вашу ситуацию, подскажу подходящий путь, подготовлю документы и заявление.',
+      chRecog: 'признание гражданства',
+      chGrant: 'предоставление',
+      chDocs: 'подготовка документов',
+      c6h: 'Поручительство для найма оказионального',
+      c6p: 'Документ, который нужен для аренды жилья по договору <i>najem okazjonalny</i>.',
+      chRent: 'для аренды',
+      c7h: 'Мельдунок',
+      c7p: 'Регистрация по месту проживания (zameldowanie) — нужна для многих дальнейших процедур.',
+      chPropiska: 'прописка',
+      howH2: 'Четыре <span class="gt">простых шага</span>',
+      howP: 'Вам не нужно разбираться в законах — я проведу вас от первого вопроса до готового решения.',
+      request: 'Заявка',
+      s1p: 'Вы отмечаете, что вас интересует, и пишете мне в Telegram.',
+      s2h: 'Консультация',
+      s2p: 'Разбираю вашу ситуацию и говорю, какой путь подходит лучше всего.',
+      s3h: 'Документы',
+      s3p: 'Составляю список, проверяю бумаги, заполняю заявление и подаю его.',
+      s4h: 'Результат',
+      s4p: 'Сопровождаю до решения и подсказываю, что делать дальше.',
+      areaEyebrow: 'Где я работаю',
+      areaH2: 'Радом и всё <span class="gt">Мазовецкое воеводство</span>',
+      areaLoc: 'Локализация',
+      areaWork: 'Работаю по',
+      areaMaz: 'Мазовецкому воеводству',
+      warsaw: 'Варшава',
+      faqH2: 'Часто <span class="gt">спрашивают</span>',
+      q1: 'Я не знаю, какая карта мне подходит. Что делать?',
+      a1: 'Это нормально — большинство людей приходит именно с таким вопросом. Нажмите в блоке «Какая у вас ситуация?» на то, что про вас, или отметьте в форме «Нужна консультация». Я подскажу, какое основание подходит именно вам.',
+      q2: 'Можно ли всё сделать, если я плохо говорю по-польски?',
+      a2: 'Да. Я общаюсь на украинском и русском, а все документы на польском подготовлю сама и объясню, что в них написано.',
+      q3: 'Вы работаете только в Радоме?',
+      a3: 'Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.',
+      q4: 'Как быстро вы отвечаете?',
+      a4: 'Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.',
+      contactH2: 'Что вас <span class="gt">интересует?</span>',
+      contactP: 'Отметьте нужные услуги и нажмите кнопку — сообщение скопируется и откроется Telegram с чатом Алины.',
+      formH3: 'Ваша заявка',
+      hint: 'Это займёт меньше минуты. Поля со <span style="color:var(--gold)">*</span> обязательны.',
+      lblName: 'Как к вам обращаться? <span class="req">*</span>',
+      errName: 'Пожалуйста, напишите ваше имя',
+      lblSvc: 'Выберите услуги <span class="req">*</span>',
+      errSvc: 'Отметьте хотя бы одну услугу',
+      lblPhone: 'Телефон <small>(по желанию)</small>',
+      lblMsg: 'Коротко о ситуации <small>(по желанию)</small>',
+      sendFull: 'Отправить Алине в Telegram',
+      sendShort: 'Отправить в Telegram',
+      prevH3: 'Так увидит Алина',
+      prevP: 'Сообщение собирается автоматически, пока вы заполняете форму.',
+      chatName: 'Алина Калинич · Legalia',
+      note: 'Если текст не подставился в Telegram автоматически — просто нажмите в поле сообщения и выберите «Вставить». Он уже скопирован.',
+      footer: 'Алина Калинич · Легализация в Польше · Радом',
+      picked: 'Выбрано',
+      pickedBtn: 'К заявке →',
+      logoAria: 'Legalia — на главную',
+      menuAria: 'Меню',
+      photoAlt: 'Алина Калинич — Legalia, легализация в Польше',
+      scrollAria: 'Прокрутить вниз',
+      nameAlt: 'Алина Калинич',
+      msgPh: 'Например: работаю по umowie o pracę, карта заканчивается в декабре',
+      fabAria: 'Написать в Telegram'
+    },
+    uk: {
+      logoSmall: 'Аліна Калініч · Радом', nav1: 'Що мені підходить?', nav2: 'Про мене', nav3: 'Послуги', nav4: 'Як працюємо', nav5: 'Питання',
+      cta: 'Залишити заявку', logoAria: 'Legalia — на головну', menuAria: 'Меню',
+      brand: '<b>Legalia</b> · Аліна Калініч', h1a: 'Допоможу легально', h1b: '<em class="gt">жити й працювати</em>', h1c: 'у Польщі',
+      rotLbl: 'Оформлю для вас:', rot1: 'карту побиту', rot2: 'карту CUKR', rot3: 'карту резидента', rot4: 'сталий побит', rot5: 'громадянство', rot6: 'мельдунок',
+      lead: 'Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою.',
+      heroBtn1: 'Дізнатися, що мені підходить', heroBtn2: 'Написати Аліні',
+      unitYears: 'років', stat1: 'живу й працюю в Польщі', stat2: 'напрямів легалізації', unitLangs: 'мови', stat3: 'українська, російська, польська',
+      photoAlt: 'Аліна Калініч — Legalia, легалізація в Польщі', name: 'Аліна Калініч', capRole: 'Засновниця Legalia',
+      radom: 'Радом', mazSmall: 'Мазовецьке воєводство', turnkey: 'Під ключ', turnkeySub: 'від документів до рішення', scrollAria: 'Прокрутити вниз',
+      sitEyebrow: 'Почніть звідси', sitH2: 'Яка у вас <span class="gt">ситуація?</span>',
+      sitP: 'Натисніть на все, що про вас. Під кожною карткою видно, яка послуга підходить, — і вона одразу позначиться в заявці.',
+      nameAlt: 'Аліна Калініч', years: 'років у Польщі —<br>знаю шлях зсередини',
+      aboutH2: 'Я сама пройшла цей шлях — <span class="gt">і знаю, як це непросто</span>',
+      aboutP1: 'Я родом з України і <strong>вже 5 років живу в Польщі</strong>, зараз — у <strong>Радомі</strong>. Колись я так само розбиралася з польськими документами, чергами в уженді та незрозумілими листами. Тому добре розумію, що відчувають мої клієнти.',
+      aboutP2: 'У <strong>Legalia</strong> я допомагаю людям пройти легалізацію <strong>спокійно й без помилок</strong>: підкажу, яка підстава підходить саме вам, зберу пакет документів, заповню заяву й буду поруч до отримання рішення.',
+      perk1h: 'Простою мовою', perk1p: 'Зрозуміло і молодшим, і старшим.', perk2h: 'Документи в порядку', perk2p: 'Перевіряю кожен папір.',
+      perk3h: 'Економія часу', perk3p: 'Знаю, що і куди подавати.', perk4h: 'По-людськи', perk4p: 'Підтримую на кожному етапі.',
+      svcEyebrow: 'Послуги Legalia', svcH2: 'З чим я <span class="gt">можу допомогти</span>',
+      svcP: 'Натисніть «Додати до заявки» — послуга одразу позначиться у формі внизу.', addBtn: 'Додати до заявки',
+      c1h: 'Карта побиту', c1p: 'Тимчасовий дозвіл на проживання в Польщі. Підберу підставу, зберу документи й подам заяву.',
+      c2h: 'Карта CUKR', c2p: 'Карта побиту для громадян України зі статусом UKR. Перевірю, чи підходите ви, і допоможу оформити.',
+      c3h: 'Карта резидента', c3p: 'Статус довгострокового резидента ЄС — безстрокове проживання і більше свободи в Євросоюзі.',
+      c4h: 'Карта сталого побиту', c4p: 'Постійний дозвіл на проживання в Польщі. Допоможу підтвердити підставу й пройти всю процедуру.',
+      c5h: 'Громадянство', c5p: 'Польське громадянство — фінальний крок. Розберу вашу ситуацію, підкажу відповідний шлях, підготую документи й заяву.',
+      c6h: 'Поручительство для найму оказіонального', c6p: 'Документ, потрібний для оренди житла за договором <i>najem okazjonalny</i>.',
+      c7h: 'Мельдунок', c7p: 'Реєстрація за місцем проживання (zameldowanie) — потрібна для багатьох подальших процедур.',
+      chWork: 'за роботою', chStudy: 'навчання', chFamily: 'возз’єднання сім’ї', chUkr: 'для українців', chUkrStatus: 'статус UKR',
+      chEu: 'резидент ЄС', chIndef: 'безстроково', chRoots: 'за походженням', chKp: 'за Картою поляка', chSpouse: 'з громадянином Польщі',
+      chRecog: 'визнання громадянства', chGrant: 'надання', chDocs: 'підготовка документів', chRent: 'для оренди', chPropiska: 'прописка',
+      howH2: 'Чотири <span class="gt">прості кроки</span>',
+      howP: 'Вам не потрібно розбиратися в законах — я проведу вас від першого питання до готового рішення.',
+      request: 'Заявка', s1p: 'Ви позначаєте, що вас цікавить, і пишете мені в Telegram.',
+      s2h: 'Консультація', s2p: 'Розбираю вашу ситуацію й кажу, який шлях підходить найкраще.',
+      s3h: 'Документи', s3p: 'Складаю список, перевіряю папери, заповнюю заяву й подаю її.',
+      s4h: 'Результат', s4p: 'Супроводжую до рішення й підказую, що робити далі.',
+      areaEyebrow: 'Де я працюю', areaH2: 'Радом і все <span class="gt">Мазовецьке воєводство</span>',
+      areaLoc: 'Локалізація', areaWork: 'Працюю по', areaMaz: 'Мазовецькому воєводству', warsaw: 'Варшава',
+      faqH2: 'Часто <span class="gt">питають</span>',
+      q1: 'Я не знаю, яка карта мені підходить. Що робити?',
+      a1: 'Це нормально — більшість людей приходить саме з таким питанням. Натисніть у блоці «Яка у вас ситуація?» на те, що про вас, або позначте у формі «Потрібна консультація». Я підкажу, яка підстава підходить саме вам.',
+      q2: 'Чи можна все зробити, якщо я погано говорю польською?',
+      a2: 'Так. Я спілкуюся українською та російською, а всі документи польською підготую сама й поясню, що в них написано.',
+      q3: 'Ви працюєте лише в Радомі?',
+      a3: 'Я знаходжуся в Радомі й працюю по всьому Мазовецькому воєводству. Напишіть мені в Telegram — обговоримо ваш випадок.',
+      q4: 'Як швидко ви відповідаєте?',
+      a4: 'Намагаюся відповідати протягом дня. Найшвидший спосіб зв’язку — Telegram: заповніть форму нижче, і повідомлення одразу відкриється в чаті зі мною.',
+      contactH2: 'Що вас <span class="gt">цікавить?</span>',
+      contactP: 'Позначте потрібні послуги й натисніть кнопку — повідомлення скопіюється, і відкриється Telegram із чатом Аліни.',
+      formH3: 'Ваша заявка', hint: 'Це займе менше хвилини. Поля з <span style="color:var(--gold)">*</span> обов’язкові.',
+      lblName: 'Як до вас звертатися? <span class="req">*</span>', errName: 'Будь ласка, напишіть ваше ім’я',
+      lblSvc: 'Оберіть послуги <span class="req">*</span>', errSvc: 'Позначте хоча б одну послугу',
+      lblPhone: 'Телефон <small>(за бажанням)</small>', lblMsg: 'Коротко про ситуацію <small>(за бажанням)</small>',
+      msgPh: 'Наприклад: працюю за umową o pracę, карта закінчується в грудні',
+      sendFull: 'Надіслати Аліні в Telegram', sendShort: 'Надіслати в Telegram',
+      prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
+      note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
+      footer: 'Аліна Калініч · Легалізація в Польщі · Радом', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram'
+    },
+    en: {
+      logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
+      cta: 'Send a request', logoAria: 'Legalia — home', menuAria: 'Menu',
+      brand: '<b>Legalia</b> · Alina Kalinich', h1a: 'I’ll help you legally', h1b: '<em class="gt">live and work</em>', h1c: 'in Poland',
+      rotLbl: 'I’ll arrange for you:', rot1: 'a residence card', rot2: 'a CUKR card', rot3: 'an EU resident card', rot4: 'permanent residence', rot5: 'citizenship', rot6: 'meldunek',
+      lead: 'My name is <strong>Alina Kalinich</strong>. I’m from Ukraine and <strong>have lived in Poland for 5 years</strong>. I’ll look into your situation, gather the documents and see your case through to a decision — explaining everything in plain language.',
+      heroBtn1: 'Find out what fits me', heroBtn2: 'Message Alina',
+      unitYears: 'years', stat1: 'living and working in Poland', stat2: 'legalization services', unitLangs: 'languages', stat3: 'Ukrainian, Russian, Polish',
+      photoAlt: 'Alina Kalinich — Legalia, legalization in Poland', name: 'Alina Kalinich', capRole: 'Founder of Legalia',
+      radom: 'Radom', mazSmall: 'Masovian Voivodeship', turnkey: 'Full service', turnkeySub: 'from paperwork to decision', scrollAria: 'Scroll down',
+      sitEyebrow: 'Start here', sitH2: 'What’s <span class="gt">your situation?</span>',
+      sitP: 'Tap everything that applies to you. Each card shows the matching service — and it’s added to your request right away.',
+      nameAlt: 'Alina Kalinich', years: 'years in Poland —<br>I know the way first-hand',
+      aboutH2: 'I’ve walked this path myself — <span class="gt">and I know it isn’t easy</span>',
+      aboutP1: 'I’m originally from Ukraine and <strong>have lived in Poland for 5 years</strong>, now in <strong>Radom</strong>. I once dealt with Polish paperwork, queues at the urząd and confusing letters myself. That’s why I understand how my clients feel.',
+      aboutP2: 'At <strong>Legalia</strong> I help people get through legalization <strong>calmly and without mistakes</strong>: I’ll tell you which legal basis suits you, gather the documents, fill in the application and stay with you until the decision.',
+      perk1h: 'Plain language', perk1p: 'Clear for young and old alike.', perk2h: 'Documents in order', perk2p: 'I check every paper.',
+      perk3h: 'Saves you time', perk3p: 'I know what to file and where.', perk4h: 'Human approach', perk4p: 'Support at every step.',
+      svcEyebrow: 'Legalia services', svcH2: 'How I <span class="gt">can help</span>',
+      svcP: 'Tap “Add to request” — the service will be ticked in the form below.', addBtn: 'Add to request',
+      c1h: 'Residence card', c1p: 'A temporary residence permit in Poland. I’ll choose the right basis, gather the documents and file the application.',
+      c2h: 'CUKR card', c2p: 'A residence card for Ukrainian citizens with UKR status. I’ll check whether you qualify and help you apply.',
+      c3h: 'EU resident card', c3p: 'EU long-term resident status — indefinite stay and more freedom across the EU.',
+      c4h: 'Permanent residence card', c4p: 'A permanent residence permit in Poland. I’ll help confirm your basis and go through the whole procedure.',
+      c5h: 'Citizenship', c5p: 'Polish citizenship is the final step. I’ll review your situation, suggest the right route and prepare the documents and application.',
+      c6h: 'Guarantor statement for najem okazjonalny', c6p: 'A document required to rent a home under a <i>najem okazjonalny</i> agreement.',
+      c7h: 'Meldunek', c7p: 'Address registration (zameldowanie) — needed for many further procedures.',
+      chWork: 'work', chStudy: 'studies', chFamily: 'family reunification', chUkr: 'for Ukrainians', chUkrStatus: 'UKR status',
+      chEu: 'EU resident', chIndef: 'indefinite', chRoots: 'Polish roots', chKp: 'Pole’s Card', chSpouse: 'spouse of a Polish citizen',
+      chRecog: 'recognition', chGrant: 'granting', chDocs: 'document preparation', chRent: 'for renting', chPropiska: 'address registration',
+      howH2: 'Four <span class="gt">simple steps</span>',
+      howP: 'You don’t need to know the law — I’ll guide you from the first question to the final decision.',
+      request: 'Request', s1p: 'You tick what interests you and message me on Telegram.',
+      s2h: 'Consultation', s2p: 'I review your situation and tell you the best route.',
+      s3h: 'Documents', s3p: 'I make a checklist, check your papers, fill in the application and file it.',
+      s4h: 'Result', s4p: 'I stay with you until the decision and tell you what to do next.',
+      areaEyebrow: 'Where I work', areaH2: 'Radom and the whole <span class="gt">Masovian Voivodeship</span>',
+      areaLoc: 'Location', areaWork: 'I work across', areaMaz: 'Masovian Voivodeship', warsaw: 'Warsaw',
+      faqH2: 'Frequently <span class="gt">asked</span>',
+      q1: 'I don’t know which card fits me. What should I do?',
+      a1: 'That’s normal — most people come with exactly this question. Tap what applies to you in “What’s your situation?” or tick “I need a consultation” in the form. I’ll tell you which basis suits you.',
+      q2: 'Can this be done if my Polish is poor?',
+      a2: 'Yes. I speak Ukrainian and Russian, and I’ll prepare all Polish documents myself and explain what they say.',
+      q3: 'Do you only work in Radom?',
+      a3: 'I’m based in Radom and work across the whole Masovian Voivodeship. Message me on Telegram and we’ll discuss your case.',
+      q4: 'How quickly do you reply?',
+      a4: 'I try to reply within a day. Telegram is the fastest way: fill in the form below and the message will open in a chat with me.',
+      contactH2: 'What are you <span class="gt">interested in?</span>',
+      contactP: 'Tick the services you need and press the button — the message is copied and Telegram opens a chat with Alina.',
+      formH3: 'Your request', hint: 'It takes less than a minute. Fields marked <span style="color:var(--gold)">*</span> are required.',
+      lblName: 'Your name <span class="req">*</span>', errName: 'Please enter your name',
+      lblSvc: 'Choose services <span class="req">*</span>', errSvc: 'Tick at least one service',
+      lblPhone: 'Phone <small>(optional)</small>', lblMsg: 'Briefly about your situation <small>(optional)</small>',
+      msgPh: 'E.g. I work on an umowa o pracę, my card expires in December',
+      sendFull: 'Send to Alina on Telegram', sendShort: 'Send via Telegram',
+      prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
+      note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
+      footer: 'Alina Kalinich · Legalization in Poland · Radom', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram'
+    }
+  };
+
+  const attrPairs = el => el.dataset.i18nAttr.split(";").map(x => x.split(":"));
+
+  let lang = "uk"; // основной язык сайта — украинский
+  const ui = () => UI[lang];
 
   /* ---------- marquee ---------- */
-  const MQ = ["Карта побыту", "Карта CUKR", "Карта резидента", "Сталый побыт", "Гражданство", "Мельдунок", "Najem okazjonalny", "JDG · spółka", "Воссоединение семьи"];
-  const mqHTML = MQ.map(t => `<span class="it"><span class="gt">${t}</span><i>✦</i></span>`).join("");
-  $("#marq").innerHTML = mqHTML + mqHTML;
+  function renderMarquee() {
+    const html = MARQUEE[lang].map(t => `<span class="it"><span class="gt">${t}</span><i>✦</i></span>`).join("");
+    $("#marq").innerHTML = html + html;
+  }
 
   /* ---------- form checkboxes ---------- */
   const form = $("#leadForm");
@@ -932,7 +1274,7 @@
   SERVICES.forEach((s, i) => {
     const l = document.createElement("label");
     l.className = "check";
-    l.innerHTML = `<input type="checkbox" name="svc" value="${s}"><span class="box"><span class="tick">${tick}</span><span>${s}</span></span>`;
+    l.innerHTML = `<input type="checkbox" name="svc" value="${s.id}"><span class="box"><span class="tick">${tick}</span><span class="svc-t" data-id="${s.id}"></span></span>`;
     if (i === SERVICES.length - 1) l.style.gridColumn = "1 / -1";
     checks.appendChild(l);
   });
@@ -947,12 +1289,12 @@
     b.type = "button";
     b.className = `sit reveal d${(i % 4) + 1}`;
     b.setAttribute("aria-pressed", "false");
-    b.innerHTML = `<span class="ok">${tick}</span><span class="emo" aria-hidden="true">${s.emo}</span><span class="q">${s.q}</span><span class="a">${s.a} ${arrow}</span>`;
+    b.innerHTML = `<span class="ok">${tick}</span><span class="emo" aria-hidden="true">${s.emo}</span><span class="q"></span><span class="a"><span class="a-t"></span> ${arrow}</span>`;
     b.addEventListener("click", () => {
       const on = !s.svc.every(v => cb(v).checked);
       s.svc.forEach(v => cb(v).checked = on);
       sync();
-      if (on) toast("Добавлено в заявку: " + s.a);
+      if (on) toast(ui().addedToast + s[lang][1]);
     });
     s.el = b;
     sitGrid.appendChild(b);
@@ -966,17 +1308,18 @@
     const msg = $("#fMsg").value.trim();
     const svc = selected();
     if (!name && !svc.length && !phone && !msg) return "";
-    let t = `Здравствуйте, Алина! 👋\n`;
-    if (name) t += `Меня зовут ${name}.\n`;
-    if (svc.length) t += `\nМеня интересует:\n` + svc.map(s => `• ${s}`).join("\n") + "\n";
-    if (msg) t += `\nО ситуации: ${msg}\n`;
-    if (phone) t += `\nМой телефон: ${phone}\n`;
-    t += `\n(заявка с сайта Legalia)`;
+    const u = ui();
+    let t = `${u.hello}\n`;
+    if (name) t += u.myName.replace("{n}", name) + "\n";
+    if (svc.length) t += `\n${u.interest}\n` + svc.map(id => `• ${SVC[id][lang]}`).join("\n") + "\n";
+    if (msg) t += `\n${u.about} ${msg}\n`;
+    if (phone) t += `\n${u.phone} ${phone}\n`;
+    t += `\n${u.from}`;
     return t;
   }
   function sync() {
     const m = buildMessage();
-    preview.textContent = m || "Отметьте услуги слева — здесь появится текст сообщения…";
+    preview.textContent = m || ui().empty;
     preview.classList.toggle("empty", !m);
     SITUATIONS.forEach(s => {
       const on = s.svc.every(v => cb(v).checked);
@@ -988,7 +1331,7 @@
       const on = cb(c.dataset.add).checked;
       c.classList.toggle("picked-svc", on);
       btn.classList.toggle("added", on);
-      btn.querySelector("span").textContent = on ? "✓ В заявке" : "Добавить в заявку";
+      btn.querySelector("span").textContent = on ? ui().added : ui().add;
     });
     const n = selected().length;
     $("#pickedN").textContent = n;
@@ -1043,7 +1386,7 @@
     const url = `https://t.me/${TG}?text=${encodeURIComponent(text)}`;
     const w = window.open(url, "_blank");
     if (w) w.opener = null; else location.href = url;
-    toast("Сообщение скопировано — открываю Telegram…");
+    toast(ui().sending);
   });
   $("#fName").addEventListener("input", () => $("#errName").classList.remove("show"));
 
@@ -1053,7 +1396,7 @@
       const c = cb(card.dataset.add);
       c.checked = !c.checked;
       sync();
-      if (c.checked) toast("Добавлено в заявку: " + card.querySelector("h3").textContent);
+      if (c.checked) toast(ui().addedToast + card.querySelector("h3").textContent);
     });
     card.addEventListener("pointermove", e => {
       const r = card.getBoundingClientRect();
@@ -1118,7 +1461,8 @@
         setTimeout(() => { if (!d.classList.contains("is-open")) d.open = false; }, 520);
       } else {
         d.open = true;
-        requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add("is-open")));
+        void d.offsetHeight; // фиксируем закрытое состояние, чтобы раскрытие анимировалось
+        d.classList.add("is-open");
       }
     });
   });
@@ -1130,7 +1474,53 @@
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
   $("#year").textContent = new Date().getFullYear();
-  sync();
+
+  /* ---------- переключение языка ---------- */
+  const sw = $("#langSw"), pill = sw.querySelector(".lang-pill");
+  function updateSwitcher() {
+    sw.querySelectorAll("button").forEach(b => {
+      const on = b.dataset.lang === lang;
+      b.setAttribute("aria-pressed", on);
+      if (on) { pill.style.width = b.offsetWidth + "px"; pill.style.transform = `translateX(${b.offsetLeft}px)`; }
+    });
+  }
+  function applyLang(next, animate) {
+    const run = () => {
+      lang = next;
+      const dict = PAGE[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const v = dict[el.dataset.i18n] ?? PAGE.uk[el.dataset.i18n];
+        if (v != null && el.innerHTML !== v) el.innerHTML = v;
+      });
+      document.querySelectorAll("[data-i18n-attr]").forEach(el => attrPairs(el).forEach(([a, k]) => el.setAttribute(a, dict[k] ?? PAGE.uk[k])));
+      document.documentElement.lang = lang;
+      document.title = ui().title;
+      document.querySelector('meta[name="description"]').setAttribute("content", ui().desc);
+      checks.querySelectorAll(".svc-t").forEach(el => { el.textContent = SVC[el.dataset.id][lang]; });
+      SITUATIONS.forEach(x => { x.el.querySelector(".q").textContent = x[lang][0]; x.el.querySelector(".a-t").textContent = x[lang][1]; });
+      renderMarquee();
+      sync();
+      updateSwitcher();
+      try { localStorage.setItem("legalia-lang", lang); } catch (_) {}
+    };
+    if (!animate || reduced) return run();
+    document.body.classList.add("i18n-out");
+    setTimeout(() => { run(); void document.body.offsetHeight; document.body.classList.remove("i18n-out"); }, 200);
+  }
+  function initialLang() {
+    const q = new URLSearchParams(location.search).get("lang");
+    if (LANGS.includes(q)) return q;
+    try { const saved = localStorage.getItem("legalia-lang"); if (LANGS.includes(saved)) return saved; } catch (_) {}
+    return "uk";
+  }
+  sw.addEventListener("click", e => {
+    const b = e.target.closest("button[data-lang]");
+    if (b && b.dataset.lang !== lang) applyLang(b.dataset.lang, true);
+  });
+  addEventListener("resize", updateSwitcher);
+  applyLang(initialLang(), false);
+  // после загрузки шрифтов ширина кнопок уточняется — выставляем плашку и включаем её анимацию
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { updateSwitcher(); requestAnimationFrame(() => sw.classList.add("ready")); });
 
   /* золотая пыль */
   const cv = $("#dust"), ctx = cv.getContext("2d");
