@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legalia — легализация в Польше | Алина Калинич, Радом</title>
+<meta name="description" content="Legalia — Алина Калинич, 5 лет в Польше. Помощь с легализацией: карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок. Радом, Мазовецкое воеводство.">
+<meta property="og:title" content="Legalia — легализация в Польше">
+<meta property="og:description" content="Алина Калинич, Радом. Карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок.">
+<meta property="og:image" content="alina.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0c0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0b0a'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23e2c8a4'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+  :root{
+    --bg:#0c0b0a;
+    --bg-2:#141210;
+    --card:#1a1714;
+    --line:rgba(226,200,164,.18);
+    --gold:#e2c8a4;
+    --gold-2:#c9a877;
+    --gold-3:#f3e3cb;
+    --text:#f5efe7;
+    --muted:#b9ad9e;
+    --red:#dc143c;
+    --wine:#7a1f2e;
+    --white:#ffffff;
+    --radius:22px;
+    --fs:18px;
+    --grad:linear-gradient(110deg,#f3e3cb 0%,#e2c8a4 22%,#c9a877 40%,#fff4e2 52%,#e2c8a4 64%,#d98a7a 80%,#f3e3cb 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:var(--fs)}
+  html.big{--fs:21px}
+  body{background:var(--bg);color:var(--text);font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .container{width:min(1180px,100% - 32px);margin-inline:auto}
+
+  /* animated gradient text */
+  .gt{background:var(--grad);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:gflow 9s linear infinite}
+  @keyframes gflow{to{background-position:300% 0}}
+
+  /* ---------- background ---------- */
+  .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .bg-glow span{position:absolute;border-radius:50%;filter:blur(100px);opacity:.38;animation:drift 20s ease-in-out infinite alternate}
+  .bg-glow span:nth-child(1){width:560px;height:560px;background:#6b5433;top:-180px;left:-140px}
+  .bg-glow span:nth-child(2){width:460px;height:460px;background:#3e2f1d;bottom:-160px;right:-120px;animation-delay:-7s}
+  .bg-glow span:nth-child(3){width:340px;height:340px;background:var(--wine);top:35%;left:55%;opacity:.22;animation-delay:-13s}
+  @keyframes drift{33%{transform:translate(90px,40px) scale(1.1)}66%{transform:translate(-40px,90px) scale(.95)}100%{transform:translate(60px,-30px) scale(1.15)}}
+  canvas#dust{position:fixed;inset:0;z-index:0;pointer-events:none}
+  main,header,footer{position:relative;z-index:1}
+  main{overflow-x:hidden;overflow-x:clip}
+
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:70;transform-origin:left;transform:scaleX(0);
+    background:linear-gradient(90deg,var(--gold-2),var(--gold-3),#fff,var(--red))}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  .nav.scrolled{background:rgba(12,11,10,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .nav .container{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo .mark{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--gold-3),var(--gold-2));color:#1a140d;font:700 1.35rem "Playfair Display",serif}
+  .logo .mark::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7),transparent 70%);
+    transform:translateX(-120%);animation:sweep 5s ease-in-out infinite}
+  @keyframes sweep{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+  .logo b{font:600 1.45rem/1 "Playfair Display",serif;letter-spacing:.3px}
+  .logo small{display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.2;margin-top:4px}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:500;font-size:.9rem;position:relative;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s}
+  .nav-links a:hover{color:var(--gold-3)}
+  .nav-links a:hover::after{width:100%}
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .font-toggle{border:1px solid var(--line);background:transparent;color:var(--gold);border-radius:999px;
+    height:44px;min-width:44px;padding:0 14px;font:700 .85rem "Manrope",sans-serif;cursor:pointer;transition:.3s}
+  .font-toggle:hover{background:rgba(226,200,164,.1)}
+  .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;cursor:pointer;position:relative}
+  .burger span{position:absolute;left:12px;right:12px;height:2px;background:var(--gold);transition:.35s}
+  .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+  .burger.open span:nth-child(1){top:21px;transform:rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 30px;border-radius:999px;
+    font:700 1rem "Manrope",sans-serif;text-decoration:none;cursor:pointer;border:0;transition:transform .3s,box-shadow .3s,background .3s;position:relative;overflow:hidden;isolation:isolate}
+  .btn-gold{background:linear-gradient(120deg,#f3e3cb,#e2c8a4,#c9a877,#f3e3cb);background-size:250% 100%;animation:gflow 6s linear infinite;
+    color:#1a140d;box-shadow:0 10px 30px -10px rgba(226,200,164,.55)}
+  .btn-gold::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;z-index:-1;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+  @keyframes shine{0%,60%{left:-120%}100%{left:160%}}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(226,200,164,.75)}
+  .btn-ghost{background:rgba(26,23,20,.5);color:var(--gold-3);border:1px solid var(--line)}
+  .btn-ghost:hover{background:rgba(226,200,164,.08);transform:translateY(-3px)}
+  .btn svg{width:22px;height:22px;flex:none}
+  .nav .btn{min-height:44px;padding:0 20px;font-size:.85rem}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 90px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:center}
+  .eyebrow{display:flex;align-items:center;gap:14px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:.76rem;font-weight:700}
+  .eyebrow::before{content:"";width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .brandline{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;border:1px solid var(--line);
+    background:rgba(26,23,20,.65);backdrop-filter:blur(6px);font-size:.85rem;color:var(--muted)}
+  .brandline img{width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:58% 12%}
+  .brandline b{color:var(--gold-3);font-weight:700}
+  .brandline .live{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:live 2s infinite}
+  @keyframes live{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+  .hero h1{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2.3rem,5.4vw,4.3rem);line-height:1.08;margin:24px 0 18px;color:var(--gold-3)}
+  .hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+  .hero h1 .line > span{display:inline-block;transform:translateY(110%);animation:rise 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+  .hero h1 .line:nth-child(2) > span{animation-delay:.14s}
+  .hero h1 .line:nth-child(3) > span{animation-delay:.28s}
+  .hero h1 em{font-style:italic}
+  @keyframes rise{to{transform:none}}
+  .flag{display:flex;width:150px;height:4px;border-radius:4px;overflow:hidden;margin:0 0 24px;transform-origin:left;animation:grow 1.2s .6s cubic-bezier(.2,.8,.2,1) both}
+  .flag i{flex:1;background:var(--white)}.flag i+i{background:var(--red)}
+  @keyframes grow{from{transform:scaleX(0)}}
+
+  .rotator{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:1.2rem;font-weight:600;margin-bottom:18px}
+  .rotator .lbl{color:var(--muted);font-weight:500}
+  .rot-box{position:relative;display:inline-grid;padding:8px 18px;border-radius:14px;background:rgba(226,200,164,.08);overflow:hidden;min-width:230px}
+  .rot-box::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+    background:conic-gradient(from var(--ang),rgba(226,200,164,.25) 0 55%,var(--gold-3) 72%,var(--red) 84%,rgba(226,200,164,.25) 96%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spinang 4s linear infinite}
+  @keyframes spinang{to{--ang:360deg}}
+  .rot-word{grid-area:1/1;white-space:nowrap;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s;transform:translateY(120%);opacity:0}
+  .rot-word.on{transform:none;opacity:1}
+  .rot-word.out{transform:translateY(-120%);opacity:0}
+
+  .hero .lead{font-size:1.1rem;color:var(--muted);max-width:560px}
+  .hero .lead strong{color:var(--text);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .stats{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+  .stat{flex:1;min-width:130px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(26,23,20,.55);backdrop-filter:blur(6px)}
+  .stat b{display:block;font:600 2.1rem/1 "Playfair Display",serif}
+  .stat small{color:var(--muted);font-size:.85rem;line-height:1.3;display:block;margin-top:6px}
+
+  .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp 1s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes fadeUp{to{opacity:1;transform:none}}
+
+  /* photo */
+  .photo{position:relative;width:100%;max-width:450px;justify-self:center;aspect-ratio:4/5}
+  .photo .glow{position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(circle,rgba(226,200,164,.35),rgba(122,31,46,.25) 45%,transparent 70%);
+    filter:blur(40px);animation:breathe 6s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.08);opacity:.75}}
+  .photo .border{position:absolute;inset:-3px;border-radius:34px;
+    background:conic-gradient(from var(--ang),#c9a877,#fff4e2,#e2c8a4,#dc143c,#c9a877,#f3e3cb,#c9a877);animation:spinang 7s linear infinite}
+  .photo .img{position:absolute;inset:0;border-radius:31px;overflow:hidden;background:#1a1612}
+  .photo .img img{width:100%;height:100%;object-fit:cover;object-position:60% 30%;transform:scale(1.12);animation:kenburns 18s ease-in-out infinite alternate}
+  @keyframes kenburns{to{transform:scale(1.2) translate(-2%,2%)}}
+  .photo .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,11,10,.85))}
+  .photo .cap{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}
+  .photo .cap b{display:block;font:600 1.6rem/1.1 "Playfair Display",serif;color:var(--gold-3)}
+  .photo .cap small{color:var(--muted);letter-spacing:.16em;text-transform:uppercase;font-size:.7rem}
+  .badge{position:absolute;z-index:3;background:rgba(20,18,16,.9);border:1px solid var(--line);border-radius:18px;padding:12px 16px;
+    display:flex;gap:12px;align-items:center;box-shadow:0 20px 40px -20px #000;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .badge b{display:block;color:var(--gold-3);font-size:.95rem;line-height:1.2}
+  .badge small{color:var(--muted);font-size:.78rem}
+  .badge .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(226,200,164,.12);color:var(--gold);flex:none}
+  .badge .ic svg{width:21px;height:21px}
+  .badge.b1{left:-46px;top:64px;animation:float 6s ease-in-out infinite}
+  .badge.b2{right:-18px;top:46%;animation:float 6s -3s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-12px)}}
+  .scroll-hint{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:28px;height:46px;border:1.5px solid var(--line);border-radius:20px}
+  .scroll-hint::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;border-radius:4px;background:var(--gold);transform:translateX(-50%);animation:wheel 2s infinite}
+  @keyframes wheel{0%{opacity:0;top:8px}30%{opacity:1}100%{opacity:0;top:26px}}
+
+  /* ---------- marquee ---------- */
+  .marquee{border-block:1px solid var(--line);background:rgba(20,18,16,.7);overflow:hidden;padding:20px 0;position:relative;z-index:1}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+  .marquee::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+  .marquee::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+  .marquee .track{display:flex;width:max-content;animation:marq 40s linear infinite}
+  .marquee .it{display:flex;align-items:center;white-space:nowrap}
+  .marquee .it span{font:500 1.5rem "Playfair Display",serif;padding:0 26px}
+  .marquee .it i{color:var(--gold-2);font-style:normal;font-size:.9rem}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  section{padding:110px 0}
+  .sec-head{text-align:center;max-width:740px;margin:0 auto 56px}
+  .sec-head .eyebrow{justify-content:center}
+  .sec-head .eyebrow::after{content:"";width:44px;height:1px;background:linear-gradient(-90deg,transparent,var(--gold))}
+  .sec-head h2{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(2rem,4.5vw,3.1rem);line-height:1.12;margin:18px 0 14px}
+  .sec-head p{color:var(--muted);font-size:1.05rem}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+  /* ---------- situations ---------- */
+  .sit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .sit{position:relative;text-align:left;cursor:pointer;border-radius:20px;padding:22px 20px 20px;min-height:170px;
+    background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);color:var(--text);font-family:inherit;
+    display:flex;flex-direction:column;gap:10px;overflow:hidden;isolation:isolate}
+  .sit.in{transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,opacity .9s}
+  .sit::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;
+    background:radial-gradient(120% 90% at 0% 0%,rgba(226,200,164,.22),transparent 55%),radial-gradient(90% 90% at 100% 100%,rgba(122,31,46,.4),transparent 60%)}
+  .sit:hover{transform:translateY(-6px);border-color:rgba(226,200,164,.45)}
+  .sit:hover::before,.sit.sel::before{opacity:1}
+  .sit .emo{font-size:1.8rem;line-height:1}
+  .sit .q{font-weight:700;font-size:1.02rem;line-height:1.3;padding-right:24px}
+  .sit .a{margin-top:auto;color:var(--gold);font-size:.86rem;font-weight:600;display:flex;align-items:center;gap:6px}
+  .sit .a svg{width:16px;height:16px;flex:none;transition:transform .3s}
+  .sit:hover .a svg{transform:translateX(4px)}
+  .sit .ok{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(226,200,164,.4);display:grid;place-items:center;transition:.3s}
+  .sit .ok svg{width:15px;height:15px;color:#1a140d;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+  .sit.sel{border-color:var(--gold)}
+  .sit.sel .ok{background:var(--gold);border-color:var(--gold)}
+  .sit.sel .ok svg{transform:scale(1)}
+  .sit:focus-visible{outline:3px solid rgba(226,200,164,.5);outline-offset:3px}
+
+  .picked{position:fixed;left:50%;bottom:24px;transform:translate(-50%,160%);z-index:65;display:flex;align-items:center;gap:14px;
+    padding:8px 8px 8px 22px;border-radius:999px;background:rgba(20,18,16,.95);border:1px solid var(--gold);backdrop-filter:blur(12px);
+    box-shadow:0 20px 50px -12px #000;transition:transform .5s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px)}
+  .picked.show{transform:translate(-50%,0)}
+  .picked span{font-weight:600;white-space:nowrap}
+  .picked span b{color:var(--gold)}
+  .picked .btn{min-height:46px;padding:0 20px;font-size:.9rem;white-space:nowrap}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+  .about-photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1;border:1px solid var(--line)}
+  .about-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+  .about-photo:hover img{transform:scale(1.05)}
+  .about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 45%,rgba(122,31,46,.35),rgba(12,11,10,.85))}
+  .about-photo .years{position:absolute;left:22px;bottom:22px;z-index:2;display:flex;align-items:flex-end;gap:12px}
+  .about-photo .years b{font:600 4.6rem/0.9 "Playfair Display",serif}
+  .about-photo .years span{color:var(--text);font-weight:600;line-height:1.3;padding-bottom:6px}
+  .about-text h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,4.5vw,2.9rem);line-height:1.12;margin:18px 0 20px;font-weight:600}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+  .about-text p strong{color:var(--text);font-weight:600}
+  .langs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 30px}
+  .langs span{padding:8px 16px;border-radius:999px;background:rgba(226,200,164,.1);color:var(--gold-3);font-weight:600;font-size:.88rem}
+  .perks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .perk{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(26,23,20,.6)}
+  .perk .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(226,200,164,.1);color:var(--gold);flex:none}
+  .perk .ic svg{width:22px;height:22px}
+  .perk h3{font-size:.98rem;margin-bottom:2px}
+  .perk p{color:var(--muted);font-size:.86rem;line-height:1.45;margin:0}
+
+  /* ---------- services ---------- */
+  .services{background:linear-gradient(180deg,transparent,rgba(26,23,20,.55) 20%,rgba(26,23,20,.55) 80%,transparent)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{position:relative;background:var(--card);border-radius:var(--radius);padding:32px 28px 26px;overflow:hidden;isolation:isolate;
+    display:flex;flex-direction:column}
+  .svc.in{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,opacity .9s}
+  .svc::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;z-index:-1;
+    background:linear-gradient(var(--line),var(--line));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .svc:hover::after,.svc.picked-svc::after{background:conic-gradient(from var(--ang),#c9a877,#fff4e2,#dc143c,#e2c8a4,#c9a877);animation:spinang 3s linear infinite}
+  .svc::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(226,200,164,.14),transparent 45%);opacity:0;transition:opacity .4s}
+  .svc:hover::before{opacity:1}
+  .svc:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.85)}
+  .svc .num{position:absolute;top:22px;right:26px;font:500 2.4rem/1 "Playfair Display",serif;color:rgba(226,200,164,.12)}
+  .svc .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(243,227,203,.18),rgba(201,168,119,.05));color:var(--gold);margin-bottom:22px;transition:transform .5s}
+  .svc:hover .ic{transform:rotate(-8deg) scale(1.08)}
+  .svc .ic svg{width:30px;height:30px}
+  .svc h3{font:600 1.45rem/1.2 "Playfair Display",serif;color:var(--gold-3);margin-bottom:10px}
+  .svc p{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+  .svc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .svc ul li{font-size:.8rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text)}
+  .svc .more{margin-top:auto;display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:700;font-size:.95rem;
+    background:none;border:0;cursor:pointer;font-family:inherit;padding:8px 0;min-height:44px;align-self:flex-start}
+  .svc .more svg{width:18px;height:18px;transition:transform .3s}
+  .svc .more:hover svg{transform:translateX(6px)}
+  .svc .more.added{color:#8fe3a8}
+  .svc .more.added svg{display:none}
+  .svc.wide{grid-column:span 2}
+
+  /* ---------- steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+  .steps .rail{position:absolute;top:36px;left:12%;right:12%;height:2px;background:var(--line);overflow:hidden}
+  .steps .rail i{position:absolute;inset:0;background:linear-gradient(90deg,var(--gold-2),var(--gold-3),var(--red));transform:scaleX(0);transform-origin:left;transition:transform 2s cubic-bezier(.2,.8,.2,1) .3s}
+  .steps.in .rail i{transform:none}
+  .step{text-align:center;padding:0 10px}
+  .step .dot{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;position:relative;
+    background:var(--bg);border:1px solid var(--gold);font:500 1.6rem "Playfair Display",serif;color:var(--gold-3)}
+  .step .dot::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(226,200,164,.3);animation:spin 18s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .step h3{font-size:1.1rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.93rem}
+
+  /* ---------- area ---------- */
+  .area{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--card)}
+  .area-info{padding:54px}
+  .area-info h2{font:600 clamp(1.9rem,4vw,2.6rem)/1.15 "Playfair Display",serif;margin:18px 0 26px}
+  .area-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line)}
+  .area-row .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(226,200,164,.1);color:var(--gold);flex:none}
+  .area-row .ic svg{width:24px;height:24px}
+  .area-row small{display:block;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-size:.7rem}
+  .area-row b{font-size:1.15rem;font-weight:600}
+  .area-map{position:relative;min-height:380px;background:radial-gradient(circle at 60% 55%,#3a2a1d,#120f0c 70%);display:grid;place-items:center;overflow:hidden}
+  .area-map svg.pl{width:78%;max-width:420px;height:auto}
+  .pl-shape{fill:rgba(226,200,164,.05);stroke:rgba(226,200,164,.5);stroke-width:1.5;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s ease}
+  .in .pl-shape{stroke-dashoffset:0}
+  .maz{fill:url(#mazGrad);stroke:var(--gold);stroke-width:1.5;opacity:0;transition:opacity 1s 1.4s}
+  .in .maz{opacity:1}
+  .pin{opacity:0;transition:opacity .6s 2s}
+  .in .pin{opacity:1}
+  .pulse{transform-origin:center;transform-box:fill-box;animation:pulse 2.2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .3s}
+  details[open]{border-color:rgba(226,200,164,.45)}
+  summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary .pm{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);position:relative;flex:none}
+  summary .pm::before,summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--gold);transform:translate(-50%,-50%)}
+  summary .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s}
+  details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
+  details .ans{padding:0 26px 24px;color:var(--muted)}
+
+  /* ---------- form ---------- */
+  .contact{padding-bottom:130px}
+  .form-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+  .form-card,.preview-card{background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:28px;padding:40px}
+  .form-card h3,.preview-card h3{font:600 1.5rem "Playfair Display",serif;color:var(--gold-3);margin-bottom:6px}
+  .form-card .hint{color:var(--muted);font-size:.92rem;margin-bottom:26px}
+  .field{margin-bottom:22px}
+  .lbl{display:block;font-weight:600;margin-bottom:10px;font-size:.95rem}
+  .lbl .req{color:var(--gold)}
+  .lbl small{color:var(--muted);font-weight:500}
+  .field input[type=text],.field input[type=tel],.field textarea{width:100%;background:rgba(12,11,10,.7);border:1px solid var(--line);border-radius:14px;color:var(--text);
+    font:500 1rem "Manrope",sans-serif;padding:16px 18px;min-height:56px;transition:border-color .3s,box-shadow .3s;outline:none}
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(226,200,164,.15)}
+  .field input::placeholder,.field textarea::placeholder{color:#7d7368}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .check{position:relative;display:block;cursor:pointer}
+  .check input{position:absolute;opacity:0;pointer-events:none}
+  .check .box{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(12,11,10,.5);
+    min-height:58px;font-size:.93rem;line-height:1.3;transition:.25s}
+  .check .tick{width:24px;height:24px;border-radius:7px;border:1.5px solid rgba(226,200,164,.5);flex:none;display:grid;place-items:center;transition:.25s}
+  .check .tick svg{width:15px;height:15px;color:#1a140d;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+  .check:hover .box{border-color:rgba(226,200,164,.4)}
+  .check input:checked + .box{border-color:var(--gold);background:rgba(226,200,164,.1)}
+  .check input:checked + .box .tick{background:var(--gold);border-color:var(--gold)}
+  .check input:checked + .box .tick svg{transform:scale(1)}
+  .check input:focus-visible + .box{box-shadow:0 0 0 3px rgba(226,200,164,.35)}
+  .err{color:#ff8a8a;font-size:.88rem;margin-top:8px;display:none}
+  .err.show{display:block;animation:shake .4s}
+  @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  .form-actions{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+  .form-actions .btn{width:100%}
+  .tg-btn{background:linear-gradient(120deg,#37aee2,#1e96c8,#5ac8fa,#37aee2);background-size:250% 100%;animation:gflow 6s linear infinite;color:#fff;box-shadow:0 12px 30px -12px rgba(42,171,238,.7)}
+  .tg-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(42,171,238,.85)}
+
+  .preview-card{position:sticky;top:100px}
+  .chat{margin-top:18px;background:#0e1621;border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,.06)}
+  .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:16px}
+  .chat-head img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:58% 12%}
+  .chat-head b{display:block;font-size:.95rem}
+  .chat-head small{color:#6d8fb0;font-size:.8rem}
+  .bubble{margin-left:auto;max-width:92%;background:#2b5278;color:#fff;border-radius:16px 16px 4px 16px;padding:14px 16px;font-size:.9rem;
+    white-space:pre-wrap;word-wrap:break-word;line-height:1.5;min-height:60px}
+  .bubble.empty{color:rgba(255,255,255,.55);font-style:italic}
+  .preview-card .note{color:var(--muted);font-size:.85rem;margin-top:16px;display:flex;gap:10px}
+  .preview-card .note svg{width:20px;height:20px;flex:none;color:var(--gold);margin-top:2px}
+
+  .toast{position:fixed;left:50%;top:92px;transform:translate(-50%,-40px);opacity:0;visibility:hidden;z-index:100;background:var(--gold-3);color:#1a140d;
+    padding:14px 22px;border-radius:16px;font-weight:600;box-shadow:0 20px 50px -10px rgba(0,0,0,.7);transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s,visibility .4s;
+    display:flex;gap:12px;align-items:center;max-width:calc(100% - 32px)}
+  .toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
+  .toast svg{width:22px;height:22px;flex:none}
+
+  .fab{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,#37aee2,#1e96c8);color:#fff;box-shadow:0 12px 30px -8px rgba(42,171,238,.7);text-decoration:none;
+    transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1),bottom .45s}
+  .fab.show{transform:scale(1)}
+  .fab svg{width:30px;height:30px}
+  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #37aee2;animation:ping 2.4s infinite}
+  @keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+  body.has-picked .fab{bottom:96px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.88rem}
+  footer .container{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--gold);text-decoration:none}
+  footer .fl{font:600 1.3rem "Playfair Display",serif}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1100px){
+    .nav-links{position:fixed;top:76px;left:0;right:0;flex-direction:column;gap:0;background:rgba(12,11,10,.97);backdrop-filter:blur(14px);
+      padding:10px 16px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .45s cubic-bezier(.2,.8,.2,1);z-index:-1}
+    .nav-links.open{transform:none}
+    .nav-links a{display:block;padding:16px 4px;font-size:1.05rem;border-bottom:1px solid var(--line)}
+    .burger{display:block}
+    .nav .btn{display:none}
+    .sit-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:1020px){
+    .hero-grid,.about-grid,.form-wrap,.area{grid-template-columns:1fr}
+    .photo{max-width:380px;margin-top:10px}
+    .about-photo{max-width:520px}
+    .svc-grid{grid-template-columns:1fr 1fr}
+    .svc.wide{grid-column:span 2}
+    .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+    .steps .rail{display:none}
+    .preview-card{position:static}
+  }
+  @media (max-width:640px){
+    section{padding:80px 0}
+    .hero{padding-top:104px}
+    .logo small{display:none}
+    .svc-grid,.perks,.checks{grid-template-columns:1fr}
+    .sit-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .sit{min-height:150px;padding:16px 14px}
+    .sit .q{font-size:.92rem}
+    .svc.wide{grid-column:auto}
+    .steps{grid-template-columns:1fr}
+    .form-card,.preview-card{padding:26px 20px}
+    .area-info{padding:32px 22px}
+    .badge.b1{left:-8px;top:auto;bottom:112px}
+    .badge.b2{display:none}
+    .hero-cta .btn{width:100%}
+    .scroll-hint{display:none}
+    .rot-box{min-width:0}
+    .stats{gap:8px}
+    .stat{min-width:0;padding:12px}
+    .stat b{font-size:1.5rem}
+    .stat small{font-size:.75rem}
+    .marquee .it span{font-size:1.2rem}
+    .picked{padding-left:16px;gap:10px}
+    .picked .btn{padding:0 14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="bg-glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<canvas id="dust" aria-hidden="true"></canvas>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="Legalia — на главную">
+      <span class="mark">L</span>
+      <span><b class="gt">Legalia</b><small>Алина Калинич · Радом</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#situation">Что мне подходит?</a></li>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#how">Как работаем</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="font-toggle" id="fontToggle" aria-pressed="false" title="Увеличить шрифт">A+</button>
+      <a href="#contact" class="btn btn-gold">Оставить заявку</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="brandline fade-up" style="animation-delay:.05s">
+        <img src="alina.jpg" alt="">
+        <span><b>Legalia</b> · Алина Калинич</span>
+        <i class="live" aria-hidden="true"></i>
+      </div>
+
+      <h1>
+        <span class="line"><span>Помогу легально</span></span>
+        <span class="line"><span><em class="gt">жить и работать</em></span></span>
+        <span class="line"><span>в Польше</span></span>
+      </h1>
+      <div class="flag" aria-hidden="true"><i></i><i></i></div>
+
+      <div class="rotator fade-up" style="animation-delay:.55s">
+        <span class="lbl">Оформлю для вас:</span>
+        <span class="rot-box" aria-live="off">
+          <span class="rot-word gt on">карту побыту</span>
+          <span class="rot-word gt">карту CUKR</span>
+          <span class="rot-word gt">карту резидента</span>
+          <span class="rot-word gt">сталый побыт</span>
+          <span class="rot-word gt">гражданство</span>
+          <span class="rot-word gt">мельдунок</span>
+        </span>
+      </div>
+
+      <p class="lead fade-up" style="animation-delay:.7s">
+        Меня зовут <strong>Алина Калинич</strong>, я из Украины и <strong>уже 5 лет живу в Польше</strong>. Разберусь в вашей ситуации, соберу документы и доведу дело до решения — объясняю всё простым языком.
+      </p>
+
+      <div class="hero-cta fade-up" style="animation-delay:.85s">
+        <a href="#situation" class="btn btn-gold">
+          Узнать, что мне подходит
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Написать Алине</a>
+      </div>
+
+      <div class="stats fade-up" style="animation-delay:1s">
+        <div class="stat"><b class="gt"><span data-count="5">0</span> лет</b><small>живу и работаю в Польше</small></div>
+        <div class="stat"><b class="gt"><span data-count="7">0</span></b><small>направлений легализации</small></div>
+        <div class="stat"><b class="gt"><span data-count="3">0</span> языка</b><small>украинский, русский, польский</small></div>
+      </div>
+    </div>
+
+    <div class="photo fade-up" style="animation-delay:.35s">
+      <div class="glow"></div>
+      <div class="border"></div>
+      <div class="img">
+        <img src="alina.jpg" alt="Алина Калинич — Legalia, легализация в Польше" fetchpriority="high">
+      </div>
+      <div class="cap"><b>Алина Калинич</b><small>Основательница Legalia</small></div>
+      <div class="badge b1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <span><b>Радом</b><small>Мазовецкое воеводство</small></span>
+      </div>
+      <div class="badge b2">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></span>
+        <span><b>Под ключ</b><small>от документов до решения</small></span>
+      </div>
+    </div>
+  </div>
+  <a href="#situation" class="scroll-hint" aria-label="Прокрутить вниз"></a>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="marq"></div>
+</div>
+
+<!-- ===== SITUATION ===== -->
+<section id="situation">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Начните отсюда</div>
+      <h2 class="reveal d1">Какая у вас <span class="gt">ситуация?</span></h2>
+      <p class="reveal d2">Нажмите на всё, что про вас. Под каждой карточкой видно, какая услуга подходит, — и она сразу отметится в заявке.</p>
+    </div>
+    <div class="sit-grid" id="sitGrid"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="alina.jpg" alt="Алина Калинич" loading="lazy">
+      <div class="years"><b class="gt">5</b><span>лет в Польше —<br>знаю путь изнутри</span></div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow reveal">Обо мне</div>
+      <h2 class="reveal d1">Я сама прошла этот путь — <span class="gt">и знаю, как это непросто</span></h2>
+      <p class="reveal d2">Я родом из Украины и <strong>уже 5 лет живу в Польше</strong>, сейчас — в <strong>Радоме</strong>. Когда-то я так же разбиралась с польскими документами, очередями в ужонде и непонятными письмами. Поэтому хорошо понимаю, что чувствуют мои клиенты.</p>
+      <p class="reveal d3">В <strong>Legalia</strong> я помогаю людям пройти легализацию <strong>спокойно и без ошибок</strong>: подскажу, какое основание подходит именно вам, соберу пакет документов, заполню заявление и буду рядом до получения решения.</p>
+      <div class="langs reveal d3"><span>🇺🇦 Українська</span><span>Русский</span><span>🇵🇱 Polski</span></div>
+      <div class="perks">
+        <div class="perk reveal d1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
+          <div><h3>Простым языком</h3><p>Понятно и молодым, и старшим.</p></div>
+        </div>
+        <div class="perk reveal d2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+          <div><h3>Документы в порядке</h3><p>Проверяю каждую бумагу.</p></div>
+        </div>
+        <div class="perk reveal d3">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><h3>Экономия времени</h3><p>Знаю, что и куда подавать.</p></div>
+        </div>
+        <div class="perk reveal d4">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <div><h3>По-человечески</h3><p>Поддерживаю на каждом этапе.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Услуги Legalia</div>
+      <h2 class="reveal d1">С чем я <span class="gt">могу помочь</span></h2>
+      <p class="reveal d2">Нажмите «Добавить в заявку» — услуга сразу отметится в форме внизу.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal" data-add="Карта побыту — по работе">
+        <span class="num">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.6 1.7-2.3 3-2.3s2.4.7 3 2.3M14 10h4.5M14 13.5h3"/></svg></div>
+        <h3>Карта побыту</h3>
+        <p>Временный вид на жительство в Польше. Подберу основание, соберу документы и подам заявление.</p>
+        <ul><li>по работе</li><li>JDG</li><li>spółka</li><li>учёба</li><li>воссоединение семьи</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal d1" data-add="Карта CUKR">
+        <span class="num">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Карта CUKR</h3>
+        <p>Карта побыту для граждан Украины со статусом UKR. Проверю, подходите ли вы, и помогу оформить.</p>
+        <ul><li>для украинцев</li><li>статус UKR</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal d2" data-add="Карта резидента ЕС">
+        <span class="num">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><g fill="currentColor" stroke="none"><circle cx="12" cy="6.5" r=".9"/><circle cx="12" cy="17.5" r=".9"/><circle cx="6.5" cy="12" r=".9"/><circle cx="17.5" cy="12" r=".9"/><circle cx="8.1" cy="8.1" r=".9"/><circle cx="15.9" cy="15.9" r=".9"/><circle cx="15.9" cy="8.1" r=".9"/><circle cx="8.1" cy="15.9" r=".9"/></g></svg></div>
+        <h3>Карта резидента</h3>
+        <p>Статус долгосрочного резидента ЕС — бессрочное проживание и больше свободы в Евросоюзе.</p>
+        <ul><li>резидент ЕС</li><li>бессрочно</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal" data-add="Сталый побыт — по корням">
+        <span class="num">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
+        <h3>Карта сталого побыту</h3>
+        <p>Постоянный вид на жительство в Польше. Помогу подтвердить основание и пройти всю процедуру.</p>
+        <ul><li>по корням</li><li>по Карте поляка</li><li>с гражданином Польши</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal d1 wide" data-add="Гражданство Польши">
+        <span class="num">05</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4L18 12H5"/></svg></div>
+        <h3>Гражданство</h3>
+        <p>Польское гражданство — финальный шаг. Разберу вашу ситуацию, подскажу подходящий путь, подготовлю документы и заявление.</p>
+        <ul><li>признание гражданства</li><li>предоставление</li><li>подготовка документов</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal d2" data-add="Поручительство для найма оказионального">
+        <span class="num">06</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15v2"/></svg></div>
+        <h3>Поручительство для найма оказионального</h3>
+        <p>Документ, который нужен для аренды жилья по договору <i>najem okazjonalny</i>.</p>
+        <ul><li>для аренды</li><li>najem okazjonalny</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+
+      <article class="svc reveal d3" data-add="Мельдунок (прописка)">
+        <span class="num">07</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Мельдунок</h3>
+        <p>Регистрация по месту проживания (zameldowanie) — нужна для многих дальнейших процедур.</p>
+        <ul><li>zameldowanie</li><li>прописка</li></ul>
+        <button class="more" type="button"><span>Добавить в заявку</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW ===== -->
+<section id="how">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Как работаем</div>
+      <h2 class="reveal d1">Четыре <span class="gt">простых шага</span></h2>
+      <p class="reveal d2">Вам не нужно разбираться в законах — я проведу вас от первого вопроса до готового решения.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="rail"><i></i></div>
+      <div class="step"><div class="dot">1</div><h3>Заявка</h3><p>Вы отмечаете, что вас интересует, и пишете мне в Telegram.</p></div>
+      <div class="step"><div class="dot">2</div><h3>Консультация</h3><p>Разбираю вашу ситуацию и говорю, какой путь подходит лучше всего.</p></div>
+      <div class="step"><div class="dot">3</div><h3>Документы</h3><p>Составляю список, проверяю бумаги, заполняю заявление и подаю его.</p></div>
+      <div class="step"><div class="dot">4</div><h3>Результат</h3><p>Сопровождаю до решения и подсказываю, что делать дальше.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREA ===== -->
+<section id="area" style="padding-top:20px">
+  <div class="container">
+    <div class="area reveal">
+      <div class="area-info">
+        <div class="eyebrow">Где я работаю</div>
+        <h2>Радом и всё <span class="gt">Мазовецкое воеводство</span></h2>
+        <div class="area-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span><small>Локализация</small><b>Радом</b></span>
+        </div>
+        <div class="area-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
+          <span><small>Работаю по</small><b>Мазовецкому воеводству</b></span>
+        </div>
+        <div class="area-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 4.5L2.5 11.8l6.2 2.3 2.3 6.4 3.4-4 5 3.7 2.1-15.7z"/><path d="M8.7 14.1l9.8-7.4"/></svg></span>
+          <span><small>Telegram</small><b><a href="https://t.me/alinuccia3" target="_blank" rel="noopener" style="text-decoration:none;color:var(--gold-3)">@alinuccia3</a></b></span>
+        </div>
+      </div>
+      <div class="area-map" aria-hidden="true">
+        <svg class="pl" viewBox="0 0 400 380">
+          <defs>
+            <linearGradient id="mazGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e2c8a4" stop-opacity=".35"/>
+              <stop offset="1" stop-color="#7a1f2e" stop-opacity=".5"/>
+            </linearGradient>
+          </defs>
+          <path class="pl-shape" d="M62 70 L120 52 L168 40 L206 44 L232 30 L262 38 L300 34 L338 46 L352 80 L346 118 L362 150 L372 196 L356 226 L370 262 L340 300 L318 338 L286 330 L250 346 L220 336 L190 316 L160 318 L130 300 L108 276 L78 262 L60 230 L40 200 L34 160 L44 120 Z"/>
+          <path class="maz" d="M232 120 L276 112 L312 128 L322 164 L312 204 L290 232 L256 240 L226 226 L212 190 L214 150 Z"/>
+          <g class="pin">
+            <circle class="pulse" cx="262" cy="216" r="10" fill="rgba(226,200,164,.5)"/>
+            <circle cx="262" cy="216" r="6" fill="#e2c8a4"/>
+            <text x="274" y="232" fill="#f3e3cb" font-family="Manrope,sans-serif" font-size="15" font-weight="700">Радом</text>
+            <circle cx="268" cy="168" r="3.5" fill="#b9ad9e"/>
+            <text x="278" y="164" fill="#b9ad9e" font-family="Manrope,sans-serif" font-size="12">Варшава</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Вопросы</div>
+      <h2 class="reveal d1">Часто <span class="gt">спрашивают</span></h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>Я не знаю, какая карта мне подходит. Что делать?<span class="pm"></span></summary>
+        <div class="ans">Это нормально — большинство людей приходит именно с таким вопросом. Нажмите в блоке «Какая у вас ситуация?» на то, что про вас, или отметьте в форме «Нужна консультация». Я подскажу, какое основание подходит именно вам.</div></details>
+      <details class="reveal d1"><summary>Можно ли всё сделать, если я плохо говорю по-польски?<span class="pm"></span></summary>
+        <div class="ans">Да. Я общаюсь на украинском и русском, а все документы на польском подготовлю сама и объясню, что в них написано.</div></details>
+      <details class="reveal d2"><summary>Вы работаете только в Радоме?<span class="pm"></span></summary>
+        <div class="ans">Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.</div></details>
+      <details class="reveal d3"><summary>Как быстро вы отвечаете?<span class="pm"></span></summary>
+        <div class="ans">Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT FORM ===== -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Заявка</div>
+      <h2 class="reveal d1">Что вас <span class="gt">интересует?</span></h2>
+      <p class="reveal d2">Отметьте нужные услуги и нажмите кнопку — сообщение скопируется и откроется Telegram с чатом Алины.</p>
+    </div>
+
+    <div class="form-wrap">
+      <form class="form-card reveal" id="leadForm" novalidate>
+        <h3>Ваша заявка</h3>
+        <p class="hint">Это займёт меньше минуты. Поля со <span style="color:var(--gold)">*</span> обязательны.</p>
+
+        <div class="field">
+          <label class="lbl" for="fName">Как к вам обращаться? <span class="req">*</span></label>
+          <input type="text" id="fName" name="name" placeholder="Например: Ольга" autocomplete="given-name">
+          <div class="err" id="errName">Пожалуйста, напишите ваше имя</div>
+        </div>
+
+        <div class="field">
+          <span class="lbl">Выберите услуги <span class="req">*</span></span>
+          <div class="checks" id="checks"></div>
+          <div class="err" id="errSvc">Отметьте хотя бы одну услугу</div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="fPhone">Телефон <small>(по желанию)</small></label>
+          <input type="tel" id="fPhone" name="phone" placeholder="+48 ..." autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="fMsg">Коротко о ситуации <small>(по желанию)</small></label>
+          <textarea id="fMsg" name="msg" placeholder="Например: работаю по umowie o pracę, карта заканчивается в декабре"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn tg-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3c.3-1.2-.9-2.2-2-1.8L2.8 9.1c-1.2.5-1.2 2.2.1 2.6l4.3 1.4 1.7 5.3c.3 1 1.6 1.3 2.3.6l2.4-2.3 4.6 3.4c.9.6 2.1.2 2.4-.9l3.3-14.9zM9.6 13.9l7.8-6.1c.2-.2.5.1.3.3l-6.4 6.9-.3 2.8-1.4-3.9z"/></svg>
+            Отправить Алине в Telegram
+          </button>
+          <button type="button" class="btn btn-ghost" id="copyOnly">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            Только скопировать текст
+          </button>
+        </div>
+      </form>
+
+      <aside class="preview-card reveal d2">
+        <h3>Так увидит Алина</h3>
+        <p style="color:var(--muted);font-size:.9rem">Сообщение собирается автоматически, пока вы заполняете форму.</p>
+        <div class="chat">
+          <div class="chat-head">
+            <img src="alina.jpg" alt="">
+            <span><b>Алина Калинич · Legalia</b><small>@alinuccia3</small></span>
+          </div>
+          <div class="bubble empty" id="preview">Отметьте услуги слева — здесь появится текст сообщения…</div>
+        </div>
+        <p class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+          <span>Если текст не подставился в Telegram автоматически — просто нажмите в поле сообщения и выберите «Вставить». Он уже скопирован.</span>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> Алина Калинич · Легализация в Польше · Радом</div>
+    <div>Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
+  </div>
+</footer>
+
+<div class="picked" id="picked">
+  <span>Выбрано: <b id="pickedN">0</b></span>
+  <a href="#contact" class="btn btn-gold">К заявке →</a>
+</div>
+
+<a class="fab" id="fab" href="https://t.me/alinuccia3" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3c.3-1.2-.9-2.2-2-1.8L2.8 9.1c-1.2.5-1.2 2.2.1 2.6l4.3 1.4 1.7 5.3c.3 1 1.6 1.3 2.3.6l2.4-2.3 4.6 3.4c.9.6 2.1.2 2.4-.9l3.3-14.9zM9.6 13.9l7.8-6.1c.2-.2.5.1.3.3l-6.4 6.9-.3 2.8-1.4-3.9z"/></svg>
+</a>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>
+  <span id="toastText">Скопировано</span>
+</div>
+
+<script>
+(() => {
+  const TG = "alinuccia3";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = s => document.querySelector(s);
+
+  const SERVICES = [
+    "Карта побыту — по работе",
+    "Карта побыту — JDG",
+    "Карта побыту — spółka",
+    "Карта побыту — учёба",
+    "Карта побыту — воссоединение семьи",
+    "Карта CUKR",
+    "Карта резидента ЕС",
+    "Сталый побыт — по корням",
+    "Сталый побыт — по Карте поляка",
+    "Сталый побыт — с гражданином Польши",
+    "Гражданство Польши",
+    "Поручительство для найма оказионального",
+    "Мельдунок (прописка)",
+    "Нужна консультация — не знаю, что выбрать"
+  ];
+
+  // «Какая у вас ситуация?» → какие пункты заявки отметить
+  const SITUATIONS = [
+    { emo: "💼", q: "Работаю в Польше по договору",        a: "Карта побыту по работе",    svc: ["Карта побыту — по работе"] },
+    { emo: "🏪", q: "Открыл(а) JDG или spółkę",             a: "Карта побыту по бизнесу",   svc: ["Карта побыту — JDG", "Карта побыту — spółka"] },
+    { emo: "🎓", q: "Учусь в Польше",                        a: "Карта побыту на учёбу",     svc: ["Карта побыту — учёба"] },
+    { emo: "👨‍👩‍👧", q: "Хочу жить вместе с семьёй",          a: "Воссоединение семьи",       svc: ["Карта побыту — воссоединение семьи"] },
+    { emo: "🇺🇦", q: "Я из Украины, у меня статус UKR",      a: "Карта CUKR",                svc: ["Карта CUKR"] },
+    { emo: "📅", q: "Давно и легально живу в Польше",        a: "Карта резидента ЕС",        svc: ["Карта резидента ЕС"] },
+    { emo: "🌳", q: "Есть Карта поляка или польские корни",  a: "Сталый побыт",              svc: ["Сталый побыт — по Карте поляка", "Сталый побыт — по корням"] },
+    { emo: "💍", q: "Мой муж / жена — гражданин(ка) Польши", a: "Сталый побыт с гражданином", svc: ["Сталый побыт — с гражданином Польши"] },
+    { emo: "🛂", q: "Хочу польский паспорт",                 a: "Гражданство Польши",        svc: ["Гражданство Польши"] },
+    { emo: "🔑", q: "Снимаю жильё по najem okazjonalny",    a: "Поручительство для найма",  svc: ["Поручительство для найма оказионального"] },
+    { emo: "🏠", q: "Нужна прописка по новому адресу",       a: "Мельдунок",                 svc: ["Мельдунок (прописка)"] },
+    { emo: "🤔", q: "Не знаю, что мне подходит",             a: "Подскажу на консультации",  svc: ["Нужна консультация — не знаю, что выбрать"] }
+  ];
+
+  /* ---------- marquee ---------- */
+  const MQ = ["Карта побыту", "Карта CUKR", "Карта резидента", "Сталый побыт", "Гражданство", "Мельдунок", "Najem okazjonalny", "JDG · spółka", "Воссоединение семьи"];
+  const mqHTML = MQ.map(t => `<span class="it"><span class="gt">${t}</span><i>✦</i></span>`).join("");
+  $("#marq").innerHTML = mqHTML + mqHTML;
+
+  /* ---------- form checkboxes ---------- */
+  const form = $("#leadForm");
+  const checks = $("#checks");
+  const tick = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
+  SERVICES.forEach((s, i) => {
+    const l = document.createElement("label");
+    l.className = "check";
+    l.innerHTML = `<input type="checkbox" name="svc" value="${s}"><span class="box"><span class="tick">${tick}</span><span>${s}</span></span>`;
+    if (i === SERVICES.length - 1) l.style.gridColumn = "1 / -1";
+    checks.appendChild(l);
+  });
+  const cb = v => form.querySelector(`input[name=svc][value="${v}"]`);
+  const selected = () => [...form.querySelectorAll("input[name=svc]:checked")].map(i => i.value);
+
+  /* ---------- situations ---------- */
+  const sitGrid = $("#sitGrid");
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  SITUATIONS.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = `sit reveal d${(i % 4) + 1}`;
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = `<span class="ok">${tick}</span><span class="emo" aria-hidden="true">${s.emo}</span><span class="q">${s.q}</span><span class="a">${s.a} ${arrow}</span>`;
+    b.addEventListener("click", () => {
+      const on = !s.svc.every(v => cb(v).checked);
+      s.svc.forEach(v => cb(v).checked = on);
+      sync();
+      if (on) toast("Добавлено в заявку: " + s.a);
+    });
+    s.el = b;
+    sitGrid.appendChild(b);
+  });
+
+  /* ---------- message ---------- */
+  const preview = $("#preview");
+  function buildMessage() {
+    const name = $("#fName").value.trim();
+    const phone = $("#fPhone").value.trim();
+    const msg = $("#fMsg").value.trim();
+    const svc = selected();
+    if (!name && !svc.length && !phone && !msg) return "";
+    let t = `Здравствуйте, Алина! 👋\n`;
+    if (name) t += `Меня зовут ${name}.\n`;
+    if (svc.length) t += `\nМеня интересует:\n` + svc.map(s => `• ${s}`).join("\n") + "\n";
+    if (msg) t += `\nО ситуации: ${msg}\n`;
+    if (phone) t += `\nМой телефон: ${phone}\n`;
+    t += `\n(заявка с сайта Legalia)`;
+    return t;
+  }
+  function sync() {
+    const m = buildMessage();
+    preview.textContent = m || "Отметьте услуги слева — здесь появится текст сообщения…";
+    preview.classList.toggle("empty", !m);
+    SITUATIONS.forEach(s => {
+      const on = s.svc.every(v => cb(v).checked);
+      s.el.classList.toggle("sel", on);
+      s.el.setAttribute("aria-pressed", on);
+    });
+    document.querySelectorAll(".svc").forEach(c => {
+      const btn = c.querySelector(".more");
+      const on = cb(c.dataset.add).checked;
+      c.classList.toggle("picked-svc", on);
+      btn.classList.toggle("added", on);
+      btn.querySelector("span").textContent = on ? "✓ В заявке" : "Добавить в заявку";
+    });
+    const n = selected().length;
+    $("#pickedN").textContent = n;
+    if (n) $("#errSvc").classList.remove("show");
+    updatePicked();
+  }
+  form.addEventListener("input", sync);
+  form.addEventListener("change", sync);
+
+  /* плашка «Выбрано: N — К заявке» (прячется, когда форма уже на экране) */
+  let contactVisible = false;
+  const picked = $("#picked");
+  function updatePicked() {
+    const show = selected().length > 0 && !contactVisible;
+    picked.classList.toggle("show", show);
+    document.body.classList.toggle("has-picked", show);
+  }
+  new IntersectionObserver(([e]) => { contactVisible = e.isIntersecting; updatePicked(); }, { threshold: .05 }).observe($("#contact"));
+
+  async function copy(text) {
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch (_) {}
+      ta.remove(); return ok;
+    }
+  }
+  let toastTimer;
+  function toast(text) {
+    $("#toastText").textContent = text;
+    $("#toast").classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $("#toast").classList.remove("show"), 3200);
+  }
+  function validate() {
+    let ok = true;
+    const n = $("#fName");
+    const shake = el => { el.classList.remove("show"); void el.offsetWidth; el.classList.add("show"); };
+    if (!n.value.trim()) { shake($("#errName")); ok = false; } else $("#errName").classList.remove("show");
+    if (!selected().length) { shake($("#errSvc")); ok = false; }
+    if (!ok) (n.value.trim() ? checks : n).scrollIntoView({ behavior: "smooth", block: "center" });
+    return ok;
+  }
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!validate()) return;
+    const text = buildMessage();
+    copy(text);
+    // окно открываем синхронно в обработчике клика, чтобы браузер его не заблокировал
+    const url = `https://t.me/${TG}?text=${encodeURIComponent(text)}`;
+    const w = window.open(url, "_blank");
+    if (w) w.opener = null; else location.href = url;
+    toast("Сообщение скопировано — открываю Telegram…");
+  });
+  $("#copyOnly").addEventListener("click", async () => {
+    if (!validate()) return;
+    const ok = await copy(buildMessage());
+    toast(ok ? "Текст скопирован. Отправьте его в Telegram @" + TG : "Не удалось скопировать — выделите текст вручную");
+  });
+  $("#fName").addEventListener("input", () => $("#errName").classList.remove("show"));
+
+  /* карточки услуг */
+  document.querySelectorAll(".svc").forEach(card => {
+    card.querySelector(".more").addEventListener("click", () => {
+      const c = cb(card.dataset.add);
+      c.checked = !c.checked;
+      sync();
+      if (c.checked) toast("Добавлено в заявку: " + card.querySelector("h3").textContent);
+    });
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty("--mx", x + "px");
+      card.style.setProperty("--my", y + "px");
+      if (e.pointerType === "mouse" && !reduced) {
+        const rx = ((y / r.height) - .5) * -6, ry = ((x / r.width) - .5) * 6;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+      }
+    });
+    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+  });
+
+  /* ---------- hero rotator ---------- */
+  const words = [...document.querySelectorAll(".rot-word")];
+  let wi = 0;
+  setInterval(() => {
+    const cur = words[wi]; wi = (wi + 1) % words.length; const nxt = words[wi];
+    cur.classList.remove("on"); cur.classList.add("out");
+    nxt.classList.remove("out"); nxt.classList.add("on");
+    setTimeout(() => cur.classList.remove("out"), 650);
+  }, 2300);
+
+  /* count-up */
+  const runCount = el => {
+    const to = +el.dataset.count, dur = reduced ? 1 : 1400, t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  setTimeout(() => document.querySelectorAll("[data-count]").forEach(runCount), 1100);
+
+  /* ---------- nav / scroll ---------- */
+  const nav = $("#nav"), fab = $("#fab"), prog = $("#progress");
+  const onScroll = () => {
+    nav.classList.toggle("scrolled", scrollY > 30);
+    fab.classList.toggle("show", scrollY > innerHeight * .6);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  const burger = $("#burger"), links = $("#navLinks");
+  burger.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open);
+  });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    links.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", false);
+  }));
+
+  /* крупный шрифт */
+  const ft = $("#fontToggle");
+  const setBig = on => {
+    document.documentElement.classList.toggle("big", on);
+    ft.setAttribute("aria-pressed", on); ft.textContent = on ? "A−" : "A+";
+    ft.title = on ? "Обычный шрифт" : "Увеличить шрифт";
+  };
+  try { setBig(localStorage.getItem("legalia-big") === "1"); } catch (_) {}
+  ft.addEventListener("click", () => {
+    const on = !document.documentElement.classList.contains("big");
+    setBig(on);
+    try { localStorage.setItem("legalia-big", on ? "1" : "0"); } catch (_) {}
+  });
+
+  /* reveal on scroll */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: .12, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  $("#year").textContent = new Date().getFullYear();
+  sync();
+
+  /* золотая пыль */
+  const cv = $("#dust"), ctx = cv.getContext("2d");
+  let W, H, parts = [];
+  const resize = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr;
+    cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
+    const n = Math.round(Math.min(70, innerWidth / 18));
+    parts = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: (Math.random() * 1.6 + .4) * dpr,
+      vy: -(Math.random() * .25 + .05) * dpr, vx: (Math.random() - .5) * .15 * dpr,
+      a: Math.random() * .5 + .15, t: Math.random() * Math.PI * 2
+    }));
+  };
+  resize(); addEventListener("resize", resize);
+  const draw = () => {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of parts) {
+      p.x += p.vx; p.y += p.vy; p.t += .02;
+      if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(226,200,164,${p.a * (.6 + .4 * Math.sin(p.t))})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  };
+  if (!reduced) draw();
+})();
+</script>
+</body>
+</html>
