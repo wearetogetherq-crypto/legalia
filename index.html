@@ -415,6 +415,147 @@
   footer a{color:var(--gold);text-decoration:none}
   footer .fl{font:600 1.3rem "Playfair Display",serif}
 
+  /* ---------- отзывы ---------- */
+  .stars{display:inline-flex;gap:3px;color:var(--gold);vertical-align:middle}
+  .stars svg{width:20px;height:20px;fill:currentColor}
+  .stars svg.off{fill:rgba(226,200,164,.2)}
+  .rv-summary{display:flex;align-items:center;justify-content:center;gap:10px 14px;flex-wrap:wrap;margin-top:22px}
+  .rv-summary[hidden],.rv-list[hidden],.rv-empty[hidden]{display:none}
+  .rv-summary .avg{font:600 2.5rem/1.4 "Playfair Display",serif;margin:-.2em 0;font-variant-numeric:lining-nums}
+  .rv-summary .stars svg{width:24px;height:24px}
+  .rv-summary .cnt{color:var(--muted);font-weight:600}
+
+  .rv-list{position:relative}
+  .rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 44px) / 3);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;padding:4px 2px 8px;overscroll-behavior-x:contain}
+  .rv-track::-webkit-scrollbar{display:none}
+  .rv-track.few{justify-content:center}
+  .rv-card{scroll-snap-align:start;position:relative;background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 20px;display:flex;flex-direction:column;gap:14px;overflow:hidden;isolation:isolate;min-width:0}
+  .rv-card::after{content:"\201C";position:absolute;top:-6px;right:20px;z-index:-1;font:700 7rem/1 "Playfair Display",serif;color:rgba(226,200,164,.08)}
+  .rv-card::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .5s;
+    background:radial-gradient(110% 80% at 0% 0%,rgba(226,200,164,.14),transparent 55%),radial-gradient(80% 80% at 100% 100%,rgba(122,31,46,.3),transparent 60%)}
+  .rv-card:hover::before{opacity:1}
+  .rv-list .rv-card{opacity:0;transform:translateY(30px)}
+  .rv-list.in .rv-card{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0) * .1s)}
+  .rv-text{font-size:.98rem;line-height:1.6;white-space:pre-line;overflow-wrap:break-word;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+  .rv-card.open .rv-text{display:block}
+  .rv-text.ph{color:var(--muted);font-style:italic}
+  .rv-more{align-self:flex-start;background:none;border:0;color:var(--gold);font:700 .88rem "Manrope",sans-serif;cursor:pointer;padding:4px 0;min-height:36px;margin-top:-8px}
+  .rv-more[hidden]{display:none}
+  .rv-foot{margin-top:auto;display:flex;gap:12px;align-items:center;padding-top:16px;border-top:1px solid var(--line)}
+  .rv-ava{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--gold-3),var(--gold-2));color:#1a140d;font:600 1.25rem/1 "Playfair Display",serif}
+  .rv-foot > span:last-child{min-width:0}
+  .rv-foot b{display:block;line-height:1.25;overflow-wrap:break-word}
+  .rv-foot small{display:block;color:var(--muted);font-size:.82rem;line-height:1.35;margin-top:2px}
+  .rv-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+  .rv-ok{display:inline-flex;align-items:center;gap:6px;color:#8fe3a8;font-weight:700}
+  .rv-ok svg{width:16px;height:16px;flex:none}
+  .rv-ok.rv-wait{color:var(--gold)}
+  .rv-card.mine{border-style:dashed;border-color:rgba(226,200,164,.45)}
+  .rv-arrow{position:absolute;top:50%;z-index:2;width:50px;height:50px;border-radius:50%;display:none;place-items:center;cursor:pointer;
+    background:rgba(20,18,16,.92);border:1px solid var(--line);color:var(--gold);transition:border-color .3s,opacity .3s,transform .3s;transform:translateY(-50%)}
+  .rv-arrow svg{width:22px;height:22px}
+  .rv-arrow.prev{left:-25px}.rv-arrow.next{right:-25px}
+  .rv-arrow:hover{border-color:var(--gold)}
+  .rv-arrow:disabled{opacity:0;pointer-events:none}
+  .rv-list.over .rv-arrow{display:grid}
+  .rv-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .rv-dots:empty{display:none}
+  .rv-dots i{width:8px;height:8px;border-radius:8px;background:rgba(226,200,164,.25);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s}
+  .rv-dots i.on{width:26px;background:var(--gold)}
+
+  .rv-empty{max-width:640px;margin:0 auto;text-align:center;padding:10px 0 6px}
+  .rv-empty .stars{gap:8px;margin-bottom:14px}
+  .rv-empty .stars svg{width:34px;height:34px;fill:rgba(226,200,164,.18);animation:twinkle 3.2s ease-in-out infinite}
+  .rv-empty .stars svg:nth-child(2){animation-delay:.18s}.rv-empty .stars svg:nth-child(3){animation-delay:.36s}
+  .rv-empty .stars svg:nth-child(4){animation-delay:.54s}.rv-empty .stars svg:nth-child(5){animation-delay:.72s}
+  @keyframes twinkle{0%,100%{fill:rgba(226,200,164,.18);transform:none}25%,55%{fill:var(--gold);transform:translateY(-4px) scale(1.12)}}
+  .rv-empty h3{font:600 1.5rem/1.25 "Playfair Display",serif;color:var(--gold-3);margin-bottom:8px}
+  .rv-empty p{color:var(--muted)}
+
+  /* блок «Оставить отзыв» */
+  .rv-cta{position:relative;margin-top:40px;border-radius:28px;background:linear-gradient(180deg,var(--card),var(--bg-2));isolation:isolate;scroll-margin-top:96px}
+  .rv-cta::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;z-index:-1;pointer-events:none;
+    background:conic-gradient(from var(--ang),rgba(226,200,164,.22) 0 55%,var(--gold-3) 72%,var(--red) 84%,rgba(226,200,164,.22) 96%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spinang 6s linear infinite}
+  .rv-head{display:flex;align-items:center;gap:22px;padding:28px 32px}
+  .rv-head .ic{width:64px;height:64px;border-radius:20px;flex:none;display:grid;place-items:center;color:var(--gold);
+    background:linear-gradient(135deg,rgba(243,227,203,.18),rgba(201,168,119,.05))}
+  .rv-head .ic svg{width:30px;height:30px}
+  .rv-head h3{font:600 1.45rem/1.2 "Playfair Display",serif;color:var(--gold-3);margin-bottom:4px}
+  .rv-head p{color:var(--muted);font-size:.95rem;line-height:1.5}
+  .rv-head .btn{margin-left:auto;flex:none}
+  .rv-head .btn svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .rv-cta.open .rv-head .btn svg{transform:rotate(45deg)}
+  .rv-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.2,.8,.2,1)}
+  .rv-cta.open .rv-panel{grid-template-rows:1fr}
+  .rv-panel > div{min-height:0;overflow:hidden}
+  .rv-body{margin:0 32px;padding:30px 0 34px;border-top:1px solid var(--line);opacity:0;transform:translateY(-10px);transition:opacity .35s,transform .6s cubic-bezier(.2,.8,.2,1)}
+  .rv-cta.open .rv-body{opacity:1;transform:none;transition-delay:.12s}
+  .rv-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
+  .rv-cta.sent .rv-grid{display:none}
+  fieldset.field{border:0;min-width:0}
+  .rate{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+  .rate label{position:relative;width:50px;height:50px;display:grid;place-items:center;cursor:pointer;border-radius:12px}
+  .rate input{position:absolute;opacity:0;pointer-events:none}
+  .rate svg{width:40px;height:40px;fill:transparent;stroke:rgba(226,200,164,.55);stroke-width:1.3;stroke-linejoin:round;
+    transition:fill .25s,stroke .25s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+  .rate label.on svg{fill:var(--gold);stroke:var(--gold)}
+  .rate label:hover svg{transform:scale(1.12)}
+  .rate label.pop svg{animation:starpop .5s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes starpop{40%{transform:scale(1.35) rotate(-8deg)}}
+  .rate input:focus-visible + svg{stroke:var(--gold-3);filter:drop-shadow(0 0 6px rgba(226,200,164,.6))}
+  .rate-txt{margin-left:10px;font-weight:700;color:var(--gold-3)}
+  .rate-txt.ph{color:var(--muted);font-weight:500}
+  .field .sub{display:block;color:var(--muted);font-size:.82rem;margin-top:6px}
+  .field select{width:100%;background:rgba(12,11,10,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2c8a4' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center/20px;
+    border:1px solid var(--line);border-radius:14px;color:var(--text);font:500 1rem "Manrope",sans-serif;padding:16px 48px 16px 18px;min-height:56px;
+    -webkit-appearance:none;appearance:none;cursor:pointer;outline:none;transition:border-color .3s,box-shadow .3s;color-scheme:dark}
+  .field select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(226,200,164,.15)}
+  .field select option{background:#1a1714;color:var(--text)}
+  .rv-two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  .rv-consent .box{font-size:.9rem}
+  .rv-side{display:flex;flex-direction:column;gap:20px}
+  .rv-how{padding:22px 22px 8px;border-radius:20px;border:1px solid var(--line);background:rgba(12,11,10,.4)}
+  .rv-how h4{font:600 1.15rem "Playfair Display",serif;color:var(--gold-3);margin-bottom:12px}
+  .rv-how ol{list-style:none}
+  .rv-how li{display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;font-size:.92rem;line-height:1.45}
+  .rv-how li i{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold-3);
+    font:600 .85rem/1 "Manrope",sans-serif;font-style:normal}
+  .rv-prev > small{display:block;color:var(--muted);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+  .rv-prev .rv-card{border-style:dashed;border-color:rgba(226,200,164,.35)}
+  .rv-prev .rv-text{-webkit-line-clamp:5}
+  .rv-thanks{text-align:center;max-width:560px;margin:0 auto;padding:10px 0}
+  .rv-cta:not(.sent) .rv-thanks{display:none}
+  .rv-thanks .ic{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:rgba(143,227,168,.12);color:#8fe3a8}
+  .rv-cta.sent .rv-thanks .ic{animation:starpop .7s cubic-bezier(.3,1.6,.5,1)}
+  .rv-thanks .ic svg{width:34px;height:34px}
+  .rv-thanks h3{font:600 1.6rem "Playfair Display",serif;color:var(--gold-3);margin-bottom:8px}
+  .rv-thanks p{color:var(--muted);margin-bottom:22px}
+  .rv-thanks .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  @media (max-width:1020px){
+    .rv-track{grid-auto-columns:calc((100% - 22px) / 2)}
+    .rv-arrow.prev{left:-12px}.rv-arrow.next{right:-12px}
+    .rv-grid{grid-template-columns:1fr}
+    .rv-side{order:-1}
+    .rv-prev{display:none}
+  }
+  @media (max-width:640px){
+    .rv-track{grid-auto-columns:88%;gap:12px}
+    .rv-arrow{display:none!important}
+    .rv-card{padding:22px 20px 18px}
+    .rv-head{flex-direction:column;align-items:flex-start;gap:14px;padding:24px 20px}
+    .rv-head .ic{width:54px;height:54px;border-radius:16px}
+    .rv-head .btn{margin-left:0;width:100%}
+    .rv-body{margin:0 20px;padding:24px 0 26px}
+    .rv-two{grid-template-columns:1fr}
+    .rate label{width:46px;height:46px}
+    .rate svg{width:38px;height:38px}
+    .rate-txt{flex-basis:100%;margin:4px 0 0 4px}
+    .rv-thanks .row .btn{width:100%}
+  }
 
   /* ---------- переключатель языка ---------- */
   .lang{position:relative;display:flex;padding:4px;border-radius:999px;border:1px solid var(--line);background:rgba(20,18,16,.6);
@@ -452,8 +593,10 @@
   @media (max-width:1100px){
     .sit-grid{grid-template-columns:repeat(2,1fr)}
   }
-  @media (min-width:1281px) and (max-width:1500px){
-    .nav-links{gap:20px}
+  @media (min-width:1281px) and (max-width:1699px){
+    .nav .container{gap:12px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:.86rem}
   }
   @media (max-width:1020px){
     .hero-grid,.about-grid,.form-wrap,.area{grid-template-columns:1fr}
@@ -505,6 +648,8 @@
     .sit:hover:not(.sel)::before{opacity:0}
     .svc:hover:not(.picked-svc)::after{background:linear-gradient(var(--line),var(--line));animation:none}
     .svc:hover .ic,.about-photo:hover img{transform:none}
+    .rv-card:hover::before{opacity:0}
+    .rate label:hover svg{transform:none}
     .sit:active,.btn:active,.svc .more:active{transform:scale(.97)!important}
   }
   /* «Уменьшить движение» в системе: анимации остаются, убираем только покачивания и зум */
@@ -544,6 +689,7 @@
       <li><a data-i18n="nav2" href="#about">Про мене</a></li>
       <li><a data-i18n="nav3" href="#services">Послуги</a></li>
       <li><a data-i18n="nav4" href="#how">Як працюємо</a></li>
+      <li><a data-i18n="nav6" href="#reviews">Відгуки</a></li>
       <li><a data-i18n="nav5" href="#faq">Питання</a></li>
     </ul>
     <div class="nav-actions">
@@ -816,6 +962,129 @@
   </div>
 </section>
 
+<!-- ===== REVIEWS ===== -->
+<!-- Опубліковані відгуки беруться з файлу reviews.json (додаються після перевірки Аліною) -->
+<section id="reviews">
+  <div class="container">
+    <div class="sec-head">
+      <div data-i18n="nav6" class="eyebrow reveal">Відгуки</div>
+      <h2 data-i18n="rvH2" class="reveal d1">Що кажуть <span class="gt">клієнти</span></h2>
+      <p data-i18n="rvP" class="reveal d2">Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.</p>
+      <div class="rv-summary reveal d3" id="rvSummary" hidden>
+        <b class="avg gt" id="rvAvg"></b><span class="stars" id="rvAvgStars"></span><span class="cnt" id="rvCount"></span>
+      </div>
+    </div>
+
+    <div class="rv-list reveal" id="rvList" hidden>
+      <button type="button" class="rv-arrow prev" id="rvPrev" aria-label="Попередні відгуки" data-i18n-attr="aria-label:rvPrevAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="rv-track" id="rvTrack"></div>
+      <button type="button" class="rv-arrow next" id="rvNext" aria-label="Наступні відгуки" data-i18n-attr="aria-label:rvNextAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="rv-dots" id="rvDots" aria-hidden="true"></div>
+    </div>
+
+    <div class="rv-empty reveal" id="rvEmpty" hidden>
+      <div class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></div>
+      <h3 data-i18n="rvEmptyH">Тут з’являться перші відгуки</h3>
+      <p data-i18n="rvEmptyP">Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!</p>
+    </div>
+
+    <div class="rv-cta reveal" id="vidguk">
+      <div class="rv-head">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M12 8.2l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z" fill="currentColor" stroke="none"/></svg></span>
+        <div>
+          <h3 data-i18n="rvCtaH">Вже оформили документи з Legalia?</h3>
+          <p data-i18n="rvCtaP">Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.</p>
+        </div>
+        <button type="button" class="btn btn-gold" id="rvOpen" aria-expanded="false" aria-controls="rvPanel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          <span id="rvOpenTxt">Залишити відгук</span>
+        </button>
+      </div>
+      <div class="rv-panel" id="rvPanel" inert><div>
+        <div class="rv-body">
+          <div class="rv-grid">
+            <form id="rvForm" novalidate>
+              <fieldset class="field">
+                <legend data-i18n="rvLblRate" class="lbl">Ваша оцінка <span class="req">*</span></legend>
+                <div class="rate" id="rvRate">
+            <label><input type="radio" name="rating" value="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></label>
+            <label><input type="radio" name="rating" value="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></label>
+            <label><input type="radio" name="rating" value="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></label>
+            <label><input type="radio" name="rating" value="4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></label>
+            <label><input type="radio" name="rating" value="5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg></label>
+                  <span class="rate-txt ph" id="rvRateTxt" aria-live="polite"></span>
+                </div>
+                <div data-i18n="rvErrRate" class="err" id="rvErrRate">Оберіть кількість зірок</div>
+              </fieldset>
+
+              <div class="field">
+                <label data-i18n="rvLblName" class="lbl" for="rvName">Як вас підписати? <span class="req">*</span></label>
+                <input type="text" id="rvName" maxlength="40" autocomplete="given-name">
+                <small data-i18n="rvNameSub" class="sub">Можна лише ім’я або ім’я та першу літеру прізвища</small>
+                <div data-i18n="errName" class="err" id="rvErrName">Будь ласка, напишіть ваше ім’я</div>
+              </div>
+
+              <div class="rv-two">
+                <div class="field">
+                  <label data-i18n="rvLblCity" class="lbl" for="rvCity">Місто <small>(за бажанням)</small></label>
+                  <input type="text" id="rvCity" maxlength="40" autocomplete="address-level2">
+                </div>
+                <div class="field">
+                  <label data-i18n="rvLblSvc" class="lbl" for="rvSvc">З чим я допомогла?</label>
+                  <select id="rvSvc"></select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label data-i18n="rvLblText" class="lbl" for="rvText">Ваш відгук <span class="req">*</span></label>
+                <textarea id="rvText" maxlength="1200" placeholder="Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?" data-i18n-attr="placeholder:rvTextPh"></textarea>
+                <div data-i18n="rvErrText" class="err" id="rvErrText">Напишіть хоча б кілька слів (від 15 символів)</div>
+              </div>
+
+              <div class="field">
+                <label class="check rv-consent"><input type="checkbox" id="rvConsent"><span class="box"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span data-i18n="rvConsent">Погоджуюся, щоб мій відгук з’явився на сайті Legalia</span></span></label>
+                <div data-i18n="rvErrConsent" class="err" id="rvErrConsent">Потрібна ваша згода на публікацію</div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn tg-btn">
+                  <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
+                  <span data-i18n="rvSendFull" class="lbl-full">Надіслати відгук Аліні</span><span data-i18n="rvSendShort" class="lbl-short">Надіслати відгук</span>
+                </button>
+              </div>
+            </form>
+
+            <aside class="rv-side">
+              <div class="rv-how">
+                <h4 data-i18n="rvHowH">Як це працює</h4>
+                <ol>
+                  <li><i>1</i><span data-i18n="rvHow1">Ви пишете відгук і надсилаєте його мені в Telegram</span></li>
+                  <li><i>2</i><span data-i18n="rvHow2">Я перевіряю, що ви мій клієнт</span></li>
+                  <li><i>3</i><span data-i18n="rvHow3">Відгук з’являється тут, на сайті</span></li>
+                </ol>
+              </div>
+              <div class="rv-prev">
+                <small data-i18n="rvPrevH">Так виглядатиме ваш відгук</small>
+                <article class="rv-card" id="rvPreview" aria-hidden="true"></article>
+              </div>
+            </aside>
+          </div>
+
+          <div class="rv-thanks" role="status">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+            <h3 data-i18n="rvThanksH">Дякую за відгук!</h3>
+            <p data-i18n="rvThanksP">Залишилося натиснути «Надіслати» в Telegram. Щойно я перевірю відгук, він з’явиться на сайті. Якщо текст не підставився — натисніть у полі повідомлення й оберіть «Вставити».</p>
+            <div class="row">
+              <button type="button" class="btn tg-btn" id="rvAgain"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg><span data-i18n="rvAgain">Відкрити Telegram ще раз</span></button>
+              <button type="button" class="btn btn-ghost" id="rvEdit"><span data-i18n="rvEdit">Змінити відгук</span></button>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section id="faq">
   <div class="container">
@@ -904,7 +1173,7 @@
 <footer>
   <div class="container">
     <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> <span data-i18n="footer">Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство</span></div>
-    <div>Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
+    <div><a data-i18n="rvFooter" href="#vidguk">Залишити відгук</a> · Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
   </div>
 </footer>
 
@@ -990,17 +1259,20 @@
           desc: "Legalia — Алина Калинич, 5 лет в Польше. Помощь с легализацией: карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок. Радом, Мазовецкое воеводство.",
           addedToast: "Добавлено в заявку: ", sending: "Сообщение скопировано — открываю Telegram…", add: "Добавить в заявку", added: "✓ В заявке",
           empty: "Отметьте услуги в форме — здесь появится текст сообщения…",
-          hello: "Здравствуйте, Алина! 👋", myName: "Меня зовут {n}.", interest: "Меня интересует:", about: "О ситуации:", phone: "Мой телефон:", from: "(заявка с сайта Legalia)" },
+          hello: "Здравствуйте, Алина! 👋", myName: "Меня зовут {n}.", interest: "Меня интересует:", about: "О ситуации:", phone: "Мой телефон:", from: "(заявка с сайта Legalia)",
+          rvOpen: "Оставить отзыв", rvClose: "Свернуть", rvRatePh: "Нажмите на звезду", rvRates: ["Плохо", "Так себе", "Нормально", "Хорошо", "Отлично!"], rvOf: "{n} из 5", rvSvcPh: "— не выбрано —", rvConsult: "Консультация", rvMore: "Читать полностью", rvLess: "Свернуть", rvOk: "Клиент Legalia", rvPending: "На проверке — пока видите только вы", rvYou: "Ваше имя", rvPh: "Здесь появится текст вашего отзыва…", rvSending: "Отзыв скопирован — открываю Telegram…", rvHead: "⭐ Отзыв для сайта Legalia", rvRate: "Оценка:", rvName: "Имя:", rvCity: "Город:", rvSvc: "Услуга:", rvAgree: "✅ Согласен(на) на публикацию отзыва на сайте.", rvN: {"one": "отзыв", "few": "отзыва", "many": "отзывов", "other": "отзыва"} },
     uk: { title: "Legalia — легалізація в Польщі | Аліна Калініч, Радом",
           desc: "Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.",
           addedToast: "Додано до заявки: ", sending: "Повідомлення скопійовано — відкриваю Telegram…", add: "Додати до заявки", added: "✓ У заявці",
           empty: "Позначте послуги у формі — тут з’явиться текст повідомлення…",
-          hello: "Добрий день, Аліно! 👋", myName: "Мене звати {n}.", interest: "Мене цікавить:", about: "Про ситуацію:", phone: "Мій телефон:", from: "(заявка з сайту Legalia)" },
+          hello: "Добрий день, Аліно! 👋", myName: "Мене звати {n}.", interest: "Мене цікавить:", about: "Про ситуацію:", phone: "Мій телефон:", from: "(заявка з сайту Legalia)",
+          rvOpen: "Залишити відгук", rvClose: "Згорнути", rvRatePh: "Натисніть на зірку", rvRates: ["Погано", "Так собі", "Нормально", "Добре", "Чудово!"], rvOf: "{n} з 5", rvSvcPh: "— не обрано —", rvConsult: "Консультація", rvMore: "Читати повністю", rvLess: "Згорнути", rvOk: "Клієнт Legalia", rvPending: "На перевірці — поки бачите лише ви", rvYou: "Ваше ім’я", rvPh: "Тут з’явиться текст вашого відгуку…", rvSending: "Відгук скопійовано — відкриваю Telegram…", rvHead: "⭐ Відгук для сайту Legalia", rvRate: "Оцінка:", rvName: "Ім’я:", rvCity: "Місто:", rvSvc: "Послуга:", rvAgree: "✅ Погоджуюся на публікацію відгуку на сайті.", rvN: {"one": "відгук", "few": "відгуки", "many": "відгуків", "other": "відгуку"} },
     en: { title: "Legalia — legalization in Poland | Alina Kalinich, Radom",
           desc: "Legalia — Alina Kalinich, 5 years in Poland. Help with legalization: residence card, CUKR, EU resident card, permanent residence, citizenship, meldunek. Radom, Masovian Voivodeship.",
           addedToast: "Added to request: ", sending: "Message copied — opening Telegram…", add: "Add to request", added: "✓ Added",
           empty: "Tick services in the form — your message will appear here…",
-          hello: "Hello, Alina! 👋", myName: "My name is {n}.", interest: "I’m interested in:", about: "About my situation:", phone: "My phone:", from: "(request from the Legalia website)" }
+          hello: "Hello, Alina! 👋", myName: "My name is {n}.", interest: "I’m interested in:", about: "About my situation:", phone: "My phone:", from: "(request from the Legalia website)",
+          rvOpen: "Leave a review", rvClose: "Close", rvRatePh: "Tap a star", rvRates: ["Poor", "Fair", "Good", "Very good", "Excellent!"], rvOf: "{n} out of 5", rvSvcPh: "— not selected —", rvConsult: "Consultation", rvMore: "Read more", rvLess: "Show less", rvOk: "Legalia client", rvPending: "Under review — only you can see it for now", rvYou: "Your name", rvPh: "Your review text will appear here…", rvSending: "Review copied — opening Telegram…", rvHead: "⭐ Review for the Legalia website", rvRate: "Rating:", rvName: "Name:", rvCity: "City:", rvSvc: "Service:", rvAgree: "✅ I agree to my review being published on the website.", rvN: {"one": "review", "other": "reviews"} }
   };
 
   // тексты страницы (в HTML — украинский)
@@ -1136,7 +1408,39 @@
       scrollAria: 'Прокрутить вниз',
       nameAlt: 'Алина Калинич',
       msgPh: 'Например: работаю по umowie o pracę, карта заканчивается в декабре',
-      fabAria: 'Написать в Telegram'
+      fabAria: 'Написать в Telegram',
+      nav6: 'Отзывы',
+      rvH2: 'Что говорят <span class="gt">клиенты</span>',
+      rvP: 'Здесь только настоящие отзывы людей, которым я помогла с документами. Каждый появляется на сайте после того, как я подтвержу, что человек — мой клиент.',
+      rvEmptyH: 'Здесь появятся первые отзывы',
+      rvEmptyP: 'Отзывы на сайте только начинают собираться. Если я уже помогла вам — станьте первым, кто поделится опытом!',
+      rvCtaH: 'Уже оформили документы с Legalia?',
+      rvCtaP: 'Расскажите, как всё прошло. Ваш отзыв поможет другим людям решиться и не бояться легализации.',
+      rvLblRate: 'Ваша оценка <span class="req">*</span>',
+      rvErrRate: 'Выберите количество звёзд',
+      rvLblName: 'Как вас подписать? <span class="req">*</span>',
+      rvNameSub: 'Можно только имя или имя и первую букву фамилии',
+      rvLblCity: 'Город <small>(по желанию)</small>',
+      rvLblSvc: 'С чем я помогла?',
+      rvLblText: 'Ваш отзыв <span class="req">*</span>',
+      rvTextPh: 'Как всё прошло? Что понравилось? Посоветовали бы меня знакомым?',
+      rvErrText: 'Напишите хотя бы пару слов (от 15 символов)',
+      rvConsent: 'Согласен(на), чтобы мой отзыв появился на сайте Legalia',
+      rvErrConsent: 'Нужно ваше согласие на публикацию',
+      rvSendFull: 'Отправить отзыв Алине',
+      rvSendShort: 'Отправить отзыв',
+      rvHowH: 'Как это работает',
+      rvHow1: 'Вы пишете отзыв и отправляете его мне в Telegram',
+      rvHow2: 'Я проверяю, что вы мой клиент',
+      rvHow3: 'Отзыв появляется здесь, на сайте',
+      rvPrevH: 'Так будет выглядеть ваш отзыв',
+      rvThanksH: 'Спасибо за отзыв!',
+      rvThanksP: 'Осталось нажать «Отправить» в Telegram. Как только я проверю отзыв, он появится на сайте. Если текст не подставился — нажмите в поле сообщения и выберите «Вставить».',
+      rvAgain: 'Открыть Telegram ещё раз',
+      rvEdit: 'Изменить отзыв',
+      rvFooter: 'Оставить отзыв',
+      rvPrevAria: 'Предыдущие отзывы',
+      rvNextAria: 'Следующие отзывы'
     },
     uk: {
       logoSmall: 'Аліна Калініч · Радом', nav1: 'Що мені підходить?', nav2: 'Про мене', nav3: 'Послуги', nav4: 'Як працюємо', nav5: 'Питання',
@@ -1195,7 +1499,8 @@
       sendFull: 'Надіслати Аліні в Telegram', sendShort: 'Надіслати в Telegram',
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
       note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
-      footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram'
+      footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram',
+      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvNameSub: 'Можна лише ім’я або ім’я та першу літеру прізвища', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvConsent: 'Погоджуюся, щоб мій відгук з’явився на сайті Legalia', rvErrConsent: 'Потрібна ваша згода на публікацію', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і надсилаєте його мені в Telegram', rvHow2: 'Я перевіряю, що ви мій клієнт', rvHow3: 'Відгук з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Залишилося натиснути «Надіслати» в Telegram. Щойно я перевірю відгук, він з’явиться на сайті. Якщо текст не підставився — натисніть у полі повідомлення й оберіть «Вставити».', rvAgain: 'Відкрити Telegram ще раз', rvEdit: 'Змінити відгук', rvFooter: 'Залишити відгук', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки'
     },
     en: {
       logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
@@ -1254,7 +1559,8 @@
       sendFull: 'Send to Alina on Telegram', sendShort: 'Send via Telegram',
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
       note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
-      footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram'
+      footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram',
+      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvNameSub: 'First name only, or first name and last initial', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvConsent: 'I agree that my review may be published on the Legalia website', rvErrConsent: 'Your consent to publish is required', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvHowH: 'How it works', rvHow1: 'You write a review and send it to me on Telegram', rvHow2: 'I check that you are my client', rvHow3: 'The review appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Just press “Send” in Telegram. As soon as I check the review, it will appear on the site. If the text didn’t appear, tap the message field and choose “Paste”.', rvAgain: 'Open Telegram again', rvEdit: 'Edit review', rvFooter: 'Leave a review', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews'
     }
   };
 
@@ -1382,14 +1688,16 @@
   form.addEventListener("submit", e => {
     e.preventDefault();
     if (!validate()) return;
-    const text = buildMessage();
+    openTG(buildMessage());
+    toast(ui().sending);
+  });
+  function openTG(text) {
     copy(text);
     // окно открываем синхронно в обработчике клика, чтобы браузер его не заблокировал
     const url = `https://t.me/${TG}?text=${encodeURIComponent(text)}`;
     const w = window.open(url, "_blank");
     if (w) w.opener = null; else location.href = url;
-    toast(ui().sending);
-  });
+  }
   $("#fName").addEventListener("input", () => $("#errName").classList.remove("show"));
 
   /* карточки услуг */
@@ -1437,7 +1745,10 @@
     nav.classList.toggle("scrolled", scrollY > 30);
     // круглая кнопка уезжает в угол, когда видна кнопка «Отправить в Telegram» (и ниже неё)
     const sendReached = sendBtn.getBoundingClientRect().top < innerHeight - 20;
-    fab.classList.toggle("show", scrollY > innerHeight * .6 && !sendReached);
+    // …и пока на экране открыта форма отзыва
+    const rv = document.getElementById("vidguk"), rr = rv.getBoundingClientRect();
+    const rvForm = rv.classList.contains("open") && rr.top < innerHeight - 80 && rr.bottom > 120;
+    fab.classList.toggle("show", scrollY > innerHeight * .6 && !sendReached && !rvForm);
     const max = document.documentElement.scrollHeight - innerHeight;
     prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
   };
@@ -1477,6 +1788,192 @@
 
   $("#year").textContent = new Date().getFullYear();
 
+  /* ================= ОТЗЫВЫ ================= */
+  // Опубликованные отзывы — в reviews.json. Свой отправленный отзыв человек сразу видит
+  // в списке с пометкой «на проверке» (хранится только в его браузере), пока Алина его не опубликует.
+  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5-4.8-4.5 6.5-.8z"/></svg>';
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>';
+  const CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  const MY_KEY = "legalia-my-review";
+  const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const starsHTML = n => Array.from({ length: 5 }, (_, i) => i < n ? STAR : STAR.replace("<svg", '<svg class="off"')).join("");
+  const svcName = id => !id ? "" : id === "consult" ? ui().rvConsult : SVC[id] ? SVC[id][lang] : id;
+  const sameText = (a, b) => (a || "").replace(/\s+/g, " ").trim() === (b || "").replace(/\s+/g, " ").trim();
+  const locale = () => ({ uk: "uk-UA", ru: "ru-RU", en: "en-GB" }[lang]);
+  const thisMonth = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`; };
+  function fmtDate(v) {
+    const m = /^(\d{4})-(\d{1,2})/.exec(v || "");
+    if (!m) return "";
+    try { return new Intl.DateTimeFormat(locale(), { month: "long", year: "numeric" }).format(new Date(+m[1], m[2] - 1, 1)); } catch (_) { return v; }
+  }
+  function cardHTML(r, mode) { // mode: "pub" | "mine" | "preview"
+    const rating = Math.max(0, Math.min(5, Math.round(+r.rating || 0)));
+    const u = ui(), name = (r.name || "").trim() || u.rvYou;
+    const sub = [r.city, svcName(r.service)].filter(Boolean).map(esc).join(" · ");
+    const badge = mode === "mine" ? `<span class="rv-ok rv-wait">${CLOCK}${u.rvPending}</span>` : `<span class="rv-ok">${CHECK}${u.rvOk}</span>`;
+    return `<span class="stars" role="img" aria-label="${esc(u.rvOf.replace("{n}", rating))}">${starsHTML(rating)}</span>
+      <p class="rv-text${r.text ? "" : " ph"}">${esc(r.text || u.rvPh)}</p>
+      ${mode === "preview" ? "" : `<button type="button" class="rv-more" hidden>${u.rvMore}</button>`}
+      <div class="rv-foot"><span class="rv-ava" aria-hidden="true">${esc(name.charAt(0).toUpperCase())}</span><span><b>${esc(name)}</b>${sub ? `<small>${sub}</small>` : ""}</span></div>
+      <div class="rv-meta">${badge}<span>${fmtDate(r.date)}</span></div>`;
+  }
+
+  let REVIEWS = [], rvLoaded = false;
+  const rvTrack = $("#rvTrack"), rvDots = $("#rvDots"), rvList = $("#rvList"), rvPrev = $("#rvPrev"), rvNext = $("#rvNext");
+  function myReview() {
+    try {
+      const r = JSON.parse(localStorage.getItem(MY_KEY) || "null");
+      if (!r) return null;
+      if (REVIEWS.some(x => sameText(x.text, r.text))) { localStorage.removeItem(MY_KEY); return null; } // уже опубликован
+      return r;
+    } catch (_) { return null; }
+  }
+  function renderReviews() {
+    if (!rvLoaded) return;
+    const mine = myReview(), n = REVIEWS.length;
+    const cards = (mine ? [[mine, "mine"]] : []).concat(REVIEWS.map(r => [r, "pub"]));
+    $("#rvEmpty").hidden = cards.length > 0;
+    rvList.hidden = !cards.length;
+    $("#rvSummary").hidden = !n;
+    if (n) {
+      const avg = REVIEWS.reduce((a, r) => a + (+r.rating || 0), 0) / n;
+      $("#rvAvg").textContent = avg.toLocaleString(locale(), { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      $("#rvAvgStars").innerHTML = starsHTML(Math.round(avg));
+      $("#rvAvgStars").setAttribute("aria-hidden", "true");
+      const forms = ui().rvN;
+      $("#rvCount").textContent = `${n} ${forms[new Intl.PluralRules(locale()).select(n)] || forms.other}`;
+    }
+    rvTrack.innerHTML = "";
+    cards.forEach(([r, mode], i) => {
+      const a = document.createElement("article");
+      a.className = "rv-card" + (mode === "mine" ? " mine" : "");
+      a.style.setProperty("--i", Math.min(i, 3));
+      a.innerHTML = cardHTML(r, mode);
+      const more = a.querySelector(".rv-more");
+      more.addEventListener("click", () => { const o = a.classList.toggle("open"); more.textContent = o ? ui().rvLess : ui().rvMore; rvLayout(); });
+      rvTrack.appendChild(a);
+    });
+    rvTrack.scrollLeft = 0;
+    requestAnimationFrame(rvLayout);
+  }
+  function rvLayout() {
+    if (rvList.hidden) return;
+    rvTrack.querySelectorAll(".rv-card").forEach(c => {
+      const t = c.querySelector(".rv-text");
+      if (!c.classList.contains("open")) c.querySelector(".rv-more").hidden = t.scrollHeight <= t.clientHeight + 2;
+    });
+    const over = rvTrack.scrollWidth > rvTrack.clientWidth + 4;
+    rvTrack.classList.toggle("few", !over);
+    rvList.classList.toggle("over", over);
+    rvDots.innerHTML = over ? "<i></i>".repeat(rvTrack.children.length) : "";
+    rvOnScroll();
+  }
+  function rvStep() { const c = rvTrack.children; return c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : rvTrack.clientWidth; }
+  function rvOnScroll() {
+    const max = rvTrack.scrollWidth - rvTrack.clientWidth;
+    rvPrev.disabled = rvTrack.scrollLeft < 4;
+    rvNext.disabled = rvTrack.scrollLeft > max - 4;
+    const step = rvStep(), first = Math.round(rvTrack.scrollLeft / step), per = Math.max(1, Math.round(rvTrack.clientWidth / step));
+    [...rvDots.children].forEach((d, i) => d.classList.toggle("on", i >= first && i < first + per));
+  }
+  rvTrack.addEventListener("scroll", rvOnScroll, { passive: true });
+  rvPrev.addEventListener("click", () => rvTrack.scrollBy({ left: -rvStep(), behavior: "smooth" }));
+  rvNext.addEventListener("click", () => rvTrack.scrollBy({ left: rvStep(), behavior: "smooth" }));
+  addEventListener("resize", rvLayout);
+
+  fetch("reviews.json", { cache: "no-cache" })
+    .then(r => r.ok ? r.json() : [])
+    .catch(() => [])
+    .then(j => {
+      REVIEWS = (Array.isArray(j) ? j : (j && j.reviews) || [])
+        .filter(r => r && r.name && r.text)
+        .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+      rvLoaded = true;
+      renderReviews();
+    });
+
+  /* форма отзыва */
+  const rvCta = $("#vidguk"), rvForm = $("#rvForm"), rvPanel = $("#rvPanel");
+  const rateLabels = [...rvForm.querySelectorAll("#rvRate label")];
+  let rvRating = 0;
+  const paintStars = n => rateLabels.forEach((l, i) => l.classList.toggle("on", i < n));
+  rateLabels.forEach((l, i) => {
+    l.addEventListener("mouseenter", () => paintStars(i + 1));
+    l.addEventListener("mouseleave", () => paintStars(rvRating));
+  });
+  rvForm.addEventListener("change", e => {
+    if (e.target.name === "rating") {
+      rvRating = +e.target.value;
+      paintStars(rvRating);
+      rateLabels.forEach((l, i) => { l.classList.remove("pop"); if (i < rvRating) { void l.offsetWidth; l.style.setProperty("animation-delay", i * .05 + "s"); l.classList.add("pop"); } });
+      $("#rvErrRate").classList.remove("show");
+    }
+    if (e.target.id === "rvConsent" && e.target.checked) $("#rvErrConsent").classList.remove("show");
+    rvSync();
+  });
+  rvForm.addEventListener("input", e => {
+    if (e.target.id === "rvName") $("#rvErrName").classList.remove("show");
+    if (e.target.id === "rvText" && e.target.value.trim().length >= 15) $("#rvErrText").classList.remove("show");
+    rvSync();
+  });
+  const rvData = () => ({ rating: rvRating, name: $("#rvName").value.trim(), city: $("#rvCity").value.trim(),
+    service: $("#rvSvc").value, text: $("#rvText").value.trim(), date: thisMonth() });
+  function rvSync() {
+    const u = ui(), t = $("#rvRateTxt");
+    t.textContent = rvRating ? u.rvRates[rvRating - 1] : u.rvRatePh;
+    t.classList.toggle("ph", !rvRating);
+    $("#rvPreview").innerHTML = cardHTML(rvData(), "preview");
+    $("#rvOpenTxt").textContent = rvCta.classList.contains("open") ? u.rvClose : u.rvOpen;
+  }
+  function rvI18n() { // тексты, которые собирает скрипт
+    rvForm.querySelectorAll("#rvRate input").forEach(i => i.setAttribute("aria-label", ui().rvOf.replace("{n}", i.value)));
+    const sel = $("#rvSvc"), v = sel.value;
+    sel.innerHTML = `<option value="">${esc(ui().rvSvcPh)}</option>` + SERVICES.map(x => `<option value="${x.id}">${esc(svcName(x.id))}</option>`).join("");
+    sel.value = v;
+    rvSync();
+  }
+  function rvMessage() {
+    const d = rvData(), u = ui();
+    let t = `${u.rvHead}\n\n${u.rvRate} ${"⭐".repeat(d.rating)} (${d.rating}/5)\n${u.rvName} ${d.name}\n`;
+    if (d.city) t += `${u.rvCity} ${d.city}\n`;
+    if (d.service) t += `${u.rvSvc} ${svcName(d.service)}\n`;
+    return t + `\n«${d.text}»\n\n${u.rvAgree}`;
+  }
+  function rvValidate() {
+    const shake = el => { el.classList.remove("show"); void el.offsetWidth; el.classList.add("show"); };
+    const bad = [];
+    if (!rvRating) { shake($("#rvErrRate")); bad.push($("#rvRate")); }
+    if (!$("#rvName").value.trim()) { shake($("#rvErrName")); bad.push($("#rvName")); }
+    if ($("#rvText").value.trim().length < 15) { shake($("#rvErrText")); bad.push($("#rvText")); }
+    if (!$("#rvConsent").checked) { shake($("#rvErrConsent")); bad.push($("#rvConsent").closest("label")); }
+    if (bad.length) bad[0].scrollIntoView({ behavior: "smooth", block: "center" });
+    return !bad.length;
+  }
+  rvForm.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!rvValidate()) return;
+    openTG(rvMessage());
+    toast(ui().rvSending);
+    try { localStorage.setItem(MY_KEY, JSON.stringify(rvData())); } catch (_) {}
+    renderReviews();
+    rvCta.classList.add("sent");
+  });
+  $("#rvAgain").addEventListener("click", () => { openTG(rvMessage()); toast(ui().rvSending); });
+  $("#rvEdit").addEventListener("click", () => rvCta.classList.remove("sent"));
+  function rvToggle(open, scroll) {
+    rvCta.classList.toggle("open", open);
+    $("#rvOpen").setAttribute("aria-expanded", open);
+    rvPanel.inert = !open;
+    rvSync();
+    onScroll();
+    if (open && scroll) setTimeout(() => rvCta.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+  }
+  $("#rvOpen").addEventListener("click", () => rvToggle(!rvCta.classList.contains("open")));
+  // ссылка …/#vidguk сразу открывает форму (её удобно отправлять клиентам после услуги)
+  const rvHash = () => { if (location.hash === "#vidguk") rvToggle(true, true); };
+  addEventListener("hashchange", rvHash);
+  document.querySelectorAll('a[href="#vidguk"]').forEach(a => a.addEventListener("click", () => rvToggle(true)));
+
   /* ---------- переключение языка ---------- */
   const sw = $("#langSw"), pill = sw.querySelector(".lang-pill");
   function updateSwitcher() {
@@ -1502,6 +1999,8 @@
       SITUATIONS.forEach(x => { x.el.querySelector(".q").textContent = x[lang][0]; x.el.querySelector(".a-t").textContent = x[lang][1]; });
       renderMarquee();
       sync();
+      rvI18n();
+      renderReviews();
       updateSwitcher();
       $("#toast").classList.remove("show"); // подсказка на прежнем языке больше не нужна
       try { localStorage.setItem("legalia-lang", lang); } catch (_) {}
@@ -1522,6 +2021,7 @@
   });
   addEventListener("resize", updateSwitcher);
   applyLang(initialLang(), false);
+  rvHash();
   // после загрузки шрифтов ширина кнопок уточняется — выставляем плашку и включаем её анимацию
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { updateSwitcher(); requestAnimationFrame(() => sw.classList.add("ready")); });
 
