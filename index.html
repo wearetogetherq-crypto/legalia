@@ -35,7 +35,6 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;font-size:var(--fs)}
-  html.big{--fs:21px}
   body{background:var(--bg);color:var(--text);font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
   a{color:inherit}
@@ -80,9 +79,6 @@
   .nav-links a:hover{color:var(--gold-3)}
   .nav-links a:hover::after{width:100%}
   .nav-actions{display:flex;align-items:center;gap:10px}
-  .font-toggle{border:1px solid var(--line);background:transparent;color:var(--gold);border-radius:999px;
-    height:44px;min-width:44px;padding:0 14px;font:700 .85rem "Manrope",sans-serif;cursor:pointer;transition:.3s}
-  .font-toggle:hover{background:rgba(226,200,164,.1)}
   .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;cursor:pointer;position:relative}
   .burger span{position:absolute;left:12px;right:12px;height:2px;background:var(--gold);transition:.35s}
   .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
@@ -461,7 +457,6 @@
       <li><a href="#faq">Вопросы</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="font-toggle" id="fontToggle" aria-pressed="false" title="Увеличить шрифт">A+</button>
       <a href="#contact" class="btn btn-gold">Оставить заявку</a>
       <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -1066,20 +1061,6 @@
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     links.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded", false);
   }));
-
-  /* крупный шрифт */
-  const ft = $("#fontToggle");
-  const setBig = on => {
-    document.documentElement.classList.toggle("big", on);
-    ft.setAttribute("aria-pressed", on); ft.textContent = on ? "A−" : "A+";
-    ft.title = on ? "Обычный шрифт" : "Увеличить шрифт";
-  };
-  try { setBig(localStorage.getItem("legalia-big") === "1"); } catch (_) {}
-  ft.addEventListener("click", () => {
-    const on = !document.documentElement.classList.contains("big");
-    setBig(on);
-    try { localStorage.setItem("legalia-big", on ? "1" : "0"); } catch (_) {}
-  });
 
   /* reveal on scroll */
   const io = new IntersectionObserver(entries => {
