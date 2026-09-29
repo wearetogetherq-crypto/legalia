@@ -452,9 +452,22 @@
     .svc:hover .ic,.about-photo:hover img{transform:none}
     .sit:active,.btn:active,.svc .more:active{transform:scale(.97)!important}
   }
+  /* «Уменьшить движение» в системе: анимации остаются, убираем только покачивания и зум */
   @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-    .reveal{opacity:1;transform:none}
+    .badge.b1,.badge.b2,.photo .img img,.photo .glow,.bg-glow span{animation:none}
+    .marquee .track{animation-duration:80s}
+  }
+
+  /* Большие мониторы (27" и больше): крупнее шрифт и шире контент */
+  @media (min-width:1700px){
+    :root{--fs:20px}
+    .container{width:min(1480px,100% - 64px)}
+    .photo{max-width:540px}
+  }
+  @media (min-width:2200px){
+    :root{--fs:23px}
+    .container{width:min(1720px,100% - 96px)}
+    .photo{max-width:640px}
   }
 </style>
 </head>
@@ -1049,7 +1062,7 @@
 
   /* count-up */
   const runCount = el => {
-    const to = +el.dataset.count, dur = reduced ? 1 : 1400, t0 = performance.now();
+    const to = +el.dataset.count, dur = 1400, t0 = performance.now();
     const step = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   };
@@ -1090,7 +1103,7 @@
   const cv = $("#dust"), ctx = cv.getContext("2d");
   let W, H, parts = [];
   const resize = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = Math.min(devicePixelRatio || 1, innerWidth > 1600 ? 1 : 2); // на больших мониторах не перегружаем видеокарту
     W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr;
     cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
     const n = Math.round(Math.min(70, innerWidth / 18));
@@ -1113,7 +1126,7 @@
     }
     requestAnimationFrame(draw);
   };
-  if (!reduced) draw();
+  draw();
 })();
 </script>
 </body>
