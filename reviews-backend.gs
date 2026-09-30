@@ -215,8 +215,11 @@ function sheet_() {
 function admins_() { try { return JSON.parse(P.getProperty("ADMINS") || "[]"); } catch (_) { return []; } }
 
 function tg_(method, params, strict) {
+  // усі значення передаємо рядками: інакше великі числа (offset, message_id) доходять до Telegram у незрозумілому форматі
+  const payload = {};
+  Object.keys(params).forEach(k => { const v = params[k]; payload[k] = typeof v === "object" ? JSON.stringify(v) : String(v); });
   const res = UrlFetchApp.fetch("https://api.telegram.org/bot" + P.getProperty("TG_TOKEN") + "/" + method,
-    { method: "post", payload: params, muteHttpExceptions: true });
+    { method: "post", payload: payload, muteHttpExceptions: true });
   const j = JSON.parse(res.getContentText() || "{}");
   if (!j.ok) {
     console.warn(method + ": " + (j.description || res.getResponseCode()));
