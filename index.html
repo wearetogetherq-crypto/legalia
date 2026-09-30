@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- безопасность: странице разрешено грузить только своё, шрифты Google и хранилище отзывов -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Legalia — легалізація в Польщі | Аліна Калініч, Радом</title>
 <meta name="description" content="Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.">
 <meta property="og:title" content="Legalia — легалізація в Польщі">
@@ -1207,6 +1210,8 @@
 </div>
 
 <script>
+// сайт нельзя встроить в чужую страницу (защита от подмены кликов)
+if (window.top !== window.self) { try { window.top.location = window.location.href; } catch (_) { document.documentElement.style.display = "none"; } }
 (() => {
   const TG = "alinuccia3";
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1990,7 +1995,7 @@
     try {
       const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 20000);
       // text/plain — «простой» запрос без предварительной проверки CORS
-      const res = await fetch(REVIEWS_API, { method: "POST", body: JSON.stringify({ ...data, lang, website: $("#rvWeb").value }), signal: ctl.signal });
+      const res = await fetch(REVIEWS_API, { method: "POST", body: JSON.stringify({ ...data, lang, website: $("#rvWeb").value, t: Date.now() - rvOpenedAt }), signal: ctl.signal });
       clearTimeout(timer);
       ok = !!(await res.json()).ok;
     } catch (_) {}
@@ -2000,7 +2005,9 @@
   });
   $("#rvAgain").addEventListener("click", () => { openTG(rvMessage()); toast(ui().rvSending); rvDone(rvData()); });
   $("#rvRetry").addEventListener("click", () => rvCta.classList.remove("sent", "failed"));
+  let rvOpenedAt = Date.now();
   function rvToggle(open, scroll) {
+    if (open && !rvCta.classList.contains("open")) rvOpenedAt = Date.now();
     rvCta.classList.toggle("open", open);
     $("#rvOpen").setAttribute("aria-expanded", open);
     rvPanel.inert = !open;

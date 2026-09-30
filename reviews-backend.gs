@@ -60,7 +60,8 @@ function botProfile() {
 function doPost(e) {
   try {
     const d = JSON.parse((e && e.postData && e.postData.contents) || "{}");
-    if (d.website) return json_({ ok: true }); // пастка для спам-ботів
+    // спам-боти: заповнене приховане поле або форма заповнена швидше ніж за 4 секунди — тихо ігноруємо
+    if (d.website || (d.t != null && Number(d.t) < 4000)) return json_({ ok: true });
     const r = {
       rating: Math.round(Number(d.rating)),
       name: clean_(d.name, 40), city: clean_(d.city, 40),
@@ -74,6 +75,9 @@ function doPost(e) {
     const cache = CacheService.getScriptCache(), n = Number(cache.get("rate") || 0);
     if (n >= 30) return json_({ ok: false, error: "busy" });
     cache.put("rate", String(n + 1), 3600);
+    // той самий текст повторно протягом доби не приймаємо (повторні натискання, спам)
+    const dup = "dup_" + Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, r.text.toLowerCase().replace(/\s+/g, " ")));
+    if (cache.get(dup)) return json_({ ok: true });
 
     const id = Utilities.getUuid().slice(0, 8), now = new Date();
     r.date = Utilities.formatDate(now, "Europe/Warsaw", "yyyy-MM");
@@ -82,6 +86,7 @@ function doPost(e) {
     try {
       sheet_().appendRow([id, "pending", r.date, r.rating, r.name, r.city, r.service, r.text, r.lang, now].map(safe_));
     } finally { lock.releaseLock(); }
+    cache.put(dup, "1", 86400);
 
     notify_(id, r);
     return json_({ ok: true, id: id });
