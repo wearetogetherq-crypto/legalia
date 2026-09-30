@@ -409,10 +409,6 @@
   .chat-tab:hover{color:var(--text)}
   .chat-tab.tg[aria-selected=true]{background:rgba(42,171,238,.16);border-color:rgba(42,171,238,.45);color:#8fd3f7}
   .chat-tab.wa[aria-selected=true]{background:rgba(37,211,102,.14);border-color:rgba(37,211,102,.42);color:#7ee8a8}
-  .chat-tab .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:currentColor;opacity:.8}
-  .chat-tab[aria-selected=true] .bar{animation:tabbar 5s linear forwards}
-  .chat-tabs.pinned .bar{animation:none!important;width:100%}
-  @keyframes tabbar{to{width:100%}}
   .chat{position:relative;overflow:hidden;margin-top:12px;background:#0e1621;border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,.06);
     transition:background-color .6s,border-color .6s}
   .chat[data-app=wa]{background-color:#0b141a;border-color:rgba(37,211,102,.14);
@@ -1306,8 +1302,8 @@
         <h3 data-i18n="prevH3">Так побачить Аліна</h3>
         <p data-i18n="prevP" style="color:var(--muted);font-size:.9rem">Повідомлення складається автоматично, поки ви заповнюєте форму.</p>
         <div class="chat-tabs" id="chatTabs" role="tablist" aria-label="Месенджер">
-          <button type="button" class="chat-tab tg" data-app="tg" role="tab" aria-selected="true"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg><span>Telegram</span><i class="bar"></i></button>
-          <button type="button" class="chat-tab wa" data-app="wa" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg><span>WhatsApp</span><i class="bar"></i></button>
+          <button type="button" class="chat-tab tg" data-app="tg" role="tab" aria-selected="true"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg><span>Telegram</span></button>
+          <button type="button" class="chat-tab wa" data-app="wa" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg><span>WhatsApp</span></button>
         </div>
         <div class="chat" id="chat" data-app="tg" aria-live="polite">
           <div class="chat-head">
@@ -1859,17 +1855,12 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
     return ok;
   }
   const WA = "48605285245";
-  /* превью «Так побачить Аліна»: каждые 5 секунд Telegram ↔ WhatsApp, с «печатает…» перед сообщением */
+  /* превью «Так побачить Аліна»: вид Telegram или WhatsApp — тот, что выбрал человек (вкладка или кнопка отправки) */
   const chat = $("#chat"), chatTabs = $("#chatTabs");
-  let chatApp = "tg", chatTimer = null, chatPinnedUntil = 0, chatVisible = false;
+  let chatApp = "tg";
   const nowHM = () => new Date().toLocaleTimeString({ uk: "uk-UA", ru: "ru-RU", en: "en-GB" }[lang], { hour: "2-digit", minute: "2-digit" });
-  function setChat(app, manual) {
-    if (manual) { chatPinnedUntil = Date.now() + 15000; chatTabs.classList.add("pinned"); }
-    chatTabs.querySelectorAll(".chat-tab").forEach(t => {
-      const on = t.dataset.app === app;
-      t.setAttribute("aria-selected", on);
-      const bar = t.querySelector(".bar"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = ""; // таймер заново
-    });
+  function setChat(app) {
+    chatTabs.querySelectorAll(".chat-tab").forEach(t => t.setAttribute("aria-selected", t.dataset.app === app));
     if (app === chatApp) return;
     chatApp = app;
     $("#prevTime").textContent = nowHM();
@@ -1882,17 +1873,8 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       setTimeout(() => { chat.classList.remove("typing"); void chat.offsetWidth; chat.classList.add("pop"); }, 650);
     }, 260);
   }
-  function chatTick() {
-    if (!chatVisible || document.hidden) return;
-    if (Date.now() < chatPinnedUntil) return;
-    chatTabs.classList.remove("pinned");
-    setChat(chatApp === "tg" ? "wa" : "tg");
-  }
-  chatTimer = setInterval(chatTick, 5000);
-  new IntersectionObserver(([e]) => { chatVisible = e.isIntersecting; }, { threshold: .3 }).observe(chat);
-  chatTabs.addEventListener("click", e => { const t = e.target.closest(".chat-tab"); if (t) setChat(t.dataset.app, true); });
-  // наведение на кнопку отправки показывает, как будет выглядеть сообщение именно там
-  form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("mouseenter", () => setChat(b.dataset.via, true)));
+  chatTabs.addEventListener("click", e => { const t = e.target.closest(".chat-tab"); if (t) setChat(t.dataset.app); });
+  form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("click", () => setChat(b.dataset.via)));
   $("#prevTime").textContent = nowHM();
   let via = "tg";
   form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("click", () => { via = b.dataset.via; }));
