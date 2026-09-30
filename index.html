@@ -397,6 +397,7 @@
   .tg-btn{white-space:nowrap}
   .tg-btn .lbl-short{display:none}
   @media (max-width:440px){.tg-btn .lbl-full{display:none}.tg-btn .lbl-short{display:inline}}
+  @media (max-width:360px){.send-row{grid-template-columns:1fr}}
   .tg-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(42,171,238,.85)}
 
   .preview-card{position:sticky;top:100px}
@@ -417,15 +418,48 @@
   .toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
   .toast svg{width:22px;height:22px;flex:none}
 
-  .fab{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
-    background:linear-gradient(135deg,#37aee2,#1e96c8);color:#fff;box-shadow:0 12px 30px -8px rgba(42,171,238,.7);text-decoration:none;
+  /* плавающая кнопка связи: по нажатию раскрывается Telegram / WhatsApp / звонок */
+  .fab{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;
     transform-origin:100% 100%;transform:translate(46px,46px) scale(.15) rotate(25deg);opacity:0;pointer-events:none;
     transition:transform .55s cubic-bezier(.5,0,.2,1),opacity .45s,bottom .45s}
   .fab.show{transform:none;opacity:1;pointer-events:auto;transition:transform .55s cubic-bezier(.3,1.5,.5,1),opacity .3s,bottom .45s}
-  .fab svg{width:30px;height:30px}
-  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #37aee2;animation:ping 2.4s infinite}
-  @keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
   body.has-picked .fab{bottom:96px}
+  .fab-main{position:relative;width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;color:#1a140d;
+    background:linear-gradient(135deg,var(--gold-3),var(--gold) 50%,var(--gold-2));box-shadow:0 12px 30px -8px rgba(226,200,164,.6);transition:transform .35s}
+  .fab-main::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold);animation:ping 2.4s infinite}
+  .fab.open .fab-main::before{animation:none;opacity:0}
+  .fab-main svg{position:absolute;width:28px;height:28px;transition:transform .45s cubic-bezier(.3,1.4,.5,1),opacity .3s}
+  .fab-main .ic-close{opacity:0;transform:rotate(-90deg) scale(.5)}
+  .fab.open .fab-main .ic-chat{opacity:0;transform:rotate(90deg) scale(.5)}
+  .fab.open .fab-main .ic-close{opacity:1;transform:none}
+  .fab-main:focus-visible{outline:3px solid rgba(226,200,164,.6);outline-offset:3px}
+  @keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+  .fab-menu{position:absolute;right:5px;bottom:74px;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none}
+  .fab.open .fab-menu{pointer-events:auto}
+  .fab-item{display:flex;align-items:center;gap:10px;text-decoration:none;opacity:0;transform:translateY(18px) scale(.7);transform-origin:100% 50%;
+    transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .25s}
+  .fab.open .fab-item{opacity:1;transform:none}
+  .fab.open .fab-item:nth-child(3){transition-delay:0s}.fab.open .fab-item:nth-child(2){transition-delay:.05s}.fab.open .fab-item:nth-child(1){transition-delay:.1s}
+  .fab-lbl{padding:8px 14px;border-radius:999px;background:rgba(20,18,16,.95);border:1px solid var(--line);color:var(--gold-3);font-weight:700;font-size:.9rem;white-space:nowrap;box-shadow:0 10px 24px -12px #000}
+  .fab-ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;box-shadow:0 10px 24px -10px rgba(0,0,0,.8);transition:transform .25s}
+  .fab-item:hover .fab-ic{transform:scale(1.08)}
+  .fab-ic svg{width:26px;height:26px}
+  .fab-ic.tg{background:linear-gradient(135deg,#37aee2,#1e96c8)}
+  .fab-ic.wa{background:linear-gradient(135deg,#3ee07a,#1faa55)}
+  .fab-ic.call{background:linear-gradient(135deg,var(--gold-3),var(--gold-2));color:#1a140d}
+  /* кнопки отправки заявки */
+  .send-via{display:block;font-weight:600;font-size:.95rem;text-align:center;color:var(--muted)}
+  .send-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .wa-btn{background:linear-gradient(120deg,#3ee07a,#1faa55,#5cf0a0,#3ee07a);background-size:250% 100%;animation:gflow 6s linear infinite;color:#fff;
+    box-shadow:0 12px 30px -12px rgba(37,211,102,.7);white-space:nowrap}
+  .wa-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(37,211,102,.85)}
+  .call-link{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:12px;border-radius:14px;border:1px dashed var(--line);
+    color:var(--muted);text-decoration:none;font-size:.95rem;transition:border-color .3s,color .3s}
+  .call-link b{color:var(--gold-3);font-variant-numeric:lining-nums;white-space:nowrap}
+  .call-link svg{width:18px;height:18px;color:var(--gold);flex:none}
+  .call-link:hover{border-color:var(--gold);color:var(--text)}
+  .area-row .ic-wa{color:#3ee07a}
+  .foot-links a{white-space:nowrap}
 
   footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.88rem}
   footer .container{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
@@ -691,7 +725,7 @@
     .picked .btn{padding:0 14px}
   }
   @media (hover:none){
-    .sit:hover,.btn-gold:hover,.btn-ghost:hover,.tg-btn:hover{transform:none}
+    .sit:hover,.btn-gold:hover,.btn-ghost:hover,.tg-btn:hover,.wa-btn:hover{transform:none}
     .sit:hover:not(.sel){border-color:var(--line)}
     .sit:hover:not(.sel)::before{opacity:0}
     .svc:hover:not(.picked-svc) .ring{opacity:0}
@@ -966,7 +1000,7 @@
     </div>
     <div class="steps reveal">
       <div class="rail"><i></i></div>
-      <div class="step"><div class="dot">1</div><h3 data-i18n="request">Заявка</h3><p data-i18n="s1p">Ви позначаєте, що вас цікавить, і пишете мені в Telegram.</p></div>
+      <div class="step"><div class="dot">1</div><h3 data-i18n="request">Заявка</h3><p data-i18n="s1p">Ви позначаєте, що вас цікавить, і пишете мені в Telegram чи WhatsApp або просто телефонуєте.</p></div>
       <div class="step"><div class="dot">2</div><h3 data-i18n="s2h">Консультація</h3><p data-i18n="s2p">Розбираю вашу ситуацію й кажу, який шлях підходить найкраще.</p></div>
       <div class="step"><div class="dot">3</div><h3 data-i18n="s3h">Документи</h3><p data-i18n="s3p">Складаю список, перевіряю папери, заповнюю заяву й подаю її.</p></div>
       <div class="step"><div class="dot">4</div><h3 data-i18n="s4h">Результат</h3><p data-i18n="s4p">Супроводжую до рішення й підказую, що робити далі.</p></div>
@@ -992,6 +1026,14 @@
         <div class="area-row">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 4.5L2.5 11.8l6.2 2.3 2.3 6.4 3.4-4 5 3.7 2.1-15.7z"/><path d="M8.7 14.1l9.8-7.4"/></svg></span>
           <span><small>Telegram</small><b><a href="https://t.me/alinuccia3" target="_blank" rel="noopener" style="text-decoration:none;color:var(--gold-3)">@alinuccia3</a></b></span>
+        </div>
+        <div class="area-row">
+          <span class="ic ic-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></span>
+          <span><small>WhatsApp</small><b><a href="https://wa.me/48605285245" target="_blank" rel="noopener" style="text-decoration:none;color:var(--gold-3)">+48 605 285 245</a></b></span>
+        </div>
+        <div class="area-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <span><small data-i18n="areaPhone">Телефон</small><b><a href="tel:+48605285245" style="text-decoration:none;color:var(--gold-3)">+48 605 285 245</a></b></span>
         </div>
       </div>
       <div class="area-map" aria-hidden="true">
@@ -1167,7 +1209,7 @@
       <details class="reveal d2"><summary><span data-i18n="q3">Ви працюєте лише в Радомі?</span><span class="pm"></span></summary>
         <div class="ans"><div><p data-i18n="a3">Я знаходжуся в Радомі й працюю по всьому Мазовецькому воєводству. Напишіть мені в Telegram — обговоримо ваш випадок.</p></div></div></details>
       <details class="reveal d3"><summary><span data-i18n="q4">Як швидко ви відповідаєте?</span><span class="pm"></span></summary>
-        <div class="ans"><div><p data-i18n="a4">Намагаюся відповідати протягом дня. Найшвидший спосіб зв’язку — Telegram: заповніть форму нижче, і повідомлення одразу відкриється в чаті зі мною.</p></div></div></details>
+        <div class="ans"><div><p data-i18n="a4">Намагаюся відповідати протягом дня. Найшвидше — написати мені в Telegram чи WhatsApp: заповніть форму нижче, і повідомлення відкриється в чаті зі мною. Або просто зателефонуйте: +48 605 285 245.</p></div></div></details>
     </div>
   </div>
 </section>
@@ -1178,7 +1220,7 @@
     <div class="sec-head">
       <div data-i18n="request" class="eyebrow reveal">Заявка</div>
       <h2 data-i18n="contactH2" class="reveal d1">Що вас <span class="gt">цікавить?</span></h2>
-      <p data-i18n="contactP" class="reveal d2">Позначте потрібні послуги й натисніть кнопку — повідомлення скопіюється, і відкриється Telegram із чатом Аліни.</p>
+      <p data-i18n="contactP" class="reveal d2">Позначте потрібні послуги й оберіть, куди надіслати, — у Telegram або WhatsApp. Повідомлення складеться саме.</p>
     </div>
 
     <div class="form-wrap">
@@ -1209,10 +1251,12 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn tg-btn">
-            <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
-            <span data-i18n="sendFull" class="lbl-full">Надіслати Аліні в Telegram</span><span data-i18n="sendShort" class="lbl-short">Надіслати в Telegram</span>
-          </button>
+          <span data-i18n="sendVia" class="send-via">Куди надіслати заявку?</span>
+          <div class="send-row" id="sendRow">
+            <button type="submit" class="btn tg-btn" data-via="tg"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg><span>Telegram</span></button>
+            <button type="submit" class="btn wa-btn" data-via="wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg><span>WhatsApp</span></button>
+          </div>
+          <a class="call-link" href="tel:+48605285245"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-i18n="callOr">Або просто зателефонуйте:</span> <b>+48 605 285 245</b></a>
         </div>
       </form>
 
@@ -1222,13 +1266,13 @@
         <div class="chat">
           <div class="chat-head">
             <img src="alina.jpg" alt="">
-            <span><b data-i18n="chatName">Аліна Калініч · Legalia</b><small>@alinuccia3</small></span>
+            <span><b data-i18n="chatName">Аліна Калініч · Legalia</b><small>Telegram · WhatsApp</small></span>
           </div>
           <div class="bubble empty" id="preview">Позначте послуги у формі — тут з’явиться текст повідомлення…</div>
         </div>
         <p class="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span data-i18n="note">Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.</span>
+          <span data-i18n="note">Текст повідомлення вже скопійовано. Якщо в Telegram він не підставився сам — натисніть у полі повідомлення й оберіть «Вставити».</span>
         </p>
       </aside>
     </div>
@@ -1240,7 +1284,7 @@
 <footer>
   <div class="container">
     <div><span class="fl gt">Legalia</span><br>© <span id="year"></span> <span data-i18n="footer">Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство</span></div>
-    <div><a data-i18n="rvFooter" href="#vidguk">Залишити відгук</a> · Telegram: <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">@alinuccia3</a></div>
+    <div class="foot-links"><a data-i18n="rvFooter" href="#vidguk">Залишити відгук</a> · <a href="https://t.me/alinuccia3" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/48605285245" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+48605285245">+48 605 285 245</a></div>
   </div>
 </footer>
 
@@ -1249,9 +1293,14 @@
   <a data-i18n="pickedBtn" href="#contact" class="btn btn-gold">До заявки →</a>
 </div>
 
-<a class="fab" id="fab" href="https://t.me/alinuccia3" target="_blank" rel="noopener" aria-label="Написати в Telegram" data-i18n-attr="aria-label:fabAria">
-  <svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg>
-</a>
+<div class="fab" id="fab">
+  <div class="fab-menu" id="fabMenu">
+    <a class="fab-item" href="tel:+48605285245"><span class="fab-lbl" data-i18n="fabCall">Подзвонити</span><i class="fab-ic call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i></a>
+    <a class="fab-item" href="https://wa.me/48605285245" target="_blank" rel="noopener"><span class="fab-lbl">WhatsApp</span><i class="fab-ic wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></i></a>
+    <a class="fab-item" href="https://t.me/alinuccia3" target="_blank" rel="noopener"><span class="fab-lbl">Telegram</span><i class="fab-ic tg"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg></i></a>
+  </div>
+  <button type="button" class="fab-main" id="fabMain" aria-expanded="false" aria-controls="fabMenu" aria-label="Зв’язатися з Аліною" data-i18n-attr="aria-label:fabAria"><svg class="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg><svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>
@@ -1326,19 +1375,19 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   const UI = {
     ru: { title: "Legalia — легализация в Польше | Алина Калинич, Радом",
           desc: "Legalia — Алина Калинич, 5 лет в Польше. Помощь с легализацией: карта побыту, CUKR, карта резидента, сталый побыт, гражданство, мельдунок. Радом, Мазовецкое воеводство.",
-          addedToast: "Добавлено в заявку: ", sending: "Сообщение скопировано — открываю Telegram…", add: "Добавить в заявку", added: "✓ В заявке",
+          addedToast: "Добавлено в заявку: ", sending: "Сообщение скопировано — открываю Telegram…", sendingWa: "Открываю WhatsApp…", add: "Добавить в заявку", added: "✓ В заявке",
           empty: "Отметьте услуги в форме — здесь появится текст сообщения…",
           hello: "Здравствуйте, Алина! 👋", myName: "Меня зовут {n}.", interest: "Меня интересует:", about: "О ситуации:", phone: "Мой телефон:", from: "(заявка с сайта Legalia)",
           rvOpen: "Оставить отзыв", rvClose: "Свернуть", rvRatePh: "Нажмите на звезду", rvRates: ["Плохо", "Так себе", "Нормально", "Хорошо", "Отлично!"], rvOf: "{n} из 5", rvSvcPh: "— не выбрано —", rvConsult: "Консультация", rvMore: "Читать полностью", rvLess: "Свернуть", rvOk: "Клиент Legalia", rvBusy: "Отправляю…", rvDoneBtn: "✓ Вы уже оставили отзыв", rvAlready: "От вас уже есть отзыв — второй раз отправить нельзя", rvPage: "Страница {n}", rvRange: "Отзывы {a}–{b} из {n}", rvSentToast: "Отзыв отправлен! Спасибо 💛", rvPending: "На проверке — пока видите только вы", rvYou: "Ваше имя", rvPh: "Здесь появится текст вашего отзыва…", rvSending: "Отзыв скопирован — открываю Telegram…", rvHead: "⭐ Отзыв для сайта Legalia", rvRate: "Оценка:", rvName: "Имя:", rvCity: "Город:", rvSvc: "Услуга:", rvAgree: "✅ Согласен(на) на публикацию отзыва на сайте.", rvN: {"one": "отзыв", "few": "отзыва", "many": "отзывов", "other": "отзыва"} },
     uk: { title: "Legalia — легалізація в Польщі | Аліна Калініч, Радом",
           desc: "Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.",
-          addedToast: "Додано до заявки: ", sending: "Повідомлення скопійовано — відкриваю Telegram…", add: "Додати до заявки", added: "✓ У заявці",
+          addedToast: "Додано до заявки: ", sending: "Повідомлення скопійовано — відкриваю Telegram…", sendingWa: "Відкриваю WhatsApp…", add: "Додати до заявки", added: "✓ У заявці",
           empty: "Позначте послуги у формі — тут з’явиться текст повідомлення…",
           hello: "Добрий день, Аліно! 👋", myName: "Мене звати {n}.", interest: "Мене цікавить:", about: "Про ситуацію:", phone: "Мій телефон:", from: "(заявка з сайту Legalia)",
           rvOpen: "Залишити відгук", rvClose: "Згорнути", rvRatePh: "Натисніть на зірку", rvRates: ["Погано", "Так собі", "Нормально", "Добре", "Чудово!"], rvOf: "{n} з 5", rvSvcPh: "— не обрано —", rvConsult: "Консультація", rvMore: "Читати повністю", rvLess: "Згорнути", rvOk: "Клієнт Legalia", rvBusy: "Надсилаю…", rvDoneBtn: "✓ Ви вже залишили відгук", rvAlready: "Від вас уже є відгук — удруге надіслати не можна", rvPage: "Сторінка {n}", rvRange: "Відгуки {a}–{b} із {n}", rvSentToast: "Відгук надіслано! Дякую 💛", rvPending: "На перевірці — поки бачите лише ви", rvYou: "Ваше ім’я", rvPh: "Тут з’явиться текст вашого відгуку…", rvSending: "Відгук скопійовано — відкриваю Telegram…", rvHead: "⭐ Відгук для сайту Legalia", rvRate: "Оцінка:", rvName: "Ім’я:", rvCity: "Місто:", rvSvc: "Послуга:", rvAgree: "✅ Погоджуюся на публікацію відгуку на сайті.", rvN: {"one": "відгук", "few": "відгуки", "many": "відгуків", "other": "відгуку"} },
     en: { title: "Legalia — legalization in Poland | Alina Kalinich, Radom",
           desc: "Legalia — Alina Kalinich, 5 years in Poland. Help with legalization: residence card, CUKR, EU resident card, permanent residence, citizenship, meldunek. Radom, Masovian Voivodeship.",
-          addedToast: "Added to request: ", sending: "Message copied — opening Telegram…", add: "Add to request", added: "✓ Added",
+          addedToast: "Added to request: ", sending: "Message copied — opening Telegram…", sendingWa: "Opening WhatsApp…", add: "Add to request", added: "✓ Added",
           empty: "Tick services in the form — your message will appear here…",
           hello: "Hello, Alina! 👋", myName: "My name is {n}.", interest: "I’m interested in:", about: "About my situation:", phone: "My phone:", from: "(request from the Legalia website)",
           rvOpen: "Leave a review", rvClose: "Close", rvRatePh: "Tap a star", rvRates: ["Poor", "Fair", "Good", "Very good", "Excellent!"], rvOf: "{n} out of 5", rvSvcPh: "— not selected —", rvConsult: "Consultation", rvMore: "Read more", rvLess: "Show less", rvOk: "Legalia client", rvBusy: "Sending…", rvDoneBtn: "✓ You’ve already left a review", rvAlready: "We already have your review — it can’t be sent twice", rvPage: "Page {n}", rvRange: "Reviews {a}–{b} of {n}", rvSentToast: "Review sent! Thank you 💛", rvPending: "Under review — only you can see it for now", rvYou: "Your name", rvPh: "Your review text will appear here…", rvSending: "Review copied — opening Telegram…", rvHead: "⭐ Review for the Legalia website", rvRate: "Rating:", rvName: "Name:", rvCity: "City:", rvSvc: "Service:", rvAgree: "✅ I agree to my review being published on the website.", rvN: {"one": "review", "other": "reviews"} }
@@ -1430,7 +1479,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       howH2: 'Четыре <span class="gt">простых шага</span>',
       howP: 'Вам не нужно разбираться в законах — я проведу вас от первого вопроса до готового решения.',
       request: 'Заявка',
-      s1p: 'Вы отмечаете, что вас интересует, и пишете мне в Telegram.',
+      s1p: 'Вы отмечаете, что вас интересует, и пишете мне в Telegram или WhatsApp либо просто звоните.',
       s2h: 'Консультация',
       s2p: 'Разбираю вашу ситуацию и говорю, какой путь подходит лучше всего.',
       s3h: 'Документы',
@@ -1451,9 +1500,9 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       q3: 'Вы работаете только в Радоме?',
       a3: 'Я нахожусь в Радоме и работаю по всему Мазовецкому воеводству. Напишите мне в Telegram — обсудим ваш случай.',
       q4: 'Как быстро вы отвечаете?',
-      a4: 'Стараюсь отвечать в течение дня. Самый быстрый способ связи — Telegram: заполните форму ниже, и сообщение сразу откроется в чате со мной.',
+      a4: 'Стараюсь отвечать в течение дня. Быстрее всего — написать мне в Telegram или WhatsApp: заполните форму ниже, и сообщение откроется в чате со мной. Или просто позвоните: +48 605 285 245.',
       contactH2: 'Что вас <span class="gt">интересует?</span>',
-      contactP: 'Отметьте нужные услуги и нажмите кнопку — сообщение скопируется и откроется Telegram с чатом Алины.',
+      contactP: 'Отметьте нужные услуги и выберите, куда отправить, — в Telegram или WhatsApp. Сообщение составится само.',
       formH3: 'Ваша заявка',
       hint: 'Это займёт меньше минуты. Поля со <span style="color:var(--gold)">*</span> обязательны.',
       lblName: 'Как к вам обращаться? <span class="req">*</span>',
@@ -1462,12 +1511,10 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       errSvc: 'Отметьте хотя бы одну услугу',
       lblPhone: 'Телефон <small>(по желанию)</small>',
       lblMsg: 'Коротко о ситуации <small>(по желанию)</small>',
-      sendFull: 'Отправить Алине в Telegram',
-      sendShort: 'Отправить в Telegram',
       prevH3: 'Так увидит Алина',
       prevP: 'Сообщение собирается автоматически, пока вы заполняете форму.',
       chatName: 'Алина Калинич · Legalia',
-      note: 'Если текст не подставился в Telegram автоматически — просто нажмите в поле сообщения и выберите «Вставить». Он уже скопирован.',
+      note: 'Текст сообщения уже скопирован. Если в Telegram он не подставился сам — нажмите в поле сообщения и выберите «Вставить».',
       footer: 'Алина Калинич · Легализация в Польше · Радом, Мазовецкое воеводство',
       picked: 'Выбрано',
       pickedBtn: 'К заявке →',
@@ -1477,7 +1524,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       scrollAria: 'Прокрутить вниз',
       nameAlt: 'Алина Калинич',
       msgPh: 'Например: работаю по umowie o pracę, карта заканчивается в декабре',
-      fabAria: 'Написать в Telegram',
+      fabAria: 'Связаться с Алиной',
       nav6: 'Отзывы',
       rvH2: 'Что говорят <span class="gt">клиенты</span>',
       rvP: 'Здесь только настоящие отзывы людей, которым я помогла с документами. Каждый появляется на сайте после того, как я подтвержу, что человек — мой клиент.',
@@ -1514,7 +1561,11 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       rvSortBest: 'Высокая оценка',
       rvSortAria: 'Порядок отзывов',
       rvPagerAria: 'Страницы отзывов',
-      rvDoneP: 'Спасибо! Вы уже поделились опытом — от одного человека принимаю один отзыв.'
+      rvDoneP: 'Спасибо! Вы уже поделились опытом — от одного человека принимаю один отзыв.',
+      sendVia: 'Куда отправить заявку?',
+      callOr: 'Или просто позвоните:',
+      areaPhone: 'Телефон',
+      fabCall: 'Позвонить'
     },
     uk: {
       logoSmall: 'Аліна Калініч · Радом', nav1: 'Що мені підходить?', nav2: 'Про мене', nav3: 'Послуги', nav4: 'Як працюємо', nav5: 'Питання',
@@ -1548,7 +1599,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       chRecog: 'визнання громадянства', chGrant: 'надання', chDocs: 'підготовка документів', chRent: 'для оренди', chPropiska: 'прописка',
       howH2: 'Чотири <span class="gt">прості кроки</span>',
       howP: 'Вам не потрібно розбиратися в законах — я проведу вас від першого питання до готового рішення.',
-      request: 'Заявка', s1p: 'Ви позначаєте, що вас цікавить, і пишете мені в Telegram.',
+      request: 'Заявка', s1p: 'Ви позначаєте, що вас цікавить, і пишете мені в Telegram чи WhatsApp або просто телефонуєте.',
       s2h: 'Консультація', s2p: 'Розбираю вашу ситуацію й кажу, який шлях підходить найкраще.',
       s3h: 'Документи', s3p: 'Складаю список, перевіряю папери, заповнюю заяву й подаю її.',
       s4h: 'Результат', s4p: 'Супроводжую до рішення й підказую, що робити далі.',
@@ -1562,19 +1613,18 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       q3: 'Ви працюєте лише в Радомі?',
       a3: 'Я знаходжуся в Радомі й працюю по всьому Мазовецькому воєводству. Напишіть мені в Telegram — обговоримо ваш випадок.',
       q4: 'Як швидко ви відповідаєте?',
-      a4: 'Намагаюся відповідати протягом дня. Найшвидший спосіб зв’язку — Telegram: заповніть форму нижче, і повідомлення одразу відкриється в чаті зі мною.',
+      a4: 'Намагаюся відповідати протягом дня. Найшвидше — написати мені в Telegram чи WhatsApp: заповніть форму нижче, і повідомлення відкриється в чаті зі мною. Або просто зателефонуйте: +48 605 285 245.',
       contactH2: 'Що вас <span class="gt">цікавить?</span>',
-      contactP: 'Позначте потрібні послуги й натисніть кнопку — повідомлення скопіюється, і відкриється Telegram із чатом Аліни.',
+      contactP: 'Позначте потрібні послуги й оберіть, куди надіслати, — у Telegram або WhatsApp. Повідомлення складеться саме.',
       formH3: 'Ваша заявка', hint: 'Це займе менше хвилини. Поля з <span style="color:var(--gold)">*</span> обов’язкові.',
       lblName: 'Як до вас звертатися? <span class="req">*</span>', errName: 'Будь ласка, напишіть ваше ім’я',
       lblSvc: 'Оберіть послуги <span class="req">*</span>', errSvc: 'Позначте хоча б одну послугу',
       lblPhone: 'Телефон <small>(за бажанням)</small>', lblMsg: 'Коротко про ситуацію <small>(за бажанням)</small>',
       msgPh: 'Наприклад: працюю за umową o pracę, карта закінчується в грудні',
-      sendFull: 'Надіслати Аліні в Telegram', sendShort: 'Надіслати в Telegram',
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
-      note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
-      footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram',
-      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і натискаєте «Надіслати»', rvHow2: 'Я отримую його й підтверджую, що ви мій клієнт', rvHow3: 'Відгук автоматично з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Відгук уже в мене. Щойно я його підтверджу, він автоматично з’явиться тут, на сайті. Поки що ви бачите його з позначкою «на перевірці».', rvAgain: 'Надіслати через Telegram', rvFooter: 'Залишити відгук', rvFailH: 'Не вдалося надіслати автоматично', rvFailP: 'Можливо, зникло з’єднання з інтернетом. Надішліть відгук мені в Telegram — текст уже готовий, його залишиться лише вставити.', rvRetry: 'Спробувати ще раз', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки', rvSortNew: 'Спочатку нові', rvSortBest: 'Найвища оцінка', rvSortAria: 'Порядок відгуків', rvPagerAria: 'Сторінки відгуків', rvDoneP: 'Дякую! Ви вже поділилися досвідом — від однієї людини приймаю один відгук.'
+      note: 'Текст повідомлення вже скопійовано. Якщо в Telegram він не підставився сам — натисніть у полі повідомлення й оберіть «Вставити».',
+      footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Зв’язатися з Аліною',
+      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і натискаєте «Надіслати»', rvHow2: 'Я отримую його й підтверджую, що ви мій клієнт', rvHow3: 'Відгук автоматично з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Відгук уже в мене. Щойно я його підтверджу, він автоматично з’явиться тут, на сайті. Поки що ви бачите його з позначкою «на перевірці».', rvAgain: 'Надіслати через Telegram', rvFooter: 'Залишити відгук', rvFailH: 'Не вдалося надіслати автоматично', rvFailP: 'Можливо, зникло з’єднання з інтернетом. Надішліть відгук мені в Telegram — текст уже готовий, його залишиться лише вставити.', rvRetry: 'Спробувати ще раз', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки', rvSortNew: 'Спочатку нові', rvSortBest: 'Найвища оцінка', rvSortAria: 'Порядок відгуків', rvPagerAria: 'Сторінки відгуків', rvDoneP: 'Дякую! Ви вже поділилися досвідом — від однієї людини приймаю один відгук.', sendVia: 'Куди надіслати заявку?', callOr: 'Або просто зателефонуйте:', areaPhone: 'Телефон', fabCall: 'Подзвонити'
     },
     en: {
       logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
@@ -1608,7 +1658,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       chRecog: 'recognition', chGrant: 'granting', chDocs: 'document preparation', chRent: 'for renting', chPropiska: 'address registration',
       howH2: 'Four <span class="gt">simple steps</span>',
       howP: 'You don’t need to know the law — I’ll guide you from the first question to the final decision.',
-      request: 'Request', s1p: 'You tick what interests you and message me on Telegram.',
+      request: 'Request', s1p: 'You tick what interests you and message me on Telegram or WhatsApp — or simply call.',
       s2h: 'Consultation', s2p: 'I review your situation and tell you the best route.',
       s3h: 'Documents', s3p: 'I make a checklist, check your papers, fill in the application and file it.',
       s4h: 'Result', s4p: 'I stay with you until the decision and tell you what to do next.',
@@ -1622,19 +1672,18 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       q3: 'Do you only work in Radom?',
       a3: 'I’m based in Radom and work across the whole Masovian Voivodeship. Message me on Telegram and we’ll discuss your case.',
       q4: 'How quickly do you reply?',
-      a4: 'I try to reply within a day. Telegram is the fastest way: fill in the form below and the message will open in a chat with me.',
+      a4: 'I try to reply within a day. The fastest way is to message me on Telegram or WhatsApp: fill in the form below and the message will open in a chat with me. Or just call: +48 605 285 245.',
       contactH2: 'What are you <span class="gt">interested in?</span>',
-      contactP: 'Tick the services you need and press the button — the message is copied and Telegram opens a chat with Alina.',
+      contactP: 'Tick the services you need and choose where to send it — Telegram or WhatsApp. The message writes itself.',
       formH3: 'Your request', hint: 'It takes less than a minute. Fields marked <span style="color:var(--gold)">*</span> are required.',
       lblName: 'Your name <span class="req">*</span>', errName: 'Please enter your name',
       lblSvc: 'Choose services <span class="req">*</span>', errSvc: 'Tick at least one service',
       lblPhone: 'Phone <small>(optional)</small>', lblMsg: 'Briefly about your situation <small>(optional)</small>',
       msgPh: 'E.g. I work on an umowa o pracę, my card expires in December',
-      sendFull: 'Send to Alina on Telegram', sendShort: 'Send via Telegram',
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
-      note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
-      footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram',
-      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and press “Send”', rvHow2: 'I receive it and confirm that you are my client', rvHow3: 'The review automatically appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Your review has reached me. As soon as I confirm it, it will appear here automatically. For now you see it marked “under review”.', rvAgain: 'Send via Telegram', rvFooter: 'Leave a review', rvFailH: 'Couldn’t send it automatically', rvFailP: 'Your connection may have dropped. Send the review to me on Telegram — the text is ready, you just need to paste it.', rvRetry: 'Try again', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews', rvSortNew: 'Newest first', rvSortBest: 'Highest rated', rvSortAria: 'Review order', rvPagerAria: 'Review pages', rvDoneP: 'Thank you! You’ve already shared your experience — one review per person.'
+      note: 'The message text is already copied. If it doesn’t appear in Telegram by itself, tap the message field and choose “Paste”.',
+      footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Contact Alina',
+      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and press “Send”', rvHow2: 'I receive it and confirm that you are my client', rvHow3: 'The review automatically appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Your review has reached me. As soon as I confirm it, it will appear here automatically. For now you see it marked “under review”.', rvAgain: 'Send via Telegram', rvFooter: 'Leave a review', rvFailH: 'Couldn’t send it automatically', rvFailP: 'Your connection may have dropped. Send the review to me on Telegram — the text is ready, you just need to paste it.', rvRetry: 'Try again', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews', rvSortNew: 'Newest first', rvSortBest: 'Highest rated', rvSortAria: 'Review order', rvPagerAria: 'Review pages', rvDoneP: 'Thank you! You’ve already shared your experience — one review per person.', sendVia: 'Where should I send it?', callOr: 'Or simply call:', areaPhone: 'Phone', fabCall: 'Call'
     }
   };
 
@@ -1759,12 +1808,22 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
     if (!ok) (n.value.trim() ? checks : n).scrollIntoView({ behavior: "smooth", block: "center" });
     return ok;
   }
+  const WA = "48605285245";
+  let via = "tg";
+  form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("click", () => { via = b.dataset.via; }));
   form.addEventListener("submit", e => {
     e.preventDefault();
+    if (e.submitter && e.submitter.dataset.via) via = e.submitter.dataset.via;
     if (!validate()) return;
-    openTG(buildMessage());
-    toast(ui().sending);
+    if (via === "wa") { openWA(buildMessage()); toast(ui().sendingWa); }
+    else { openTG(buildMessage()); toast(ui().sending); }
   });
+  function openWA(text) { // WhatsApp сам подставляет текст из ссылки
+    copy(text);
+    const url = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+    const w = window.open(url, "_blank");
+    if (w) w.opener = null; else location.href = url;
+  }
   function openTG(text) {
     copy(text);
     // окно открываем синхронно в обработчике клика, чтобы браузер его не заблокировал
@@ -1814,7 +1873,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   setTimeout(() => document.querySelectorAll("[data-count]").forEach(runCount), 1100);
 
   /* ---------- nav / scroll ---------- */
-  const nav = $("#nav"), fab = $("#fab"), prog = $("#progress"), sendBtn = $(".tg-btn");
+  const nav = $("#nav"), fab = $("#fab"), prog = $("#progress"), sendBtn = $("#sendRow"); // кнопки отправки заявки (не путать со скрытой кнопкой в блоке отзывов)
   const onScroll = () => {
     nav.classList.toggle("scrolled", scrollY > 30);
     // круглая кнопка уезжает в угол, когда видна кнопка «Отправить в Telegram» (и ниже неё)
@@ -1822,11 +1881,21 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
     // …и пока на экране открыта форма отзыва
     const rv = document.getElementById("vidguk"), rr = rv.getBoundingClientRect();
     const rvForm = rv.classList.contains("open") && rr.top < innerHeight - 80 && rr.bottom > 120;
-    fab.classList.toggle("show", scrollY > innerHeight * .6 && !sendReached && !rvForm);
+    const showFab = scrollY > innerHeight * .6 && !sendReached && !rvForm;
+    fab.classList.toggle("show", showFab);
+    if (!showFab && fab.classList.contains("open")) { fab.classList.remove("open"); $("#fabMain").setAttribute("aria-expanded", false); }
     const max = document.documentElement.scrollHeight - innerHeight;
     prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
   };
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* меню плавающей кнопки: Telegram / WhatsApp / звонок */
+  const fabMain = $("#fabMain");
+  const fabOpen = open => { fab.classList.toggle("open", open); fabMain.setAttribute("aria-expanded", open); };
+  fabMain.addEventListener("click", e => { e.stopPropagation(); fabOpen(!fab.classList.contains("open")); });
+  document.addEventListener("click", e => { if (!fab.contains(e.target)) fabOpen(false); });
+  addEventListener("keydown", e => { if (e.key === "Escape") fabOpen(false); });
+  $("#fabMenu").addEventListener("click", e => { if (e.target.closest("a")) setTimeout(() => fabOpen(false), 150); });
 
   const burger = $("#burger"), links = $("#navLinks");
   burger.addEventListener("click", () => {
