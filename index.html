@@ -134,7 +134,10 @@
 
   .rotator{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:1.2rem;font-weight:600;margin-bottom:18px}
   .rotator .rot-lbl{color:var(--muted);font-weight:500}
-  .rot-box{position:relative;display:inline-grid;padding:8px 18px;border-radius:14px;background:rgba(226,200,164,.08);overflow:hidden;min-width:230px}
+  .rot-box{position:relative;display:inline-grid;border-radius:14px;background:rgba(226,200,164,.08);min-width:230px}
+  /* слова обрезаются внутренним блоком, а рамка лежит поверх него: иначе Safari на iPhone срезает верхнюю линию рамки */
+  .rot-clip{display:grid;padding:8px 18px;border-radius:inherit;overflow:hidden;line-height:32px /* целая высота блока — без округлений на краях */}
+  .rot-box .ring{z-index:1;will-change:transform}
   /* вращающийся контур: внутри тонкой рамки крутится большой квадрат с конусным градиентом.
      Вращение через transform — работает во всех браузерах, включая Safari на iPhone */
   .ring{position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;overflow:hidden;container-type:size;
@@ -751,14 +754,14 @@
 
       <div class="rotator fade-up" style="animation-delay:.55s">
         <span data-i18n="rotLbl" class="rot-lbl">Оформлю для вас:</span>
-        <span class="rot-box" aria-live="off"><i class="ring" aria-hidden="true"></i>
+        <span class="rot-box" aria-live="off"><span class="rot-clip">
           <span data-i18n="rot1" class="rot-word gt on">карту побиту</span>
           <span data-i18n="rot2" class="rot-word gt">карту CUKR</span>
           <span data-i18n="rot3" class="rot-word gt">карту резидента</span>
           <span data-i18n="rot4" class="rot-word gt">сталий побит</span>
           <span data-i18n="rot5" class="rot-word gt">громадянство</span>
           <span data-i18n="rot6" class="rot-word gt">мельдунок</span>
-        </span>
+        </span><i class="ring" aria-hidden="true"></i></span>
       </div>
 
       <p class="lead fade-up" style="animation-delay:.7s" data-i18n="lead">Мене звати <strong>Аліна Калініч</strong>, я з України і <strong>вже 5 років живу в Польщі</strong>. Розберуся у вашій ситуації, зберу документи й доведу справу до рішення — пояснюю все простою мовою. Працюю по всьому <strong>Мазовецькому воєводству</strong>.</p>
