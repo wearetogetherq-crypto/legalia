@@ -592,7 +592,11 @@
   .rv-cta.open .rv-head .btn svg{transform:rotate(45deg)}
   .rv-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.2,.8,.2,1)}
   .rv-cta.open .rv-panel{grid-template-rows:1fr}
-  .rv-panel > div{min-height:0;overflow:hidden}
+  .rv-panel > div{min-height:0;overflow:hidden;contain:layout paint}
+  /* пока блок раскрывается/сворачивается, вращающуюся рамку прячем: иначе телефон перерисовывает её каждый кадр и анимация дёргается */
+  .rv-cta.animating > .ring{display:none}
+  .rv-cta > .ring{animation:ringIn .5s ease both}
+  @keyframes ringIn{from{opacity:0}}
   .rv-body{margin:0 32px;padding:30px 0 34px;border-top:1px solid var(--line);opacity:0;transform:translateY(-10px);transition:opacity .35s,transform .6s cubic-bezier(.2,.8,.2,1)}
   .rv-cta.open .rv-body{opacity:1;transform:none;transition-delay:.12s}
   .rv-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
@@ -2259,6 +2263,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   $("#rvAgain").addEventListener("click", () => { openTG(rvMessage()); toast(ui().rvSending); rvDone(rvData()); });
   $("#rvRetry").addEventListener("click", () => rvCta.classList.remove("sent", "failed"));
   let rvOpenedAt = Date.now();
+  let rvAnimT;
   function rvToggle(open, scroll) {
     if (!open && rvReviewed()) rvCta.classList.remove("sent", "failed"); // после отправки свернули блок — дальше только «уже оставили»
     if (open && rvReviewed() && !rvCta.classList.contains("sent")) { // форма уже не нужна — просто показываем блок
@@ -2266,6 +2271,11 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       return;
     }
     if (open && !rvCta.classList.contains("open")) rvOpenedAt = Date.now();
+    if (open !== rvCta.classList.contains("open")) { // на время раскрытия — без вращающейся рамки
+      rvCta.classList.add("animating");
+      clearTimeout(rvAnimT);
+      rvAnimT = setTimeout(() => rvCta.classList.remove("animating"), 700);
+    }
     rvCta.classList.toggle("open", open);
     $("#rvOpen").setAttribute("aria-expanded", open);
     rvPanel.inert = !open;
