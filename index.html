@@ -53,7 +53,7 @@
   /* выделение текста: фирменный цвет; градиентный текст при выделении становится читаемым */
   ::selection{background:rgba(226,200,164,.88);color:#1a140d;-webkit-text-fill-color:#1a140d}
   /* декоративное и кнопки не выделяются: иначе всплывают скрытые слова вращающегося блока и бегущей строки */
-  .rot-box,.marquee,.btn,.lang,.burger,.logo,.sit,.check,.rate,.rv-arrow,.rv-dots,.fab,.picked,.scroll-hint,summary,.stats b{-webkit-user-select:none;user-select:none}
+  .rot-box,.marquee,.btn,.lang,.burger,.logo,.sit,.check,.rate,.rv-pager,.rv-sort,.fab,.picked,.scroll-hint,summary,.stats b{-webkit-user-select:none;user-select:none}
 
   /* ---------- background ---------- */
   .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -443,18 +443,20 @@
   .rv-summary .cnt{color:var(--muted);font-weight:600}
 
   .rv-list{position:relative}
-  .rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 44px) / 3);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;
-    scrollbar-width:none;padding:4px 2px 8px;overscroll-behavior-x:contain}
-  .rv-track::-webkit-scrollbar{display:none}
-  .rv-track.few{justify-content:center}
-  .rv-card{scroll-snap-align:start;position:relative;background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:var(--radius);
+  .rv-card{position:relative;background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:var(--radius);
     padding:26px 26px 20px;display:flex;flex-direction:column;gap:14px;overflow:hidden;isolation:isolate;min-width:0}
   .rv-card::after{content:"\201C";position:absolute;top:-6px;right:20px;z-index:-1;font:700 7rem/1 "Playfair Display",serif;color:rgba(226,200,164,.08)}
   .rv-card::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .5s;
     background:radial-gradient(110% 80% at 0% 0%,rgba(226,200,164,.14),transparent 55%),radial-gradient(80% 80% at 100% 100%,rgba(122,31,46,.3),transparent 60%)}
   .rv-card:hover::before{opacity:1}
   .rv-list .rv-card{opacity:0;transform:translateY(30px)}
-  .rv-list.in .rv-card{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0) * .1s)}
+  .rv-list.in .rv-card{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0) * .08s)}
+  /* смена страницы: карточки въезжают с той стороны, куда листаем */
+  .rv-list.in .rv-cards[data-dir=next] .rv-card{animation:rvInNext .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * .06s)}
+  .rv-list.in .rv-cards[data-dir=prev] .rv-card{animation:rvInPrev .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * .06s)}
+  @keyframes rvInNext{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+  @keyframes rvInPrev{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+  .rv-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;justify-content:center;touch-action:pan-y}
   .rv-text{font-size:.98rem;line-height:1.6;white-space:pre-line;overflow-wrap:break-word;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
   .rv-card.open .rv-text{display:block}
   .rv-text.ph{color:var(--muted);font-style:italic}
@@ -471,17 +473,24 @@
   .rv-ok svg{width:16px;height:16px;flex:none}
   .rv-ok.rv-wait{color:var(--gold)}
   .rv-card.mine{border-style:dashed;border-color:rgba(226,200,164,.45)}
-  .rv-arrow{position:absolute;top:50%;z-index:2;width:50px;height:50px;border-radius:50%;display:none;place-items:center;cursor:pointer;
-    background:rgba(20,18,16,.92);border:1px solid var(--line);color:var(--gold);transition:border-color .3s,opacity .3s,transform .3s;transform:translateY(-50%)}
-  .rv-arrow svg{width:22px;height:22px}
-  .rv-arrow.prev{left:-25px}.rv-arrow.next{right:-25px}
-  .rv-arrow:hover{border-color:var(--gold)}
-  .rv-arrow:disabled{opacity:0;pointer-events:none}
-  .rv-list.over .rv-arrow{display:grid}
-  .rv-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
-  .rv-dots:empty{display:none}
-  .rv-dots i{width:8px;height:8px;border-radius:8px;background:rgba(226,200,164,.25);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s}
-  .rv-dots i.on{width:26px;background:var(--gold)}
+  /* панель над отзывами: порядок и «Відгуки 1–6 із 48» */
+  .rv-bar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-bottom:22px}
+  .rv-bar[hidden],.rv-pager[hidden]{display:none}
+  .rv-sort{display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--line);background:rgba(20,18,16,.6)}
+  .rv-sort button{border:0;background:none;color:var(--muted);font:700 .85rem "Manrope",sans-serif;min-height:40px;padding:0 16px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+  .rv-sort button:hover{color:var(--gold-3)}
+  .rv-sort button[aria-pressed=true]{background:linear-gradient(135deg,var(--gold-3),var(--gold) 50%,var(--gold-2));color:#1a140d}
+  .rv-range{color:var(--muted);font-size:.9rem;font-weight:600}
+  /* номера страниц */
+  .rv-pager{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;flex-wrap:wrap}
+  .rv-pages{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+  .rv-pager button{min-width:46px;height:46px;padding:0 6px;border-radius:999px;border:1px solid var(--line);background:rgba(20,18,16,.6);color:var(--gold-3);
+    font:700 .95rem "Manrope",sans-serif;cursor:pointer;display:grid;place-items:center;transition:border-color .3s,background .3s,color .3s,transform .3s;font-variant-numeric:lining-nums tabular-nums}
+  .rv-pager button:hover{border-color:var(--gold)}
+  .rv-pager button[aria-current=page]{background:linear-gradient(135deg,var(--gold-3),var(--gold) 50%,var(--gold-2));color:#1a140d;border-color:transparent;box-shadow:0 8px 20px -10px rgba(226,200,164,.7)}
+  .rv-pager button:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+  .rv-pager button svg{width:20px;height:20px}
+  .rv-pager .rv-gap{color:var(--muted);min-width:20px;text-align:center}
 
   .rv-empty{max-width:640px;margin:0 auto;text-align:center;padding:10px 0 6px}
   .rv-empty .stars{gap:8px;margin-bottom:14px}
@@ -564,15 +573,19 @@
   .rv-thanks p{color:var(--muted);margin-bottom:22px}
   .rv-thanks .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   @media (max-width:1020px){
-    .rv-track{grid-auto-columns:calc((100% - 22px) / 2)}
-    .rv-arrow.prev{left:-12px}.rv-arrow.next{right:-12px}
+    .rv-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
     .rv-grid{grid-template-columns:1fr}
     .rv-side{order:-1}
     .rv-prev{display:none}
   }
   @media (max-width:640px){
-    .rv-track{grid-auto-columns:88%;gap:12px}
-    .rv-arrow{display:none!important}
+    .rv-cards{grid-template-columns:minmax(0,1fr);gap:12px}
+    .rv-bar{flex-direction:column;align-items:stretch;gap:10px}
+    .rv-sort{align-self:center}
+    .rv-range{text-align:center}
+    .rv-pager,.rv-pages{gap:3px;flex-wrap:nowrap}
+    .rv-pager button{min-width:36px;height:42px;padding:0 3px}
+    .rv-pager .rv-gap{min-width:14px}
     .rv-card{padding:22px 20px 18px}
     .rv-head{flex-direction:column;align-items:flex-start;gap:14px;padding:24px 20px}
     .rv-head .ic{width:54px;height:54px;border-radius:16px}
@@ -1011,10 +1024,19 @@
     </div>
 
     <div class="rv-list reveal" id="rvList" hidden>
-      <button type="button" class="rv-arrow prev" id="rvPrev" aria-label="Попередні відгуки" data-i18n-attr="aria-label:rvPrevAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <div class="rv-track" id="rvTrack"></div>
-      <button type="button" class="rv-arrow next" id="rvNext" aria-label="Наступні відгуки" data-i18n-attr="aria-label:rvNextAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      <div class="rv-dots" id="rvDots" aria-hidden="true"></div>
+      <div class="rv-bar" id="rvBar" hidden>
+        <div class="rv-sort" id="rvSort" role="group" aria-label="Порядок відгуків" data-i18n-attr="aria-label:rvSortAria">
+          <button type="button" data-sort="new" aria-pressed="true" data-i18n="rvSortNew">Спочатку нові</button>
+          <button type="button" data-sort="best" aria-pressed="false" data-i18n="rvSortBest">Найвища оцінка</button>
+        </div>
+        <span class="rv-range" id="rvRange" aria-live="polite"></span>
+      </div>
+      <div class="rv-cards" id="rvGrid"></div>
+      <nav class="rv-pager" id="rvPager" aria-label="Сторінки відгуків" data-i18n-attr="aria-label:rvPagerAria" hidden>
+        <button type="button" id="rvPrev" aria-label="Попередні відгуки" data-i18n-attr="aria-label:rvPrevAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="rv-pages" id="rvPages"></div>
+        <button type="button" id="rvNext" aria-label="Наступні відгуки" data-i18n-attr="aria-label:rvNextAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </nav>
     </div>
 
     <div class="rv-empty reveal" id="rvEmpty" hidden>
@@ -1299,19 +1321,19 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
           addedToast: "Добавлено в заявку: ", sending: "Сообщение скопировано — открываю Telegram…", add: "Добавить в заявку", added: "✓ В заявке",
           empty: "Отметьте услуги в форме — здесь появится текст сообщения…",
           hello: "Здравствуйте, Алина! 👋", myName: "Меня зовут {n}.", interest: "Меня интересует:", about: "О ситуации:", phone: "Мой телефон:", from: "(заявка с сайта Legalia)",
-          rvOpen: "Оставить отзыв", rvClose: "Свернуть", rvRatePh: "Нажмите на звезду", rvRates: ["Плохо", "Так себе", "Нормально", "Хорошо", "Отлично!"], rvOf: "{n} из 5", rvSvcPh: "— не выбрано —", rvConsult: "Консультация", rvMore: "Читать полностью", rvLess: "Свернуть", rvOk: "Клиент Legalia", rvBusy: "Отправляю…", rvSentToast: "Отзыв отправлен! Спасибо 💛", rvPending: "На проверке — пока видите только вы", rvYou: "Ваше имя", rvPh: "Здесь появится текст вашего отзыва…", rvSending: "Отзыв скопирован — открываю Telegram…", rvHead: "⭐ Отзыв для сайта Legalia", rvRate: "Оценка:", rvName: "Имя:", rvCity: "Город:", rvSvc: "Услуга:", rvAgree: "✅ Согласен(на) на публикацию отзыва на сайте.", rvN: {"one": "отзыв", "few": "отзыва", "many": "отзывов", "other": "отзыва"} },
+          rvOpen: "Оставить отзыв", rvClose: "Свернуть", rvRatePh: "Нажмите на звезду", rvRates: ["Плохо", "Так себе", "Нормально", "Хорошо", "Отлично!"], rvOf: "{n} из 5", rvSvcPh: "— не выбрано —", rvConsult: "Консультация", rvMore: "Читать полностью", rvLess: "Свернуть", rvOk: "Клиент Legalia", rvBusy: "Отправляю…", rvPage: "Страница {n}", rvRange: "Отзывы {a}–{b} из {n}", rvSentToast: "Отзыв отправлен! Спасибо 💛", rvPending: "На проверке — пока видите только вы", rvYou: "Ваше имя", rvPh: "Здесь появится текст вашего отзыва…", rvSending: "Отзыв скопирован — открываю Telegram…", rvHead: "⭐ Отзыв для сайта Legalia", rvRate: "Оценка:", rvName: "Имя:", rvCity: "Город:", rvSvc: "Услуга:", rvAgree: "✅ Согласен(на) на публикацию отзыва на сайте.", rvN: {"one": "отзыв", "few": "отзыва", "many": "отзывов", "other": "отзыва"} },
     uk: { title: "Legalia — легалізація в Польщі | Аліна Калініч, Радом",
           desc: "Legalia — Аліна Калініч, 5 років у Польщі. Допомога з легалізацією: карта побиту, CUKR, карта резидента, сталий побит, громадянство, мельдунок. Радом, Мазовецьке воєводство.",
           addedToast: "Додано до заявки: ", sending: "Повідомлення скопійовано — відкриваю Telegram…", add: "Додати до заявки", added: "✓ У заявці",
           empty: "Позначте послуги у формі — тут з’явиться текст повідомлення…",
           hello: "Добрий день, Аліно! 👋", myName: "Мене звати {n}.", interest: "Мене цікавить:", about: "Про ситуацію:", phone: "Мій телефон:", from: "(заявка з сайту Legalia)",
-          rvOpen: "Залишити відгук", rvClose: "Згорнути", rvRatePh: "Натисніть на зірку", rvRates: ["Погано", "Так собі", "Нормально", "Добре", "Чудово!"], rvOf: "{n} з 5", rvSvcPh: "— не обрано —", rvConsult: "Консультація", rvMore: "Читати повністю", rvLess: "Згорнути", rvOk: "Клієнт Legalia", rvBusy: "Надсилаю…", rvSentToast: "Відгук надіслано! Дякую 💛", rvPending: "На перевірці — поки бачите лише ви", rvYou: "Ваше ім’я", rvPh: "Тут з’явиться текст вашого відгуку…", rvSending: "Відгук скопійовано — відкриваю Telegram…", rvHead: "⭐ Відгук для сайту Legalia", rvRate: "Оцінка:", rvName: "Ім’я:", rvCity: "Місто:", rvSvc: "Послуга:", rvAgree: "✅ Погоджуюся на публікацію відгуку на сайті.", rvN: {"one": "відгук", "few": "відгуки", "many": "відгуків", "other": "відгуку"} },
+          rvOpen: "Залишити відгук", rvClose: "Згорнути", rvRatePh: "Натисніть на зірку", rvRates: ["Погано", "Так собі", "Нормально", "Добре", "Чудово!"], rvOf: "{n} з 5", rvSvcPh: "— не обрано —", rvConsult: "Консультація", rvMore: "Читати повністю", rvLess: "Згорнути", rvOk: "Клієнт Legalia", rvBusy: "Надсилаю…", rvPage: "Сторінка {n}", rvRange: "Відгуки {a}–{b} із {n}", rvSentToast: "Відгук надіслано! Дякую 💛", rvPending: "На перевірці — поки бачите лише ви", rvYou: "Ваше ім’я", rvPh: "Тут з’явиться текст вашого відгуку…", rvSending: "Відгук скопійовано — відкриваю Telegram…", rvHead: "⭐ Відгук для сайту Legalia", rvRate: "Оцінка:", rvName: "Ім’я:", rvCity: "Місто:", rvSvc: "Послуга:", rvAgree: "✅ Погоджуюся на публікацію відгуку на сайті.", rvN: {"one": "відгук", "few": "відгуки", "many": "відгуків", "other": "відгуку"} },
     en: { title: "Legalia — legalization in Poland | Alina Kalinich, Radom",
           desc: "Legalia — Alina Kalinich, 5 years in Poland. Help with legalization: residence card, CUKR, EU resident card, permanent residence, citizenship, meldunek. Radom, Masovian Voivodeship.",
           addedToast: "Added to request: ", sending: "Message copied — opening Telegram…", add: "Add to request", added: "✓ Added",
           empty: "Tick services in the form — your message will appear here…",
           hello: "Hello, Alina! 👋", myName: "My name is {n}.", interest: "I’m interested in:", about: "About my situation:", phone: "My phone:", from: "(request from the Legalia website)",
-          rvOpen: "Leave a review", rvClose: "Close", rvRatePh: "Tap a star", rvRates: ["Poor", "Fair", "Good", "Very good", "Excellent!"], rvOf: "{n} out of 5", rvSvcPh: "— not selected —", rvConsult: "Consultation", rvMore: "Read more", rvLess: "Show less", rvOk: "Legalia client", rvBusy: "Sending…", rvSentToast: "Review sent! Thank you 💛", rvPending: "Under review — only you can see it for now", rvYou: "Your name", rvPh: "Your review text will appear here…", rvSending: "Review copied — opening Telegram…", rvHead: "⭐ Review for the Legalia website", rvRate: "Rating:", rvName: "Name:", rvCity: "City:", rvSvc: "Service:", rvAgree: "✅ I agree to my review being published on the website.", rvN: {"one": "review", "other": "reviews"} }
+          rvOpen: "Leave a review", rvClose: "Close", rvRatePh: "Tap a star", rvRates: ["Poor", "Fair", "Good", "Very good", "Excellent!"], rvOf: "{n} out of 5", rvSvcPh: "— not selected —", rvConsult: "Consultation", rvMore: "Read more", rvLess: "Show less", rvOk: "Legalia client", rvBusy: "Sending…", rvPage: "Page {n}", rvRange: "Reviews {a}–{b} of {n}", rvSentToast: "Review sent! Thank you 💛", rvPending: "Under review — only you can see it for now", rvYou: "Your name", rvPh: "Your review text will appear here…", rvSending: "Review copied — opening Telegram…", rvHead: "⭐ Review for the Legalia website", rvRate: "Rating:", rvName: "Name:", rvCity: "City:", rvSvc: "Service:", rvAgree: "✅ I agree to my review being published on the website.", rvN: {"one": "review", "other": "reviews"} }
   };
 
   // тексты страницы (в HTML — украинский)
@@ -1479,7 +1501,11 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       rvFailP: 'Возможно, пропало соединение с интернетом. Отправьте отзыв мне в Telegram — текст уже готов, его останется только вставить.',
       rvRetry: 'Попробовать ещё раз',
       rvPrevAria: 'Предыдущие отзывы',
-      rvNextAria: 'Следующие отзывы'
+      rvNextAria: 'Следующие отзывы',
+      rvSortNew: 'Сначала новые',
+      rvSortBest: 'Высокая оценка',
+      rvSortAria: 'Порядок отзывов',
+      rvPagerAria: 'Страницы отзывов'
     },
     uk: {
       logoSmall: 'Аліна Калініч · Радом', nav1: 'Що мені підходить?', nav2: 'Про мене', nav3: 'Послуги', nav4: 'Як працюємо', nav5: 'Питання',
@@ -1539,7 +1565,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
       note: 'Якщо текст не підставився в Telegram автоматично — просто натисніть у полі повідомлення й оберіть «Вставити». Він уже скопійований.',
       footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Написати в Telegram',
-      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і натискаєте «Надіслати»', rvHow2: 'Я отримую його й підтверджую, що ви мій клієнт', rvHow3: 'Відгук автоматично з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Відгук уже в мене. Щойно я його підтверджу, він автоматично з’явиться тут, на сайті. Поки що ви бачите його з позначкою «на перевірці».', rvAgain: 'Надіслати через Telegram', rvFooter: 'Залишити відгук', rvFailH: 'Не вдалося надіслати автоматично', rvFailP: 'Можливо, зникло з’єднання з інтернетом. Надішліть відгук мені в Telegram — текст уже готовий, його залишиться лише вставити.', rvRetry: 'Спробувати ще раз', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки'
+      nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і натискаєте «Надіслати»', rvHow2: 'Я отримую його й підтверджую, що ви мій клієнт', rvHow3: 'Відгук автоматично з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Відгук уже в мене. Щойно я його підтверджу, він автоматично з’явиться тут, на сайті. Поки що ви бачите його з позначкою «на перевірці».', rvAgain: 'Надіслати через Telegram', rvFooter: 'Залишити відгук', rvFailH: 'Не вдалося надіслати автоматично', rvFailP: 'Можливо, зникло з’єднання з інтернетом. Надішліть відгук мені в Telegram — текст уже готовий, його залишиться лише вставити.', rvRetry: 'Спробувати ще раз', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки', rvSortNew: 'Спочатку нові', rvSortBest: 'Найвища оцінка', rvSortAria: 'Порядок відгуків', rvPagerAria: 'Сторінки відгуків'
     },
     en: {
       logoSmall: 'Alina Kalinich · Radom', nav1: 'What fits me?', nav2: 'About me', nav3: 'Services', nav4: 'How it works', nav5: 'FAQ',
@@ -1599,7 +1625,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
       note: 'If the text doesn’t appear in Telegram automatically, tap the message field and choose “Paste”. It’s already copied.',
       footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Message on Telegram',
-      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and press “Send”', rvHow2: 'I receive it and confirm that you are my client', rvHow3: 'The review automatically appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Your review has reached me. As soon as I confirm it, it will appear here automatically. For now you see it marked “under review”.', rvAgain: 'Send via Telegram', rvFooter: 'Leave a review', rvFailH: 'Couldn’t send it automatically', rvFailP: 'Your connection may have dropped. Send the review to me on Telegram — the text is ready, you just need to paste it.', rvRetry: 'Try again', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews'
+      nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and press “Send”', rvHow2: 'I receive it and confirm that you are my client', rvHow3: 'The review automatically appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Your review has reached me. As soon as I confirm it, it will appear here automatically. For now you see it marked “under review”.', rvAgain: 'Send via Telegram', rvFooter: 'Leave a review', rvFailH: 'Couldn’t send it automatically', rvFailP: 'Your connection may have dropped. Send the review to me on Telegram — the text is ready, you just need to paste it.', rvRetry: 'Try again', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews', rvSortNew: 'Newest first', rvSortBest: 'Highest rated', rvSortAria: 'Review order', rvPagerAria: 'Review pages'
     }
   };
 
@@ -1860,7 +1886,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   // адрес хранилища отзывов (Google Apps Script из reviews-backend.gs); пусто — отзывы уходят Алине через Telegram
   const REVIEWS_API = "https://script.google.com/macros/s/AKfycbxXHQqXJUVUKt1tipcoT69Xl1i_HD4TINNG59Mpx8Fi2rtsNfWDKz1iX9LpPgeHozit/exec";
   let REVIEWS = [], rvLoaded = false, rvSig = "";
-  const rvTrack = $("#rvTrack"), rvDots = $("#rvDots"), rvList = $("#rvList"), rvPrev = $("#rvPrev"), rvNext = $("#rvNext");
+  const rvList = $("#rvList"), rvGrid = $("#rvGrid"), rvPager = $("#rvPager"), rvPages = $("#rvPages"), rvPrev = $("#rvPrev"), rvNext = $("#rvNext");
   function myReview() {
     try {
       const r = JSON.parse(localStorage.getItem(MY_KEY) || "null");
@@ -1869,12 +1895,19 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       return r;
     } catch (_) { return null; }
   }
+  /* много отзывов: показываем по страницам (ПК — 6, планшет — 4, телефон — 3) */
+  let rvCards = [], rvPage = 1, rvSort = "new";
+  const rvPer = () => innerWidth <= 640 ? 3 : innerWidth <= 1020 ? 4 : 6;
+  const rvCols = per => per === 6 ? 3 : per === 4 ? 2 : 1;
+  const rvTotal = () => Math.max(1, Math.ceil(rvCards.length / rvPer()));
   function renderReviews() {
     if (!rvLoaded) return;
     const mine = myReview(), n = REVIEWS.length;
-    const cards = (mine ? [[mine, "mine"]] : []).concat(REVIEWS.map(r => [r, "pub"]));
-    $("#rvEmpty").hidden = cards.length > 0;
-    rvList.hidden = !cards.length;
+    const list = REVIEWS.slice();
+    if (rvSort === "best") list.sort((x, y) => (+y.rating || 0) - (+x.rating || 0) || String(y.date || "").localeCompare(String(x.date || "")));
+    rvCards = (mine ? [[mine, "mine"]] : []).concat(list.map(r => [r, "pub"]));
+    $("#rvEmpty").hidden = rvCards.length > 0;
+    rvList.hidden = !rvCards.length;
     $("#rvSummary").hidden = !n;
     if (n) {
       const avg = REVIEWS.reduce((a, r) => a + (+r.rating || 0), 0) / n;
@@ -1884,43 +1917,90 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       const forms = ui().rvN;
       $("#rvCount").textContent = `${n} ${forms[new Intl.PluralRules(locale()).select(n)] || forms.other}`;
     }
-    rvTrack.innerHTML = "";
-    cards.forEach(([r, mode], i) => {
+    renderPage(rvPage, 0);
+  }
+  // номера страниц: 1 … 4 5 6 … 12 (не больше семи кнопок)
+  function pageList(p, t) {
+    const near = innerWidth < 370 ? 0 : 1; // на узких телефонах — меньше номеров, чтобы всё влезло в одну строку
+    if (t <= 5 + 2 * near) return Array.from({ length: t }, (_, i) => i + 1);
+    const set = new Set([1, t]);
+    for (let d = -near; d <= near; d++) set.add(p + d);
+    if (p <= 2 + near) for (let x = 2; x <= 3 + 2 * near; x++) set.add(x);
+    if (p >= t - 1 - near) for (let x = t - 2 - 2 * near; x < t; x++) set.add(x);
+    const arr = [...set].filter(x => x >= 1 && x <= t).sort((a, b) => a - b), out = [];
+    arr.forEach((x, i) => {
+      const gap = i ? x - arr[i - 1] : 1;
+      if (gap === 2) out.push(x - 1); else if (gap > 2) out.push("…"); // «…» вместо одного номера не ставим
+      out.push(x);
+    });
+    return out;
+  }
+  function renderPage(p, dir, scroll) {
+    const per = rvPer(), total = rvTotal();
+    rvPage = Math.max(1, Math.min(p, total));
+    const slice = rvCards.slice((rvPage - 1) * per, rvPage * per);
+    rvGrid.dataset.dir = dir > 0 ? "next" : dir < 0 ? "prev" : "";
+    // одна-две карточки не растягиваем на всю ширину, а ставим по центру
+    const cols = rvCols(per);
+    rvGrid.style.gridTemplateColumns = slice.length < cols ? `repeat(${slice.length}, calc((100% - ${(cols - 1) * 22}px) / ${cols}))` : "";
+    rvGrid.innerHTML = "";
+    slice.forEach(([r, mode], i) => {
       const a = document.createElement("article");
       a.className = "rv-card" + (mode === "mine" ? " mine" : "");
-      a.style.setProperty("--i", Math.min(i, 3));
+      a.style.setProperty("--i", i);
       a.innerHTML = cardHTML(r, mode);
       const more = a.querySelector(".rv-more");
-      more.addEventListener("click", () => { const o = a.classList.toggle("open"); more.textContent = o ? ui().rvLess : ui().rvMore; rvLayout(); });
-      rvTrack.appendChild(a);
+      more.addEventListener("click", () => { const o = a.classList.toggle("open"); more.textContent = o ? ui().rvLess : ui().rvMore; });
+      rvGrid.appendChild(a);
     });
-    rvTrack.scrollLeft = 0;
+    const multi = total > 1;
+    rvPager.hidden = !multi;
+    $("#rvBar").hidden = !multi;
+    if (multi) {
+      rvPages.innerHTML = pageList(rvPage, total).map(x => x === "…" ? '<span class="rv-gap" aria-hidden="true">…</span>'
+        : `<button type="button" data-p="${x}"${x === rvPage ? ' aria-current="page"' : ""} aria-label="${esc(ui().rvPage.replace("{n}", x))}">${x}</button>`).join("");
+      rvPrev.disabled = rvPage === 1;
+      rvNext.disabled = rvPage === total;
+      const from = (rvPage - 1) * per + 1, to = Math.min(rvPage * per, rvCards.length);
+      $("#rvRange").textContent = ui().rvRange.replace("{a}–{b}", from === to ? from : `${from}–${to}`).replace("{n}", rvCards.length);
+      $("#rvSort").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.sort === rvSort));
+    }
     requestAnimationFrame(rvLayout);
+    // при листании возвращаем к началу списка, если он ушёл вверх за экран
+    if (scroll) {
+      const top = rvList.getBoundingClientRect().top;
+      if (top < 90) scrollTo({ top: scrollY + top - 100, behavior: reduced ? "auto" : "smooth" });
+    }
   }
-  function rvLayout() {
-    if (rvList.hidden) return;
-    rvTrack.querySelectorAll(".rv-card").forEach(c => {
+  function rvLayout() { // «Читати повністю» — только если текст не влез
+    rvGrid.querySelectorAll(".rv-card:not(.open)").forEach(c => {
       const t = c.querySelector(".rv-text");
-      if (!c.classList.contains("open")) c.querySelector(".rv-more").hidden = t.scrollHeight <= t.clientHeight + 2;
+      c.querySelector(".rv-more").hidden = t.scrollHeight <= t.clientHeight + 2;
     });
-    const over = rvTrack.scrollWidth > rvTrack.clientWidth + 4;
-    rvTrack.classList.toggle("few", !over);
-    rvList.classList.toggle("over", over);
-    rvDots.innerHTML = over ? "<i></i>".repeat(rvTrack.children.length) : "";
-    rvOnScroll();
   }
-  function rvStep() { const c = rvTrack.children; return c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : rvTrack.clientWidth; }
-  function rvOnScroll() {
-    const max = rvTrack.scrollWidth - rvTrack.clientWidth;
-    rvPrev.disabled = rvTrack.scrollLeft < 4;
-    rvNext.disabled = rvTrack.scrollLeft > max - 4;
-    const step = rvStep(), first = Math.round(rvTrack.scrollLeft / step), per = Math.max(1, Math.round(rvTrack.clientWidth / step));
-    [...rvDots.children].forEach((d, i) => d.classList.toggle("on", i >= first && i < first + per));
-  }
-  rvTrack.addEventListener("scroll", rvOnScroll, { passive: true });
-  rvPrev.addEventListener("click", () => rvTrack.scrollBy({ left: -rvStep(), behavior: "smooth" }));
-  rvNext.addEventListener("click", () => rvTrack.scrollBy({ left: rvStep(), behavior: "smooth" }));
-  addEventListener("resize", rvLayout);
+  const goPage = (p, scroll = true) => { if (p !== rvPage && p >= 1 && p <= rvTotal()) renderPage(p, p > rvPage ? 1 : -1, scroll); };
+  rvPages.addEventListener("click", e => { const b = e.target.closest("button[data-p]"); if (b) goPage(+b.dataset.p); });
+  rvPrev.addEventListener("click", () => goPage(rvPage - 1));
+  rvNext.addEventListener("click", () => goPage(rvPage + 1));
+  $("#rvSort").addEventListener("click", e => {
+    const b = e.target.closest("button[data-sort]");
+    if (!b || b.dataset.sort === rvSort) return;
+    rvSort = b.dataset.sort; rvPage = 1; renderReviews();
+  });
+  // телефон: листаем страницы свайпом влево/вправо
+  let sx = 0, sy = 0;
+  rvGrid.addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  rvGrid.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) goPage(rvPage + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  // при повороте экрана/смене ширины остаёмся на тех же отзывах
+  let rvLastPer = rvPer();
+  addEventListener("resize", () => {
+    const per = rvPer();
+    if (per !== rvLastPer && rvCards.length) { const first = (rvPage - 1) * rvLastPer; rvLastPer = per; renderPage(Math.floor(first / per) + 1, 0); }
+    else rvLayout();
+  });
 
   // схваленные отзывы: из хранилища + (по желанию) вручную из reviews.json
   function loadReviews() {
@@ -1999,6 +2079,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   const rvSend = $("#rvSend");
   function rvDone(data) {
     try { localStorage.setItem(MY_KEY, JSON.stringify(data)); } catch (_) {}
+    rvPage = 1;
     renderReviews();
     rvCta.classList.remove("failed");
     rvCta.classList.add("sent");
