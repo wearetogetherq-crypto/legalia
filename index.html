@@ -51,6 +51,11 @@
     animation:gflow 9s linear infinite}
   @keyframes gflow{to{background-position:300% 0}}
 
+  /* выделение текста: фирменный цвет; градиентный текст при выделении становится читаемым */
+  ::selection{background:rgba(226,200,164,.88);color:#1a140d;-webkit-text-fill-color:#1a140d}
+  /* декоративное и кнопки не выделяются: иначе всплывают скрытые слова вращающегося блока и бегущей строки */
+  .rot-box,.marquee,.btn,.lang,.burger,.logo,.sit,.check,.rate,.rv-arrow,.rv-dots,.fab,.picked,.scroll-hint,summary,.stats b{-webkit-user-select:none;user-select:none}
+
   /* ---------- background ---------- */
   .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
   .bg-glow span{position:absolute;border-radius:50%;filter:blur(100px);opacity:.38;animation:drift 20s ease-in-out infinite alternate}
@@ -2016,8 +2021,20 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
     if (open && scroll) setTimeout(() => rvCta.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
   }
   $("#rvOpen").addEventListener("click", () => rvToggle(!rvCta.classList.contains("open")));
+  /* якорные ссылки: плавная прокрутка к разделу без «#раздел» в адресной строке */
+  const cleanUrl = () => { if (location.hash) history.replaceState(null, "", location.pathname + location.search); };
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const id = a.getAttribute("href").slice(1), el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const behavior = reduced ? "auto" : "smooth";
+    if (id === "top") scrollTo({ top: 0, behavior }); else el.scrollIntoView({ behavior, block: "start" });
+    cleanUrl();
+  });
   // ссылка …/#vidguk сразу открывает форму (её удобно отправлять клиентам после услуги)
-  const rvHash = () => { if (location.hash === "#vidguk") rvToggle(true, true); };
+  const rvHash = () => { if (location.hash === "#vidguk") { rvToggle(true, true); cleanUrl(); } };
   addEventListener("hashchange", rvHash);
   document.querySelectorAll('a[href="#vidguk"]').forEach(a => a.addEventListener("click", () => rvToggle(true)));
 
@@ -2069,6 +2086,14 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   addEventListener("resize", updateSwitcher);
   applyLang(initialLang(), false);
   rvHash();
+  // сайт всегда открывается сверху: браузер не возвращает прежнее место, «#раздел» в ссылке игнорируется
+  // (кроме …/#vidguk — ссылки на форму отзыва для клиентов)
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash !== "#vidguk") {
+    cleanUrl();
+    scrollTo({ top: 0, behavior: "instant" });
+    addEventListener("load", () => scrollTo({ top: 0, behavior: "instant" }));
+  }
   // после загрузки шрифтов ширина кнопок уточняется — выставляем плашку и включаем её анимацию
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { updateSwitcher(); requestAnimationFrame(() => sw.classList.add("ready")); });
 
