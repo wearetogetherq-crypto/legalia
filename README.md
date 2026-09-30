@@ -4,15 +4,17 @@
 
 Статичный сайт: `index.html` + `alina.jpg`, без сборки. Заявки из формы уходят в Telegram [@alinuccia3](https://t.me/alinuccia3).
 
-## Как подключить свой домен (например, legalia.pl)
+## Домен
 
-1. В репозитории: **Settings → Pages → Custom domain** — впишите домен и нажмите Save (GitHub сам создаст файл `CNAME`).
-2. У регистратора домена добавьте DNS-записи:
-   - для `legalia.pl` — четыре записи **A**: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - для `www.legalia.pl` — запись **CNAME** на `<ваш-логин>.github.io`
-3. Когда домен заработает (от пары минут до суток), включите **Enforce HTTPS**.
+Сайт работает на **https://legalia-radom.pl**. Домен куплен в OVHcloud 30.09.2026 и оплачен до 30.09.2027; автопродление включено в кабинете OVH.
 
-Сайт можно перенести и на любой другой хостинг — достаточно скопировать эти файлы.
+- **DNS в OVH (зона legalia-radom.pl):**
+  - четыре A-записи GitHub (185.199.108–111.153);
+  - четыре AAAA-записи (2606:50c0:8000–8003::153);
+  - `www` → CNAME `wearetogetherq-crypto.github.io.`
+- **Почты на домене нет.** Защита от подделки писем: SPF `v=spf1 -all` и `_dmarc` с `p=reject`.
+- **GitHub:** Settings → Pages → Custom domain = `legalia-radom.pl` (файл `CNAME`), включён Enforce HTTPS.
+- **Редиректы:** старый адрес `wearetogetherq-crypto.github.io/legalia/` и `www` перенаправляют на основной домен.
 
 ## Отзывы
 
