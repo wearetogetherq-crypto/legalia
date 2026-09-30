@@ -447,8 +447,6 @@
   .chat[data-app=wa] .bubble .ticks{color:#53bdeb}
   .bubble .ticks svg{width:17px;height:11px}
   .bubble.empty .meta{display:none}
-  .preview-card .note{color:var(--muted);font-size:.85rem;margin-top:16px;display:flex;gap:10px}
-  .preview-card .note svg{width:20px;height:20px;flex:none;color:var(--gold);margin-top:2px}
 
   .toast{position:fixed;left:50%;top:92px;transform:translate(-50%,-40px);opacity:0;visibility:hidden;z-index:100;background:var(--gold-3);color:#1a140d;
     padding:14px 22px;border-radius:16px;font-weight:600;box-shadow:0 20px 50px -10px rgba(0,0,0,.7);transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s,visibility .4s;
@@ -1316,10 +1314,6 @@
             <div class="bubble empty" id="preview"><span id="previewMsg">Позначте послуги у формі — тут з’явиться текст повідомлення…</span><span class="meta"><time id="prevTime"></time><i class="ticks" aria-hidden="true"><svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6.5l3.2 3.2L10.5 3M7.5 9.7L14 3"/></svg></i></span></div>
           </div>
         </div>
-        <p class="note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-          <span data-i18n="note">Текст повідомлення вже скопійовано. Якщо в Telegram він не підставився сам — натисніть у полі повідомлення й оберіть «Вставити».</span>
-        </p>
       </aside>
     </div>
   </div>
@@ -1560,7 +1554,6 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       prevH3: 'Так увидит Алина',
       prevP: 'Сообщение собирается автоматически, пока вы заполняете форму.',
       chatName: 'Алина Калинич · Legalia',
-      note: 'Текст сообщения уже скопирован. Если в Telegram он не подставился сам — нажмите в поле сообщения и выберите «Вставить».',
       footer: 'Алина Калинич · Легализация в Польше · Радом, Мазовецкое воеводство',
       picked: 'Выбрано',
       pickedBtn: 'К заявке →',
@@ -1668,7 +1661,6 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       lblPhone: 'Телефон <small>(за бажанням)</small>', lblMsg: 'Коротко про ситуацію <small>(за бажанням)</small>',
       msgPh: 'Наприклад: працюю за umową o pracę, карта закінчується в грудні',
       prevH3: 'Так побачить Аліна', prevP: 'Повідомлення складається автоматично, поки ви заповнюєте форму.', chatName: 'Аліна Калініч · Legalia',
-      note: 'Текст повідомлення вже скопійовано. Якщо в Telegram він не підставився сам — натисніть у полі повідомлення й оберіть «Вставити».',
       footer: 'Аліна Калініч · Легалізація в Польщі · Радом, Мазовецьке воєводство', picked: 'Обрано', pickedBtn: 'До заявки →', fabAria: 'Зв’язатися з Аліною',
       nav6: 'Відгуки', rvH2: 'Що кажуть <span class="gt">клієнти</span>', rvP: 'Тут лише справжні відгуки людей, яким я допомогла з документами. Кожен з’являється на сайті після того, як я підтверджу, що людина — мій клієнт.', rvEmptyH: 'Тут з’являться перші відгуки', rvEmptyP: 'Відгуки на сайті лише починають збиратися. Якщо я вже допомогла вам — станьте першим, хто поділиться досвідом!', rvCtaH: 'Вже оформили документи з Legalia?', rvCtaP: 'Розкажіть, як усе пройшло. Ваш відгук допоможе іншим людям зважитися й не боятися легалізації.', rvLblRate: 'Ваша оцінка <span class="req">*</span>', rvErrRate: 'Оберіть кількість зірок', rvLblName: 'Як вас підписати? <span class="req">*</span>', rvLblCity: 'Місто <small>(за бажанням)</small>', rvLblSvc: 'З чим я допомогла?', rvLblText: 'Ваш відгук <span class="req">*</span>', rvTextPh: 'Як усе пройшло? Що сподобалося? Чи порадили б мене знайомим?', rvErrText: 'Напишіть хоча б кілька слів (від 15 символів)', rvSendFull: 'Надіслати відгук Аліні', rvSendShort: 'Надіслати відгук', rvNote: 'Надсилаючи відгук, ви погоджуєтеся на його публікацію на сайті.', rvHowH: 'Як це працює', rvHow1: 'Ви пишете відгук і натискаєте «Надіслати»', rvHow2: 'Я отримую його й підтверджую, що ви мій клієнт', rvHow3: 'Відгук автоматично з’являється тут, на сайті', rvPrevH: 'Так виглядатиме ваш відгук', rvThanksH: 'Дякую за відгук!', rvThanksP: 'Відгук уже в мене. Щойно я його підтверджу, він автоматично з’явиться тут, на сайті. Поки що ви бачите його з позначкою «на перевірці».', rvAgain: 'Надіслати через Telegram', rvFooter: 'Залишити відгук', rvFailH: 'Не вдалося надіслати автоматично', rvFailP: 'Можливо, зникло з’єднання з інтернетом. Надішліть відгук мені в Telegram — текст уже готовий, його залишиться лише вставити.', rvRetry: 'Спробувати ще раз', rvPrevAria: 'Попередні відгуки', rvNextAria: 'Наступні відгуки', rvSortNew: 'Спочатку нові', rvSortBest: 'Найвища оцінка', rvSortAria: 'Порядок відгуків', rvPagerAria: 'Сторінки відгуків', rvDoneP: 'Дякую! Ви вже поділилися досвідом — від однієї людини приймаю один відгук.', sendVia: 'Куди надіслати заявку?', callOr: 'Або просто зателефонуйте:', areaPhone: 'Телефон', fabCall: 'Подзвонити'
     },
@@ -1727,7 +1719,6 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
       lblPhone: 'Phone <small>(optional)</small>', lblMsg: 'Briefly about your situation <small>(optional)</small>',
       msgPh: 'E.g. I work on an umowa o pracę, my card expires in December',
       prevH3: 'What Alina will see', prevP: 'The message builds itself as you fill in the form.', chatName: 'Alina Kalinich · Legalia',
-      note: 'The message text is already copied. If it doesn’t appear in Telegram by itself, tap the message field and choose “Paste”.',
       footer: 'Alina Kalinich · Legalization in Poland · Radom, Masovian Voivodeship', picked: 'Selected', pickedBtn: 'To request →', fabAria: 'Contact Alina',
       nav6: 'Reviews', rvH2: 'What <span class="gt">clients say</span>', rvP: 'Only genuine reviews from people I’ve helped with their documents. Each one appears on the site after I confirm the person is my client.', rvEmptyH: 'The first reviews will appear here', rvEmptyP: 'Reviews are only just starting to come in. If I’ve already helped you, be the first to share your experience!', rvCtaH: 'Already got your documents with Legalia?', rvCtaP: 'Tell others how it went. Your review will help people feel confident about legalization.', rvLblRate: 'Your rating <span class="req">*</span>', rvErrRate: 'Please choose a star rating', rvLblName: 'Name to show <span class="req">*</span>', rvLblCity: 'City <small>(optional)</small>', rvLblSvc: 'What did I help with?', rvLblText: 'Your review <span class="req">*</span>', rvTextPh: 'How did it go? What did you like? Would you recommend me to friends?', rvErrText: 'Please write at least a few words (15+ characters)', rvSendFull: 'Send review to Alina', rvSendShort: 'Send review', rvNote: 'By sending a review, you agree to it being published on the website.', rvHowH: 'How it works', rvHow1: 'You write a review and press “Send”', rvHow2: 'I receive it and confirm that you are my client', rvHow3: 'The review automatically appears here on the site', rvPrevH: 'How your review will look', rvThanksH: 'Thank you for your review!', rvThanksP: 'Your review has reached me. As soon as I confirm it, it will appear here automatically. For now you see it marked “under review”.', rvAgain: 'Send via Telegram', rvFooter: 'Leave a review', rvFailH: 'Couldn’t send it automatically', rvFailP: 'Your connection may have dropped. Send the review to me on Telegram — the text is ready, you just need to paste it.', rvRetry: 'Try again', rvPrevAria: 'Previous reviews', rvNextAria: 'Next reviews', rvSortNew: 'Newest first', rvSortBest: 'Highest rated', rvSortAria: 'Review order', rvPagerAria: 'Review pages', rvDoneP: 'Thank you! You’ve already shared your experience — one review per person.', sendVia: 'Where should I send it?', callOr: 'Or simply call:', areaPhone: 'Phone', fabCall: 'Call'
     }
