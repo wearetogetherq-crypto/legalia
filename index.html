@@ -401,14 +401,56 @@
   .tg-btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(42,171,238,.85)}
 
   .preview-card{position:sticky;top:100px}
-  .chat{margin-top:18px;background:#0e1621;border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,.06)}
+  /* превью сообщения: само переключается между Telegram и WhatsApp */
+  .chat-tabs{display:flex;gap:8px;margin-top:18px}
+  .chat-tab{position:relative;flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border-radius:12px;
+    border:1px solid var(--line);background:rgba(12,11,10,.5);color:var(--muted);font:700 .88rem "Manrope",sans-serif;cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+  .chat-tab svg{width:18px;height:18px;flex:none}
+  .chat-tab:hover{color:var(--text)}
+  .chat-tab.tg[aria-selected=true]{background:rgba(42,171,238,.16);border-color:rgba(42,171,238,.45);color:#8fd3f7}
+  .chat-tab.wa[aria-selected=true]{background:rgba(37,211,102,.14);border-color:rgba(37,211,102,.42);color:#7ee8a8}
+  .chat-tab .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:currentColor;opacity:.8}
+  .chat-tab[aria-selected=true] .bar{animation:tabbar 5s linear forwards}
+  .chat-tabs.pinned .bar{animation:none!important;width:100%}
+  @keyframes tabbar{to{width:100%}}
+  .chat{position:relative;overflow:hidden;margin-top:12px;background:#0e1621;border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,.06);
+    transition:background-color .6s,border-color .6s}
+  .chat[data-app=wa]{background-color:#0b141a;border-color:rgba(37,211,102,.14);
+    background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1.2px);background-size:16px 16px}
+  .chat-app{margin-left:auto;position:relative;width:30px;height:30px;flex:none}
+  .chat-app span{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;color:#fff;transition:opacity .45s,transform .55s cubic-bezier(.3,1.4,.5,1)}
+  .chat-app svg{width:17px;height:17px}
+  .chat-app .ico-tg{background:linear-gradient(135deg,#37aee2,#1e96c8)}
+  .chat-app .ico-wa{background:linear-gradient(135deg,#3ee07a,#1faa55);opacity:0;transform:rotate(-90deg) scale(.4)}
+  .chat[data-app=wa] .chat-app .ico-tg{opacity:0;transform:rotate(90deg) scale(.4)}
+  .chat[data-app=wa] .chat-app .ico-wa{opacity:1;transform:none}
+  .chat .sub-wa,.chat[data-app=wa] .sub-tg{display:none}
+  .chat[data-app=wa] .sub-wa{display:inline}
+  .chat-body{position:relative;display:flex;flex-direction:column;align-items:flex-end}
+  .typing-dots{display:none;gap:5px;align-items:center;padding:14px 16px;border-radius:16px 16px 4px 16px;background:#2b5278;margin-bottom:0}
+  .chat[data-app=wa] .typing-dots{background:#005c4b;border-radius:10px 2px 10px 10px}
+  .typing-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.75);animation:tdot 1s ease-in-out infinite}
+  .typing-dots i:nth-child(2){animation-delay:.15s}.typing-dots i:nth-child(3){animation-delay:.3s}
+  @keyframes tdot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+  .chat.typing .typing-dots{display:flex}
+  .chat.typing .bubble{display:none}
+  .chat.switching .chat-body{opacity:0;transform:translateY(10px) scale(.97)}
+  .chat-body{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .chat.pop .bubble{animation:bubblein .5s cubic-bezier(.3,1.4,.5,1)}
+  @keyframes bubblein{from{opacity:0;transform:translateY(12px) scale(.9)}}
   .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:16px}
   .chat-head img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:58% 12%}
   .chat-head b{display:block;font-size:.95rem}
   .chat-head small{color:#6d8fb0;font-size:.8rem}
-  .bubble{margin-left:auto;max-width:92%;background:#2b5278;color:#fff;border-radius:16px 16px 4px 16px;padding:14px 16px;font-size:.9rem;
+  .bubble{margin-left:auto;max-width:92%;background:#2b5278;color:#fff;border-radius:16px 16px 4px 16px;padding:14px 16px 8px;font-size:.9rem;transition:background-color .5s,border-radius .5s;
     white-space:pre-wrap;word-wrap:break-word;line-height:1.5;min-height:60px}
   .bubble.empty{color:rgba(255,255,255,.55);font-style:italic}
+  .chat[data-app=wa] .bubble{background:#005c4b;border-radius:10px 2px 10px 10px}
+  .bubble .meta{display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-top:4px;font:500 .72rem "Manrope",sans-serif;font-style:normal;color:rgba(255,255,255,.6);white-space:nowrap}
+  .bubble .ticks{display:inline-grid;color:#8fd3f7}
+  .chat[data-app=wa] .bubble .ticks{color:#53bdeb}
+  .bubble .ticks svg{width:17px;height:11px}
+  .bubble.empty .meta{display:none}
   .preview-card .note{color:var(--muted);font-size:.85rem;margin-top:16px;display:flex;gap:10px}
   .preview-card .note svg{width:20px;height:20px;flex:none;color:var(--gold);margin-top:2px}
 
@@ -1263,12 +1305,20 @@
       <aside class="preview-card reveal d2">
         <h3 data-i18n="prevH3">Так побачить Аліна</h3>
         <p data-i18n="prevP" style="color:var(--muted);font-size:.9rem">Повідомлення складається автоматично, поки ви заповнюєте форму.</p>
-        <div class="chat">
+        <div class="chat-tabs" id="chatTabs" role="tablist" aria-label="Месенджер">
+          <button type="button" class="chat-tab tg" data-app="tg" role="tab" aria-selected="true"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg><span>Telegram</span><i class="bar"></i></button>
+          <button type="button" class="chat-tab wa" data-app="wa" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg><span>WhatsApp</span><i class="bar"></i></button>
+        </div>
+        <div class="chat" id="chat" data-app="tg" aria-live="polite">
           <div class="chat-head">
             <img src="alina.jpg" alt="">
-            <span><b data-i18n="chatName">Аліна Калініч · Legalia</b><small>Telegram · WhatsApp</small></span>
+            <span><b data-i18n="chatName">Аліна Калініч · Legalia</b><small><span class="sub-tg">@alinuccia3</span><span class="sub-wa">+48 605 285 245</span></small></span>
+            <i class="chat-app" aria-hidden="true"><span class="ico-tg"><svg viewBox="46 66 140 120" fill="currentColor" aria-hidden="true"><path opacity=".72" d="M98 175c-3.888 0-3.227-1.468-4.568-5.170L82 132.207 170 80"/><path opacity=".86" d="M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035"/><path d="M100.040 144.410l48.360 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.080-3.080-11.746-8.360-9.349l-115.590 44.571c-7.890 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.909 3.776 1.258"/></svg></span><span class="ico-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.84 9.84 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></span></i>
           </div>
-          <div class="bubble empty" id="preview">Позначте послуги у формі — тут з’явиться текст повідомлення…</div>
+          <div class="chat-body">
+            <div class="typing-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="bubble empty" id="preview"><span id="previewMsg">Позначте послуги у формі — тут з’явиться текст повідомлення…</span><span class="meta"><time id="prevTime"></time><i class="ticks" aria-hidden="true"><svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6.5l3.2 3.2L10.5 3M7.5 9.7L14 3"/></svg></i></span></div>
+          </div>
         </div>
         <p class="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
@@ -1750,7 +1800,7 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
   }
   function sync() {
     const m = buildMessage();
-    preview.textContent = m || ui().empty;
+    $("#previewMsg").textContent = m || ui().empty;
     preview.classList.toggle("empty", !m);
     SITUATIONS.forEach(s => {
       const on = s.svc.every(v => cb(v).checked);
@@ -1809,6 +1859,41 @@ if (window.top !== window.self) { try { window.top.location = window.location.hr
     return ok;
   }
   const WA = "48605285245";
+  /* превью «Так побачить Аліна»: каждые 5 секунд Telegram ↔ WhatsApp, с «печатает…» перед сообщением */
+  const chat = $("#chat"), chatTabs = $("#chatTabs");
+  let chatApp = "tg", chatTimer = null, chatPinnedUntil = 0, chatVisible = false;
+  const nowHM = () => new Date().toLocaleTimeString({ uk: "uk-UA", ru: "ru-RU", en: "en-GB" }[lang], { hour: "2-digit", minute: "2-digit" });
+  function setChat(app, manual) {
+    if (manual) { chatPinnedUntil = Date.now() + 15000; chatTabs.classList.add("pinned"); }
+    chatTabs.querySelectorAll(".chat-tab").forEach(t => {
+      const on = t.dataset.app === app;
+      t.setAttribute("aria-selected", on);
+      const bar = t.querySelector(".bar"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = ""; // таймер заново
+    });
+    if (app === chatApp) return;
+    chatApp = app;
+    $("#prevTime").textContent = nowHM();
+    if (reduced) { chat.dataset.app = app; return; }
+    chat.classList.add("switching");
+    setTimeout(() => {
+      chat.dataset.app = app;
+      chat.classList.remove("switching", "pop");
+      chat.classList.add("typing");
+      setTimeout(() => { chat.classList.remove("typing"); void chat.offsetWidth; chat.classList.add("pop"); }, 650);
+    }, 260);
+  }
+  function chatTick() {
+    if (!chatVisible || document.hidden) return;
+    if (Date.now() < chatPinnedUntil) return;
+    chatTabs.classList.remove("pinned");
+    setChat(chatApp === "tg" ? "wa" : "tg");
+  }
+  chatTimer = setInterval(chatTick, 5000);
+  new IntersectionObserver(([e]) => { chatVisible = e.isIntersecting; }, { threshold: .3 }).observe(chat);
+  chatTabs.addEventListener("click", e => { const t = e.target.closest(".chat-tab"); if (t) setChat(t.dataset.app, true); });
+  // наведение на кнопку отправки показывает, как будет выглядеть сообщение именно там
+  form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("mouseenter", () => setChat(b.dataset.via, true)));
+  $("#prevTime").textContent = nowHM();
   let via = "tg";
   form.querySelectorAll("button[data-via]").forEach(b => b.addEventListener("click", () => { via = b.dataset.via; }));
   form.addEventListener("submit", e => {
