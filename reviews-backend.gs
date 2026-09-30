@@ -235,3 +235,11 @@ function unsafe_(v) { return String(v).replace(/^\u200B/, ""); }
 function esc_(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 function month_(v) { return v instanceof Date ? Utilities.formatDate(v, "Europe/Warsaw", "yyyy-MM") : String(v); }
 function json_(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
+
+function checkBot() {
+  const admins = admins_();
+  console.log("Схвалюють відгуки: " + admins.length);
+  admins.forEach(id => { const c = tg_("getChat", { chat_id: id }); console.log(" - @" + (c && c.username) + " " + (c && c.first_name)); });
+  const wh = tg_("getWebhookInfo", {});
+  console.log("Черга оновлень: " + (wh && wh.pending_update_count) + (wh && wh.last_error_message ? ", помилка: " + wh.last_error_message : ""));
+}
