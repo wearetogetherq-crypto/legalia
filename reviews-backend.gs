@@ -71,6 +71,12 @@ function doPost(e) {
     };
     if (!(r.rating >= 1 && r.rating <= 5) || !r.name || r.text.length < 15) return json_({ ok: false, error: "invalid" });
 
+    // одна людина — один відгук: такі самі ім’я + місто + послуга вже є (крім відхилених)
+    const who = norm_(r.name) + "|" + norm_(r.city) + "|" + r.service;
+    const same = sheet_().getDataRange().getValues().slice(1).some(x => x[COL.status] !== "rejected" &&
+      norm_(unsafe_(x[COL.name])) + "|" + norm_(unsafe_(x[COL.city])) + "|" + String(x[COL.service]) === who);
+    if (same) return json_({ ok: false, error: "already" });
+
     // не більше 30 відгуків на годину — захист від спаму
     const cache = CacheService.getScriptCache(), n = Number(cache.get("rate") || 0);
     if (n >= 30) return json_({ ok: false, error: "busy" });
@@ -231,6 +237,7 @@ function tg_(method, params, strict) {
 
 function clean_(v, max) { return String(v == null ? "" : v).replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, "").trim().slice(0, max); }
 function safe_(v) { return typeof v === "string" && /^[=+\-@]/.test(v) ? "\u200B" + v : v; } // не даємо тексту стати формулою
+function norm_(v) { return String(v || "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ""); } // «Олена К.» = «олена к»
 function unsafe_(v) { return String(v).replace(/^\u200B/, ""); }
 function esc_(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 function month_(v) { return v instanceof Date ? Utilities.formatDate(v, "Europe/Warsaw", "yyyy-MM") : String(v); }
