@@ -24,6 +24,7 @@ const SVC_UK = {
   spouse: "Сталий побит — з громадянином Польщі", cit: "Громадянство Польщі",
   najem: "Поручительство для найму оказіонального", meld: "Мельдунок", consult: "Консультація"
 };
+const ADMIN_USERNAME = "alinuccia3"; // схвалювати відгуки може лише цей акаунт Telegram
 const P = PropertiesService.getScriptProperties();
 
 /* ---------- налаштування ---------- */
@@ -38,6 +39,21 @@ function setup() {
   console.log("Бот: @" + me.username);
   console.log("Таблиця з відгуками: " + sh.getParent().getUrl());
   console.log("Посилання для Аліни (відкрити й натиснути Start): https://t.me/" + me.username + "?start=" + P.getProperty("ADMIN_CODE"));
+}
+
+/** Скинути всіх, хто схвалює відгуки, і створити нове посилання для Аліни. */
+function resetAdmins() {
+  P.deleteProperty("ADMINS");
+  P.setProperty("ADMIN_CODE", Utilities.getUuid().replace(/-/g, "").slice(0, 16));
+  const me = tg_("getMe", {}, true);
+  console.log("Нове посилання для Аліни (відкрити й натиснути Start): https://t.me/" + me.username + "?start=" + P.getProperty("ADMIN_CODE"));
+}
+
+/** Текст на заставці бота (до натискання Start). */
+function botProfile() {
+  tg_("setMyDescription", { description: "Службовий бот сайту Legalia — Аліна Калініч, Радом.\n\nСюди приходять відгуки клієнтів із сайту, щоб Аліна могла опублікувати їх одним натисканням.\n\nНаписати Аліні: @alinuccia3" }, true);
+  tg_("setMyShortDescription", { short_description: "Відгуки клієнтів сайту Legalia · Аліна Калініч, Радом. Написати Аліні: @alinuccia3" }, true);
+  console.log("Опис бота оновлено");
 }
 
 /* ---------- сайт: новий відгук ---------- */
@@ -109,7 +125,10 @@ function handle_(u) {
   if (u.message && u.message.text) {
     const chat = String(u.message.chat.id), t = u.message.text.trim();
     const admins = admins_();
-    if (t === "/start " + P.getProperty("ADMIN_CODE")) {
+    const isAlina = String(u.message.from && u.message.from.username || "").toLowerCase() === ADMIN_USERNAME;
+    if (t === "/start " + P.getProperty("ADMIN_CODE") && !isAlina) {
+      tg_("sendMessage", { chat_id: chat, text: "Схвалювати відгуки може лише Аліна (@" + ADMIN_USERNAME + ")." });
+    } else if (t === "/start " + P.getProperty("ADMIN_CODE")) {
       if (admins.indexOf(chat) < 0) { admins.push(chat); P.setProperty("ADMINS", JSON.stringify(admins)); }
       tg_("sendMessage", { chat_id: chat, text: "✅ Готово! Сюди приходитимуть нові відгуки з сайту Legalia.\n\nНатисніть «Опублікувати» — і відгук з’явиться на сайті протягом хвилини." });
       // відгуки, які вже чекають на рішення
