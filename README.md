@@ -14,6 +14,7 @@
   - `www` → CNAME `wearetogetherq-crypto.github.io.`
 - **Почты на домене нет.** Защита от подделки писем: SPF `v=spf1 -all` и `_dmarc` с `p=reject`.
 - **GitHub:** Settings → Pages → Custom domain = `legalia-radom.pl` (файл `CNAME`), включён Enforce HTTPS.
+- **Домен подтверждён в GitHub:** Settings → Pages → Verified domains. TXT-запись `_github-pages-challenge-wearetogetherq-crypto` не удаляйте.
 - **Редиректы:** старый адрес `wearetogetherq-crypto.github.io/legalia/` и `www` перенаправляют на основной домен.
 
 ## Отзывы
